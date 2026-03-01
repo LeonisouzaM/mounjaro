@@ -8,16 +8,17 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Supabase Initialization
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+// Supabase Initialization (Lazy initialization to catch missing envs dynamically on Vercel)
+function getSupabase() {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_KEY;
 
-if (!supabaseUrl || !supabaseKey || supabaseUrl.includes("COLAR_AQUI")) {
-    console.error("🔴 ATENÇÃO: Falta configurar suas chaves do Supabase no arquivo .env");
-    console.log("Por favor, preencha SUPABASE_URL e SUPABASE_KEY.");
+    if (!supabaseUrl || !supabaseKey || supabaseUrl.includes("COLAR_AQUI") || supabaseUrl.includes("fake-url")) {
+        throw new Error("Vercel_Env_Missing: As variáveis SUPABASE_URL e SUPABASE_KEY não foram configuradas corretamente na Vercel.");
+    }
+
+    return createClient(supabaseUrl, supabaseKey);
 }
-
-const supabase = createClient(supabaseUrl || 'https://fake-url.supabase.co', supabaseKey || 'fake-key');
 
 // 1. API - Receiving Tracks (Envia para o Supabase)
 app.post('/api/track-quiz', async (req, res) => {
@@ -25,6 +26,8 @@ app.post('/api/track-quiz', async (req, res) => {
     const ts = timestamp || new Date().toISOString();
 
     try {
+        const supabase = getSupabase();
+
         // Verifica duplicidade
         const { data: existingRow, error: selectErr } = await supabase
             .from('quiz_tracking')
@@ -64,6 +67,7 @@ app.get('/api/stats', async (req, res) => {
     else if (filter === '30d') dateLimit.setDate(dateLimit.getDate() - 30);
 
     try {
+        const supabase = getSupabase();
         let query = supabase.from('quiz_tracking').select('session_id, step');
 
         if (filter !== 'all') {
@@ -96,6 +100,7 @@ app.get('/api/stats', async (req, res) => {
 // 3. API - Clear All Stats
 app.delete('/api/clear-stats', async (req, res) => {
     try {
+        const supabase = getSupabase();
         const { error } = await supabase
             .from('quiz_tracking')
             .delete()
