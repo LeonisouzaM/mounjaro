@@ -25,6 +25,9 @@ app.post('/api/track-quiz', async (req, res) => {
     const { step, session_id, timestamp } = req.body;
     const ts = timestamp || new Date().toISOString();
 
+    const vercelCountry = req.headers['x-vercel-ip-country'] || 'Desconhecido';
+    const final_session_id = session_id.includes('__') ? session_id : session_id + '__' + vercelCountry;
+
     try {
         const supabase = getSupabase();
 
@@ -32,7 +35,7 @@ app.post('/api/track-quiz', async (req, res) => {
         const { data: existingRow, error: selectErr } = await supabase
             .from('quiz_tracking')
             .select('id')
-            .eq('session_id', session_id)
+            .eq('session_id', final_session_id)
             .eq('step', step);
 
         if (selectErr) throw selectErr;
@@ -42,7 +45,7 @@ app.post('/api/track-quiz', async (req, res) => {
             const { error: insertErr } = await supabase
                 .from('quiz_tracking')
                 .insert([
-                    { session_id, step, created_at: ts }
+                    { session_id: final_session_id, step, created_at: ts }
                 ]);
 
             if (insertErr) throw insertErr;
@@ -78,13 +81,33 @@ app.get('/api/stats', async (req, res) => {
         if (error) throw error;
 
         let sessionsData = {};
+        let countryCounts = {};
 
         data.forEach(row => {
-            if (!sessionsData[row.session_id]) sessionsData[row.session_id] = {};
+            if (!sessionsData[row.session_id]) {
+                sessionsData[row.session_id] = {};
+
+                // Extrai o país se existir o sufixo __PAIS inserido no track-quiz
+                if (row.session_id.includes('__')) {
+                    const country = row.session_id.split('__')[1];
+                    if (country && country !== 'Desconhecido') {
+                        countryCounts[country] = (countryCounts[country] || 0) + 1;
+                    }
+                }
+            }
             if (!sessionsData[row.session_id][row.step]) {
                 sessionsData[row.session_id][row.step] = new Date(row.created_at).getTime();
             }
         });
+
+        let topCountry = "-";
+        let maxCount = 0;
+        for (const [country, count] of Object.entries(countryCounts)) {
+            if (count > maxCount) {
+                maxCount = count;
+                topCountry = country;
+            }
+        }
 
         let stepStats = {};
 
@@ -115,7 +138,7 @@ app.get('/api/stats', async (req, res) => {
             avg_time_sec: stepStats[step].timeSamples > 0 ? (stepStats[step].totalTime / stepStats[step].timeSamples) : 0
         })).sort((a, b) => a.step - b.step);
 
-        res.json({ success: true, data: rows });
+        res.json({ success: true, data: rows, top_country: topCountry });
     } catch (err) {
         console.error("Erro na Leitura Supabase:", err);
         return res.status(500).json({ success: false, error: err.message });
