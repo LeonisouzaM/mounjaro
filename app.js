@@ -884,7 +884,7 @@ function renderStep(stepId) {
                             <div class="main-price text-green" style="font-size: 3.5rem; font-weight: 900; line-height:1; margin-top:0.25rem;">$9.90</div>
                         </div>
                         
-                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('SEU_LINK_DE_CHECKOUT_AQUI')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
+                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
                     </div>
                 </div>
 
@@ -900,7 +900,7 @@ function renderStep(stepId) {
                     <p style="font-size: 0.7rem; color: #64748b; line-height: 1.4;">Es decir, si no te gusta o no funciona para ti, te reembolsaremos cada centavo que hayas pagado, sin hacer preguntas.</p>
                 </div>
 
-                <button class="btn green-cta mt-4 w-full" onclick="handlePurchaseClick('SEU_LINK_DE_CHECKOUT_AQUI')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
+                <button class="btn green-cta mt-4 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
 
                 <div class="author-card mt-4 text-center p-4" style="background:white; border: 1px solid var(--border-color); border-radius:12px; display: flex; flex-direction: column; align-items: center;">
                     <img src="assets/nutri-luciana-2.png" alt="Nutri Luciana Britto" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" >
@@ -909,7 +909,7 @@ function renderStep(stepId) {
                     <p style="font-size: 0.7rem; color: #64748b;">Nutricionista • CRN-PR 08-7734</p>
                 </div>
                 
-                <button class="btn green-cta mt-4 w-full mb-3" onclick="handlePurchaseClick('SEU_LINK_DE_CHECKOUT_AQUI')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
+                <button class="btn green-cta mt-4 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
                 <div class="text-center text-muted mb-4" style="font-size: 0.7rem; display: flex; align-items: center; justify-content: center; gap: 4px; color: #64748b;">
                     <span style="color: #f59e0b;">🔒</span> Compra 100% segura • Garantía de 30 días
                 </div>
