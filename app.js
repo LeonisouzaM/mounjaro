@@ -326,8 +326,8 @@ function trackStep(stepId) {
         }
     }
 
-    // Resolve problema caso você esteja abrindo o app por 2 cliques no index.html (file://)
-    const apiUrl = window.location.protocol === 'file:' ? 'http://localhost:3000/api/track-quiz' : '/api/track-quiz';
+    // Usar caminho relativo para funcionar tanto no localhost quanto na Vercel
+    const apiUrl = '/api/track-quiz';
 
     fetch(apiUrl, {
         method: 'POST',
