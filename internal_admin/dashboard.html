@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mounjaro | Analytics Pro</title>
+    <!-- TailwindCSS for quick styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f111a',
+                        card: '#161925',
+                        primary: '#a855f7',
+                        secondary: '#ec4899'
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(22, 25, 37, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, #c084fc, #ec4899);
+        }
+
+        .retention-bar-bg {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 999px;
+            height: 8px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .retention-bar-fill {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 1s ease-in-out;
+        }
+
+        .btn-neon-red {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-neon-red:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+        }
+
+        /* Custom Scrollbar for table */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f111a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-gray-200 min-h-screen antialiased selection:bg-purple-500/30">
+
+    <!-- Top Navigation -->
+    <nav class="border-b border-gray-800 bg-card/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+                        M
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Analytics <span
+                            class="text-gradient">Pro</span></span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <select id="timeFilter"
+                            class="appearance-none bg-dark border border-gray-700 text-gray-200 rounded-lg py-1.5 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer text-sm font-medium transition-all"
+                            onchange="fetchData()">
+                            <option value="all">Todo o período</option>
+                            <option value="24h">Últimas 24 horas</option>
+                            <option value="7d">Últimos 7 dias</option>
+                            <option value="30d">Úteis 30 dias</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <button onclick="clearData()" title="Limpar todo o histórico de testes"
+                        class="btn-neon-red px-4 py-1.5 rounded-lg text-sm font-semibold flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                            </path>
+                        </svg>
+                        Limpar Dados
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Metrics Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 p-4 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
+                    <svg class="w-16 h-16 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-gray-400 font-semibold text-sm uppercase tracking-wider mb-2">Total de Sessões</h3>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-4xl font-extrabold text-white" id="metric-total">0</span>
+                    <span class="text-sm text-green-400">Usuários únicos</span>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 p-4 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
+                    <svg class="w-16 h-16 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-gray-400 font-semibold text-sm uppercase tracking-wider mb-2">Checkouts Atingidos</h3>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-4xl font-extrabold text-white" id="metric-completed">0</span>
+                    <span class="text-sm text-purple-400">Chegaram ao final</span>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 p-4 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
+                    <svg class="w-16 h-16 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <h3 class="text-gray-400 font-semibold text-sm uppercase tracking-wider mb-2">Conversão Global</h3>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-4xl font-extrabold text-white" id="metric-conversion">0%</span>
+                    <span class="text-sm text-gray-400">Retenção Absoluta</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Table Card -->
+            <div class="glass-panel p-6 rounded-2xl lg:col-span-2 shadow-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
+                        Mapeamento de Funil
+                    </h2>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-800" id="statsTable">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                                    Etapa</th>
+                                <th
+                                    class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                                    Acessos</th>
+                                <th
+                                    class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                                    Retenção (vs Anterior)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800/50" id="tableBody">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Chart Card -->
+            <div class="glass-panel p-6 rounded-2xl shadow-2xl flex flex-col">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2 mb-6">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                    </svg>
+                    Gráfico de Abandono
+                </h2>
+                <div class="relative w-full flex-grow min-h-[300px]">
+                    <canvas id="retentionChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Clear Data Modal -->
+    <div id="clearModal"
+        class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm">
+        <div
+            class="glass-panel p-8 rounded-2xl max-w-sm w-full mx-4 border border-red-500/20 transform scale-95 transition-all text-center">
+            <div
+                class="w-16 h-16 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                    </path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Limpar Histórico?</h3>
+            <p class="text-gray-400 text-sm mb-6">Esta ação apagará todos os acessos rastreados do banco de dados
+                permanentemente (Zerar Estatísticas).</p>
+            <div class="flex gap-3">
+                <button onclick="closeModal()"
+                    class="flex-1 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-semibold transition-colors">Cancelar</button>
+                <button onclick="executeClear()"
+                    class="flex-1 px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg font-semibold transition-colors shadow-[0_0_15px_rgba(220,38,38,0.4)]">Sim,
+                    Zerar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let myChart = null;
+
+        async function fetchData() {
+            const filter = document.getElementById('timeFilter').value;
+
+            try {
+                const response = await fetch('/api/stats?filter=' + filter);
+                const data = await response.json();
+
+                if (data.success) {
+                    renderUI(data.data);
+                }
+            } catch (err) {
+                console.error("Erro ao carregar:", err);
+            }
+        }
+
+        function renderUI(rows) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            let labels = [];
+            let chartData = [];
+
+            if (!rows || rows.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="text-center py-10"><p class="text-gray-500 mb-2">Nenhum dado capturado ainda.</p><div class="animate-pulse w-16 h-1 bg-purple-500/50 mx-auto rounded"></div></td></tr>';
+                if (myChart) myChart.destroy();
+
+                document.getElementById('metric-total').innerText = '0';
+                document.getElementById('metric-completed').innerText = '0';
+                document.getElementById('metric-conversion').innerText = '0%';
+                return;
+            }
+
+            rows.sort((a, b) => parseInt(a.step) - parseInt(b.step));
+
+            let accessArray = [];
+            let totalSessions = rows[0].total_acessos; // First step is the baseline
+            let finalSessions = rows[rows.length - 1].total_acessos;
+
+            // Update Summary Metrics
+            document.getElementById('metric-total').innerText = totalSessions;
+            document.getElementById('metric-completed').innerText = finalSessions;
+            const globalConv = totalSessions > 0 ? ((finalSessions / totalSessions) * 100).toFixed(1) : 0;
+            document.getElementById('metric-conversion').innerText = globalConv + '%';
+
+            for (let i = 0; i < rows.length; i++) {
+                const stepIdx = rows[i].step;
+                const total = rows[i].total_acessos;
+
+                let retentionValue = 100;
+                if (i > 0) {
+                    const prevTotal = rows[i - 1].total_acessos;
+                    retentionValue = prevTotal === 0 ? 0 : (total / prevTotal) * 100;
+                }
+                if (retentionValue > 100) retentionValue = 100;
+
+                // Color Logic
+                let barColor = "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]";
+                let textColor = "text-emerald-400";
+                if (retentionValue < 50) {
+                    barColor = "bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.5)]";
+                    textColor = "text-rose-400";
+                } else if (retentionValue < 80) {
+                    barColor = "bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]";
+                    textColor = "text-amber-400";
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-white/5 transition-colors group";
+
+                tr.innerHTML = `
+                    <td class="px-4 py-4 mt-2 mb-2 whitespace-nowrap">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-xs font-bold text-gray-300">
+                                ${stepIdx}
+                            </div>
+                            <span class="font-medium text-gray-200">Passo ${stepIdx}</span>
+                        </div>
+                    </td>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                        <span class="text-white font-bold text-lg">${total}</span>
+                        <span class="text-gray-500 text-xs ml-1">usuários</span>
+                    </td>
+                    <td class="px-4 py-4 whitespace-nowrap w-48">
+                        <div class="flex flex-col gap-1.5">
+                            <div class="flex justify-between items-center text-sm font-bold ${textColor}">
+                                ${retentionValue.toFixed(1)}%
+                            </div>
+                            <div class="retention-bar-bg">
+                                <div class="retention-bar-fill ${barColor}" style="width: ${retentionValue}%"></div>
+                            </div>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+
+                labels.push('Etapa ' + stepIdx);
+                accessArray.push(total);
+            }
+
+            renderChart(labels, accessArray);
+        }
+
+        function renderChart(labels, dataArr) {
+            const ctx = document.getElementById('retentionChart').getContext('2d');
+
+            if (myChart) {
+                myChart.destroy();
+            }
+
+            // Create gradient
+            let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(236, 72, 153, 0.4)'); // Pink
+            gradient.addColorStop(1, 'rgba(168, 85, 247, 0.0)'); // Purple transparent
+
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Visitantes',
+                        data: dataArr,
+                        borderColor: '#ec4899', // Pink
+                        backgroundColor: gradient,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#0f111a',
+                        pointBorderColor: '#c084fc',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        fill: true,
+                        tension: 0.4 // Curves smooth
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(22, 25, 37, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#a855f7',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10,
+                            displayColors: false,
+                            callbacks: {
+                                label: function (context) {
+                                    return context.parsed.y + ' sessões';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+                            ticks: { color: '#64748b' }
+                        },
+                        x: {
+                            grid: { display: false, drawBorder: false },
+                            ticks: { color: '#64748b' }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                }
+            });
+        }
+
+        // Modal Clear Logic
+        function clearData() {
+            document.getElementById('clearModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('clearModal').classList.add('hidden');
+        }
+
+        async function executeClear() {
+            try {
+                const res = await fetch('/api/clear-stats', { method: 'DELETE' });
+                const json = await res.json();
+                if (json.success) {
+                    closeModal();
+                    fetchData(); // Reload UI to zeroes
+                } else {
+                    alert("Erro: " + json.error);
+                }
+            } catch (e) {
+                alert("Falha na rede.");
+            }
+        }
+
+        // Initialize display
+        window.addEventListener('DOMContentLoaded', fetchData);
+    </script>
+</body>
+
+</html>
