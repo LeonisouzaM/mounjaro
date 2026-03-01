@@ -219,7 +219,13 @@
                                     Acessos</th>
                                 <th
                                     class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                                    Retenção (vs Anterior)</th>
+                                    Tempo Médio</th>
+                                <th
+                                    class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                                    Retenção (Progresso)</th>
+                                <th
+                                    class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                                    Perda (Gargalo % do Passo)</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-800/50" id="tableBody">
@@ -298,7 +304,7 @@
             let chartData = [];
 
             if (!rows || rows.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="3" class="text-center py-10"><p class="text-gray-500 mb-2">Nenhum dado capturado ainda.</p><div class="animate-pulse w-16 h-1 bg-purple-500/50 mx-auto rounded"></div></td></tr>';
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center py-10"><p class="text-gray-500 mb-2">Nenhum dado capturado ainda.</p><div class="animate-pulse w-16 h-1 bg-purple-500/50 mx-auto rounded"></div></td></tr>';
                 if (myChart) myChart.destroy();
 
                 document.getElementById('metric-total').innerText = '0';
@@ -344,6 +350,11 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-white/5 transition-colors group";
 
+                const timeFormatted = rows[i].avg_time_sec > 0 ? Math.round(rows[i].avg_time_sec) + 's' : '-';
+
+                const dropRate = 100 - retentionValue;
+                const dropStr = dropRate > 0 && dropRate < 100 && i > 0 ? '<span class="text-rose-400 font-bold">-' + dropRate.toFixed(1) + '% abando...</span>' : '<span class="text-gray-600">-</span>';
+
                 tr.innerHTML = `
                     <td class="px-4 py-4 mt-2 mb-2 whitespace-nowrap">
                         <div class="flex items-center gap-3">
@@ -357,6 +368,12 @@
                         <span class="text-white font-bold text-lg">${total}</span>
                         <span class="text-gray-500 text-xs ml-1">usuários</span>
                     </td>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                        <div class="flex items-center gap-1.5 text-gray-300 font-medium">
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            ${timeFormatted}
+                        </div>
+                    </td>
                     <td class="px-4 py-4 whitespace-nowrap w-48">
                         <div class="flex flex-col gap-1.5">
                             <div class="flex justify-between items-center text-sm font-bold ${textColor}">
@@ -366,6 +383,9 @@
                                 <div class="retention-bar-fill ${barColor}" style="width: ${retentionValue}%"></div>
                             </div>
                         </div>
+                    </td>
+                    <td class="px-4 py-4 whitespace-nowrap text-sm">
+                        ${dropStr.replace('abando...', 'abandonaram')}
                     </td>
                 `;
                 tbody.appendChild(tr);

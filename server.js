@@ -68,7 +68,7 @@ app.get('/api/stats', async (req, res) => {
 
     try {
         const supabase = getSupabase();
-        let query = supabase.from('quiz_tracking').select('session_id, step');
+        let query = supabase.from('quiz_tracking').select('session_id, step, created_at');
 
         if (filter !== 'all') {
             query = query.gte('created_at', dateLimit.toISOString());
@@ -77,17 +77,42 @@ app.get('/api/stats', async (req, res) => {
         const { data, error } = await query;
         if (error) throw error;
 
-        // Processamento para contar unique sessions por etapa
-        let distinctSessions = {};
+        let sessionsData = {};
 
         data.forEach(row => {
-            if (!distinctSessions[row.step]) distinctSessions[row.step] = new Set();
-            distinctSessions[row.step].add(row.session_id);
+            if (!sessionsData[row.session_id]) sessionsData[row.session_id] = {};
+            if (!sessionsData[row.session_id][row.step]) {
+                sessionsData[row.session_id][row.step] = new Date(row.created_at).getTime();
+            }
         });
 
-        const rows = Object.keys(distinctSessions).map(step => ({
+        let stepStats = {};
+
+        Object.keys(sessionsData).forEach(sid => {
+            const userSteps = Object.keys(sessionsData[sid]).map(Number).sort((a, b) => a - b);
+
+            for (let i = 0; i < userSteps.length; i++) {
+                const step = userSteps[i];
+                if (!stepStats[step]) stepStats[step] = { count: 0, totalTime: 0, timeSamples: 0 };
+
+                stepStats[step].count++;
+
+                if (i < userSteps.length - 1) {
+                    const nextStep = userSteps[i + 1];
+                    const timeDiff = (sessionsData[sid][nextStep] - sessionsData[sid][step]) / 1000;
+
+                    if (timeDiff > 0 && timeDiff < 3600) { // Limit to 1 hour max
+                        stepStats[step].totalTime += timeDiff;
+                        stepStats[step].timeSamples++;
+                    }
+                }
+            }
+        });
+
+        const rows = Object.keys(stepStats).map(step => ({
             step: parseInt(step),
-            total_acessos: distinctSessions[step].size
+            total_acessos: stepStats[step].count,
+            avg_time_sec: stepStats[step].timeSamples > 0 ? (stepStats[step].totalTime / stepStats[step].timeSamples) : 0
         })).sort((a, b) => a.step - b.step);
 
         res.json({ success: true, data: rows });
