@@ -143,3 +143,5 @@ app.listen(PORT, () => {
     console.log(`🚀 Sistema ativo! Acesse: http://localhost:${PORT}/`);
     console.log(`📊 Dashboard de Estatísticas: http://localhost:${PORT}/statisticas`);
 });
+
+module.exports = app;
