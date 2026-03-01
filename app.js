@@ -870,10 +870,9 @@ function renderStep(stepId) {
                         </div>
 
                         <div class="price-section mt-5 text-center">
-                            <div class="crossed-price" style="text-decoration: line-through; color: #94a3b8; font-size: 0.75rem;">TODO ESTO POR $149.00</div>
+                            <div class="crossed-price" style="text-decoration: line-through; color: #94a3b8; font-size: 0.75rem;">TODO ESTO POR $59.90</div>
                             <div class="mt-1" style="color: #64748b; font-weight:600; font-size: 0.75rem;">POR SOLO</div>
-                            <div class="main-price text-green" style="font-size: 3.5rem; font-weight: 900; line-height:1; margin-top:0.25rem;">$27</div>
-                            <div class="installments mt-1" style="color: #64748b; font-size:0.85rem;">O 6 cuotas de $5.32</div>
+                            <div class="main-price text-green" style="font-size: 3.5rem; font-weight: 900; line-height:1; margin-top:0.25rem;">$9.90</div>
                         </div>
                         
                         <button class="btn green-cta mt-5 w-full" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
@@ -902,9 +901,58 @@ function renderStep(stepId) {
                 </div>
                 
                 <button class="btn green-cta mt-4 w-full mb-3" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
-                <div class="text-center text-muted mb-6" style="font-size: 0.7rem; display: flex; align-items: center; justify-content: center; gap: 4px; color: #64748b;">
+                <div class="text-center text-muted mb-4" style="font-size: 0.7rem; display: flex; align-items: center; justify-content: center; gap: 4px; color: #64748b;">
                     <span style="color: #f59e0b;">🔒</span> Compra 100% segura • Garantía de 30 días
                 </div>
+
+                <div class="payment-methods mt-2 text-center">
+                    <p style="font-size: 0.70rem; color: #94a3b8; margin-bottom: 8px; font-weight: 500;">Opciones de pago locales disponibles para LATAM</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="background: #1a1f71; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 900; font-size: 0.65rem; font-style: italic; letter-spacing: 0.5px;">VISA</div>
+                        <div style="background: #1e1e1e; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 0.65rem; display: flex; align-items: center; gap: 6px;">
+                            <div style="display:flex;">
+                               <div style="width:10px; height:10px; border-radius:50%; background:#eb001b;"></div>
+                               <div style="width:10px; height:10px; border-radius:50%; background:#f79e1b; margin-left:-4px;"></div>
+                            </div>
+                            mastercard
+                        </div>
+                        <div style="background: #0070ba; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 800; font-size: 0.65rem; font-style: italic;">PayPal</div>
+                        <div style="background: #e11422; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">OXXO</div>
+                        <div style="background: #fcb316; color: #1e293b; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">pagoefectivo</div>
+                        <div style="background: #facc15; color: #1e293b; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">Efecty</div>
+                        <div style="background: #1e3a8a; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">Sencillito</div>
+                    </div>
+                </div>
+
+                <div class="faq-container mt-6 mx-auto" style="max-width: 500px; text-align: left; padding-bottom: 30px;">
+                    <h3 class="font-bold text-xl text-center mb-4" style="color:#1e293b;">Preguntas Frecuentes</h3>
+                    
+                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿La Gelatina Mounjaro es segura?</h4>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">Sí, la fórmula es 100% natural, basada en ingredientes comprobados que activan de forma segura la quema de grasa sin causar efectos secundarios como los medicamentos tradicionales.</p>
+                    </div>
+                    
+                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿En cuánto tiempo veré resultados?</h4>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">La mayoría de nuestras clientes sienten una gran desinflamación en los primeros 3 a 5 días y una pérdida de peso notable al finalizar la segunda semana.</p>
+                    </div>
+
+                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿Tendré que hacer dietas estrictas?</h4>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">No. El enfoque principal está en la activación metabólica mediante el protocolo de la gelatina y la app, sin necesidad de pasar hambre o eliminar todos los carbohidratos.</p>
+                    </div>
+
+                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿Cómo recibiré mi acceso?</h4>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">Inmediatamente después de la confirmación de tu compra, recibirás un correo electrónico con tu enlace exclusivo para acceder a todo el material en la Aplicación Oficial.</p>
+                    </div>
+                    
+                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿Es una suscripción mensual?</h4>
+                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">No. ¡El pago es único! Pagarás una sola vez el valor promocional hoy y tendrás acceso VITALICIO a todo el contenido y beneficios de bonificación.</p>
+                    </div>
+                </div>
+
             </div>
         `;
 
