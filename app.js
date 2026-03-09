@@ -3,11 +3,10 @@ const stepsData = [
         id: "start",
         type: "welcome",
         hideProgress: true,
-        image: "assets/bowl.png",
-        title: "¿Estás luchando contra el <span class='text-purple'>Vientre Hinchado</span> y la <span class='text-purple'>Grasa Localizada</span>?",
-        subtitle: "¡Descubre cómo activar tu metabolismo y perder hasta 12kg en 30 días con la Gelatina Mounjaro!",
-        buttonText: "¡Quiero saber si funciona para mí! 🔥",
-        footerText: "✓ Más de 127.000 mujeres • ✓ 100% Natural",
+        image: "assets/capa1.png",
+        subtitle: "Descubra como ativar seu metabolismo e perder até <span class='text-purple'>12kg em 30 dias</span> com a <span class='text-purple'>Gelatina Mounjaro!</span>",
+        buttonText: "Quero saber se funciona para mim! 🔥",
+        footerText: "✓ 127.000+ mulheres &nbsp;•&nbsp; ✓ 100% Natural",
         nextStep: "intro"
     },
     {
@@ -31,25 +30,8 @@ const stepsData = [
             { id: "40-54", label: "40 - 54 años", icon: "🌺" },
             { id: "54+", label: "54+ años", icon: "🌷" }
         ],
-        nextStep: "areas",
+        nextStep: "corpo",
         autoAdvance: true
-    },
-    {
-        id: "areas",
-        type: "checkbox",
-        progress: 30,
-        title: "¿En qué áreas quieres perder más grasa?",
-        subtitle: "Selecciona todas las que apliquen.",
-        options: [
-            { id: "culotes", label: "Caderas", icon: "🦵" },
-            { id: "bracos", label: "Brazos", icon: "💪" },
-            { id: "barriga", label: "Abdomen", icon: "🎯" },
-            { id: "coxas", label: "Muslos", icon: "🦵" },
-            { id: "gluteos", label: "Glúteos", icon: "🍑" },
-            { id: "corpo-todo", label: "Todo el Cuerpo", icon: "✨" }
-        ],
-        buttonText: "Continuar",
-        nextStep: "corpo"
     },
     {
         id: "corpo",
@@ -63,8 +45,28 @@ const stepsData = [
             { id: "acima-peso", label: "Con sobrepeso", image: "assets/corpo_acimadopeso.png" },
             { id: "sobrepeso", label: "Sobrepeso alto", image: "assets/corpo_sobrepeso.png" }
         ],
-        nextStep: "afeta-vida",
+        nextStep: "body-areas",
         autoAdvance: true
+    },
+    {
+        id: "body-areas",
+        type: "body-selection",
+        progress: 45,
+        title: "Quais as áreas que você <span class='text-purple'>mais quer perder gordura?</span>",
+        subtitle: "Toque nas áreas do corpo que deseja melhorar.",
+        image: "assets/personagem.png",
+        options: [
+            { id: "papada", label: "Papada" },
+            { id: "bracos", label: "Braços" },
+            { id: "cintura", label: "Cintura" },
+            { id: "barriga", label: "Barriga" },
+            { id: "gluteos", label: "Glúteos" },
+            { id: "culotes", label: "Culotes" },
+            { id: "coxas", label: "Coxas" },
+            { id: "corpo-todo", label: "Corpo Todo" }
+        ],
+        buttonText: "Continuar",
+        nextStep: "afeta-vida"
     },
     {
         id: "afeta-vida",
@@ -145,6 +147,12 @@ const stepsData = [
             { id: "elogios", label: "Recibir elogios", icon: "🌟" }
         ],
         buttonText: "Continuar",
+        nextStep: "como-funciona"
+    },
+    {
+        id: "como-funciona",
+        type: "como-funciona",
+        progress: 91,
         nextStep: "peso-atual"
     },
     {
@@ -173,22 +181,7 @@ const stepsData = [
         max: 200,
         initial: 165,
         labels: { min: "140 cm", max: "200 cm" },
-        nextStep: "rotina"
-    },
-    {
-        id: "rotina",
-        type: "radio",
-        progress: 96,
-        title: "¿Cómo es tu rutina diaria?",
-        subtitle: "Selecciona la que más encaje.",
-        options: [
-            { id: "trabalho-fora", label: "Trabajo fuera de casa", icon: "🏢" },
-            { id: "home-office", label: "Trabajo desde casa", icon: "🏠" },
-            { id: "casa-familia", label: "Cuido la casa/familia", icon: "👨‍👩‍👧‍👦" },
-            { id: "estudo", label: "Estudio", icon: "📚" }
-        ],
-        nextStep: "peso-desejado",
-        autoAdvance: true
+        nextStep: "peso-desejado"
     },
     {
         id: "peso-desejado",
@@ -203,7 +196,59 @@ const stepsData = [
         initial: 65,
         labels: { min: "40 kg", max: "74 kg" },
         isGoal: true,
-        nextStep: "agua"
+        nextStep: "otimo-objetivo"
+    },
+    {
+        id: "otimo-objetivo",
+        type: "otimo-objetivo",
+        progress: 98,
+        buttonText: "Ok, Vamos lá! 🚀",
+        nextStep: "gestacoes"
+    },
+    {
+        id: "gestacoes",
+        type: "radio",
+        progress: 98,
+        title: "<span class='text-purple'>Quantas gestações</span> você já teve?",
+        subtitle: "Isso ajuda a personalizar seu plano.",
+        options: [
+            { id: "0", label: "Nunca estive grávida", icon: "<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='#ff4b4b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='4.93' y1='4.93' x2='19.07' y2='19.07'></line></svg>" },
+            { id: "1", label: "1 gestação", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>1</div>" },
+            { id: "2", label: "2 gestações", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>2</div>" },
+            { id: "3", label: "3 ou mais gestações", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>3</div>" }
+        ],
+        nextStep: "rotina",
+        autoAdvance: true
+    },
+    {
+        id: "rotina",
+        type: "checkbox-list",
+        progress: 98,
+        title: "Como é sua <span class='text-purple'>rotina diária?</span>",
+        subtitle: "Selecione todas as que se encaixam.",
+        options: [
+            { id: "trabalho-fora", label: "Trabalho fora de casa", icon: "🏢" },
+            { id: "home-office", label: "Trabalho em home office", icon: "🏡" },
+            { id: "casa-familia", label: "Cuido da casa/família", icon: "👨‍👩‍👧‍👦" },
+            { id: "estudo", label: "Estudo", icon: "📚" }
+        ],
+        buttonText: "Continuar",
+        nextStep: "sono"
+    },
+    {
+        id: "sono",
+        type: "radio",
+        progress: 98,
+        title: "Quantas horas <span class='text-purple'>você dorme por noite?</span>",
+        subtitle: "O sono é essencial para o emagrecimento.",
+        options: [
+            { id: "menos-5", label: "Menos de 5 horas", icon: "😴" },
+            { id: "5-7", label: "5 a 7 horas", icon: "🛏️" },
+            { id: "7-9", label: "7 a 9 horas", icon: "🥰" },
+            { id: "mais-9", label: "Mais de 9 horas", icon: "💤" }
+        ],
+        nextStep: "agua",
+        autoAdvance: true
     },
     {
         id: "agua",
@@ -217,17 +262,8 @@ const stepsData = [
             { id: "1-2l", label: "1 a 2 litros", icon: "💦" },
             { id: "mais-2l", label: "Más de 2 litros", icon: "🌊" }
         ],
-        nextStep: "como-usar",
+        nextStep: "resultado-analise",
         autoAdvance: true
-    },
-    {
-        id: "como-usar",
-        type: "info-steps",
-        progress: 100,
-        title: "Cómo usar la <span class='text-purple'>Gelatina Mounjaro</span>",
-        subtitle: "Simple, práctico y eficaz",
-        buttonText: "¡Sí, me comprometo!",
-        nextStep: "resultado-analise"
     },
     {
         id: "resultado-analise",
@@ -235,6 +271,40 @@ const stepsData = [
         progress: 100,
         title: "Resultado de tu análisis, tú",
         buttonText: "Continuar",
+        nextStep: "como-usar"
+    },
+    {
+        id: "como-usar",
+        type: "como-usar",
+        progress: 100,
+        buttonText: "<span class='btn-check-icon'></span> Sim, eu me comprometo!",
+        nextStep: "compromisso-semana"
+    },
+    {
+        id: "compromisso-semana",
+        type: "radio-image-top",
+        progress: 100,
+        title: "Você se compromete a aplicar o <span class='text-purple'>protocolo</span> por pelo menos 1 semana para poder ver os resultados?",
+        image: "assets/before_after_v2-BwdiI3Uv.png",
+        badge: "🔒 PARA LIBERAR SEU PLANO, PRECISO SABER:",
+        options: [
+            { id: "sim-comprometo", label: "Sim me comprometo!", icon: "🥰" },
+            { id: "comecar-hoje", label: "Quero começar hoje", icon: "😎" },
+            { id: "nao-sei", label: "Não sei...", icon: "🙄" }
+        ],
+        nextStep: "loading-analise",
+        autoAdvance: true
+    },
+    {
+        id: "loading-analise",
+        type: "circular-loading",
+        progress: 100,
+        nextStep: "vsl-page"
+    },
+    {
+        id: "vsl-page",
+        type: "vsl",
+        progress: 100,
         nextStep: "corpo-sonhos"
     },
     {
@@ -268,6 +338,12 @@ const stepsData = [
         id: "loading",
         type: "loading-screen",
         progress: 100,
+        nextStep: "loading-final"
+    },
+    {
+        id: "loading-final",
+        type: "loading-final",
+        progress: 100,
         nextStep: "plano-gerado"
     },
     {
@@ -278,6 +354,7 @@ const stepsData = [
 ];
 
 let currentStepId = "start";
+let stepHistory = [];
 let userAnswers = {};
 
 function getSessionId() {
@@ -367,14 +444,13 @@ function renderStep(stepId) {
 
     if (step.type === "welcome") {
         contentHTML = `
-            <div class="welcome-container text-center">
-                <div class="bowl-card mb-4 mx-auto">
-                    <img src="${step.image}" alt="Gelatina Bowl" class="bowl-image">
+            <div class="welcome-container text-center" style="display: flex; flex-direction: column; align-items: center; padding-top: 0.5rem; padding-bottom: 2rem;">
+                <div class="capa-image-container mx-auto" style="width: 100%; max-width: 420px; margin-bottom: 1.5rem;">
+                    <img src="${step.image}" alt="Mounjaro Gelatina" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
                 </div>
-                <h2 class="title mt-2" style="font-size: 1.4rem; padding: 0 0.5rem;">${step.title}</h2>
-                <p class="subtitle mt-3">${step.subtitle}</p>
-                <button class="btn primary-btn mt-5 w-auto" onclick="goToStep('${step.nextStep}')">${step.buttonText}</button>
-                <p class="footer-text mt-4">${step.footerText}</p>
+                <p class="subtitle mt-1" style="font-size: 1.1rem; line-height: 1.5; color: #6b7280; font-weight: 400; max-width: 95%; margin: 0 auto;">${step.subtitle}</p>
+                <button class="btn mt-4" style="background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); width: auto; min-width: 250px; font-size: 1.05rem; font-weight: 700; padding: 1rem 1.5rem; border-radius: 12px; box-shadow: 0 8px 25px -5px rgba(34, 197, 94, 0.5); margin-top: 1.5rem; border: 1px solid #16a34a; transition: transform 0.2s; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'" onclick="goToStep('${step.nextStep}')">Quero saber se funciona para mim! 🔥</button>
+                <p class="footer-text" style="margin-top: 1.5rem; font-size: 0.85rem; color: #9ca3af; font-weight: 500;">${step.footerText}</p>
             </div>
         `;
     }
@@ -518,58 +594,110 @@ function renderStep(stepId) {
             </div>
         `;
     }
-    else if (step.type === "info-steps") {
-        contentHTML = `
-            <h2 class="title text-center">${step.title}</h2>
-            <p class="subtitle text-center mt-2 mb-4">${step.subtitle}</p>
-            <div class="steps-card-list">
-                <div class="step-card">
-                    <div class="step-icon bg-orange">✨</div>
-                    <div class="step-text">
-                        <span class="step-label">Paso 1</span>
-                        <span class="step-action">Prepara la gelatina</span>
-                        <span class="step-desc">Sigue la receta simple de la aplicación</span>
-                    </div>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon bg-purple">🕒</div>
-                    <div class="step-text">
-                        <span class="step-label">Paso 2</span>
-                        <span class="step-action">Consume 2x al día</span>
-                        <span class="step-desc">Una por la mañana y una antes de dormir</span>
-                    </div>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon bg-green">📅</div>
-                    <div class="step-text">
-                        <span class="step-label">Paso 3</span>
-                        <span class="step-action">Síguelo por 30 días</span>
-                        <span class="step-desc">El protocolo completo para resultados</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="timeline-widget">
-                <div class="timeline-item">
-                    <span class="icon">☀️</span>
-                    <span class="time">Mañana</span>
-                    <span class="desc">En ayunas</span>
-                </div>
-                <div class="timeline-line"></div>
-                <div class="timeline-item">
-                    <span class="icon">✨</span>
-                    <span class="time">Día</span>
-                    <span class="desc">Sin hambre</span>
-                </div>
-                <div class="timeline-line"></div>
-                <div class="timeline-item">
-                    <span class="icon">🌙</span>
-                    <span class="time">Noche</span>
-                    <span class="desc">Antes de dormir</span>
-                </div>
-            </div>
+    else if (step.type === "como-funciona") {
+        let nomeUsuario = userAnswers["nome"] || "Visitante";
+        nomeUsuario = nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1).toLowerCase();
 
-            <button class="btn green-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">☑️ ${step.buttonText}</button>
+        contentHTML = `
+            <div class="content-wrapper">
+                <h2 class="title text-center text-xl font-bold">Ótimo, <span class="text-pink">${nomeUsuario}</span>! <span class="text-purple">Veja como funciona 🎉</span></h2>
+                <p class="subtitle text-center mt-2 mb-4 text-pink font-bold">A Gelatina Mounjaro ativa a queima de gordura natural com <span class="text-gray-500 font-normal">ingredientes caseiros que você prepara em minutos.</span></p>
+
+                <div class="funciona-check-list mb-4">
+                    <div class="funciona-check-item">
+                        <div class="check-icon">✓</div> Fácil de preparar
+                    </div>
+                    <div class="funciona-check-item">
+                        <div class="check-icon">✓</div> 2 vezes ao dia
+                    </div>
+                    <div class="funciona-check-item">
+                        <div class="check-icon">✓</div> Receita 100% Natural
+                    </div>
+                </div>
+
+                <div class="funciona-timeline-card mt-3">
+                    <!-- Item 1 -->
+                    <div class="funciona-timeline-item">
+                        <div class="funciona-number bg-purple">1</div>
+                        <div class="funciona-img-box"><img src="assets/flow_antes-XnqC_31E.png" alt="Antes"></div>
+                        <div class="funciona-text">
+                            <strong>Antes</strong>
+                            <span>Gordura acumulada e metabolismo lento</span>
+                        </div>
+                    </div>
+                    <div class="funciona-arrow text-purple">↓</div>
+
+                    <!-- Item 2 -->
+                    <div class="funciona-timeline-item">
+                        <div class="funciona-number bg-purple">2</div>
+                        <div class="funciona-img-box"><img src="assets/flow_gelatina-B9ryWXkD.png" alt="Gelatina"></div>
+                        <div class="funciona-text">
+                            <strong class="text-purple">Gelatina Mounjaro</strong>
+                            <span>Receita caseira simples e poderosa</span>
+                        </div>
+                    </div>
+                    <div class="funciona-arrow text-purple">↓</div>
+
+                    <!-- Item 3 -->
+                    <div class="funciona-timeline-item">
+                        <div class="funciona-number bg-purple">3</div>
+                        <div class="funciona-img-box"><img src="assets/icone_queima.png" alt="Queima"></div>
+                        <div class="funciona-text">
+                            <strong>Queima natural ativada 🔥</strong>
+                            <span>Metabolismo acelerado sem dietas</span>
+                        </div>
+                    </div>
+                    <div class="funciona-arrow text-green">↓</div>
+
+                    <!-- Item 4 -->
+                    <div class="funciona-timeline-item">
+                        <div class="funciona-number bg-green">✨</div>
+                        <div class="funciona-img-box"><img src="assets/corpo_sonhos.png" alt="Depois"></div>
+                        <div class="funciona-text text-green">
+                            <strong class="text-green">Corpo dos sonhos!</strong>
+                            <span class="text-gray-500">Resultado visível em poucas semanas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="funciona-info-box mt-4">
+                    <p>💡 <strong class="text-purple font-bold">Receita caseira</strong> que ativa o <strong class="font-bold">GLP-1</strong>, o mesmo hormônio do Mounjaro, de forma <strong class="text-purple font-bold">100% natural!</strong></p>
+                </div>
+
+                <button class="btn gradient-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">Entendi! Continuar 🚀</button>
+            </div>
+        `;
+    }
+    else if (step.type === "otimo-objetivo") {
+        let nomeUsuario = userAnswers["nome"] || "Visitante";
+        nomeUsuario = nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1).toLowerCase();
+        let pAtual = parseInt(userAnswers["peso-atual"]) || 75;
+        let pDesejado = parseInt(userAnswers["peso-desejado"]) || 65;
+        let diferenca = pAtual - pDesejado;
+        if (diferenca < 0) diferenca = 0;
+
+        contentHTML = `
+            <div class="content-wrapper centered-padding">
+                <div class="objetivo-img-container mx-auto mb-4" style="text-align: center;">
+                    <img src="assets/gelatina_resultado-CbO72sN0.png" alt="Transformação" class="img-fluid" style="max-width: 250px; margin: 0 auto; display: inline-block;">
+                </div>
+                
+                <div class="objetivo-card text-center text-main" style="background: #faf5ff; border: 1px solid #f3e8ff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+                    <h2 class="title text-lg font-bold mb-2">Esse é um ótimo objetivo, <span class="text-pink" style="display:inline-block">${nomeUsuario}! 💜</span></h2>
+                    
+                    <p class="objetivo-meta mb-3" style="color: #64748b; font-size: 0.85rem;">
+                        Meta: ${pAtual}kg ➔ ${pDesejado}kg (${diferenca}kg)
+                    </p>
+                    
+                    <p class="objetivo-desc" style="color: #64748b; font-size: 0.95rem; line-height: 1.5;">
+                        Agora vamos ajustar o próximo passo para você começar a perceber diferença <span class="text-purple font-bold">já nos primeiros dias.</span>
+                    </p>
+                </div>
+
+                <div class="sticky-footer-btn mt-5">
+                    <button class="btn gradient-btn w-full" onclick="goToStep('${step.nextStep}')">${step.buttonText}</button>
+                </div>
+            </div>
         `;
     }
     else if (step.type === "analysis") {
@@ -577,36 +705,161 @@ function renderStep(stepId) {
         let alt = parseInt(userAnswers["altura"]) || 165;
         let imcVal = (pAtual / ((alt / 100) * (alt / 100))).toFixed(1);
         let statusIMC = "Sobrepeso";
-        if (imcVal < 18.5) statusIMC = "Bajo peso";
+        let nomeUsuario = userAnswers["nome"] || "Leoni";
+        nomeUsuario = nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1).toLowerCase();
+
+        if (imcVal < 18.5) statusIMC = "Baixo peso";
         else if (imcVal < 25) statusIMC = "Peso normal";
-        else if (imcVal >= 30) statusIMC = "Obesidad";
+        else if (imcVal >= 30) statusIMC = "Obesidade";
 
         contentHTML = `
-            <h2 class="title text-center">${step.title}</h2>
-            <div class="imc-card mt-3">
-                <div class="imc-value">${imcVal}</div>
-                <div class="imc-status">Tu IMC: <span class="text-pink">${statusIMC}</span></div>
-                <div class="alert-box">
-                    <div class="alert-title">⚠️ Signos de alerta identificados:</div>
-                    <ul class="alert-list">
-                        <li>• Metabolismo desacelerado</li>
-                        <li>• Riesgo de acumulación de grasa visceral</li>
-                        <li>• Hormonas de saciedad desreguladas</li>
-                    </ul>
+            <div class="content-wrapper centered-padding pb-8">
+                <h2 class="title text-center text-xl mb-4">Resultado da sua <span class="text-purple">análise</span>, <span class="text-purple">${nomeUsuario}</span></h2>
+                
+                <div class="resultado-imc-card">
+                    <div class="resultado-imc-value text-purple">${imcVal}</div>
+                    <div class="resultado-imc-status">Seu IMC: <span class="text-alert-red">${statusIMC}</span></div>
+                    
+                    <div class="resultado-alert-box">
+                        <div class="resultado-alert-title">⚠️ Sinais de alerta identificados:</div>
+                        <ul class="resultado-alert-list">
+                            <li><span class="x-icon"></span> Metabolismo desacelerado</li>
+                            <li><span class="x-icon"></span> Risco de acúmulo de gordura visceral</li>
+                            <li><span class="x-icon"></span> Hormônios de saciedade desregulados</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="resultado-verde-box">
+                    🌿 O segredo para secar: <strong style="color: #16a34a">ativar o GLP-1.</strong> A <strong style="color: #16a34a">Gelatina Mounjaro</strong> é o "interruptor" hormonal natural!
+                </div>
+                
+                <h3 class="resultado-beneficios-title text-center mt-4 mb-3" style="font-size: 1rem; color: #111827; font-weight: 700;">Benefícios da <span class="text-purple">Gelatina Mounjaro 👇</span></h3>
+                
+                <div class="resultado-beneficios-list mb-4">
+                    <div class="beneficio-item"><span class="check-circle"></span> Receita 100% Natural</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Ativa o GLP-1 do seu corpo</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Queima de Gordura localizada</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Regula o seu Metabolismo</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Leveza e corpo Desinchado</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Menos impulsos por doces</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Fácil de fazer e seguir</div>
+                </div>
+
+                <div class="testimonial-card shadow-sm mb-4" style="border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0,0,0,0.02)">
+                    <img src="assets/gelatina_resultado-CbO72sN0.png" class="testimonial-img" alt="Antes e Depois" style="width: 100%; display: block;">
+                    <div class="testimonial-footer bg-white" style="padding: 1rem;">
+                        <div class="testimonial-title font-bold text-center" style="font-size: 1rem; color: #1f2937;">"Perdi 12kg em 5 semanas!"</div>
+                        <div class="testimonial-author text-center text-gray-500 mt-1" style="font-size: 0.75rem; color: #6b7280;">Maria, 32 anos - São Paulo</div>
+                        <div class="stars text-center mt-1" style="font-size: 0.9rem;">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                
+                <button class="btn gradient-btn w-full mt-2" style="font-size: 1.1rem; padding: 1rem;" onclick="goToStep('${step.nextStep}')">Continuar</button>
+            </div>
+        `;
+    }
+    else if (step.type === "como-usar") {
+        contentHTML = `
+            <div class="content-wrapper centered-padding pb-8">
+                <h2 class="title text-center text-xl mb-1">Como usar a <span class="text-purple font-bold" style="font-weight: 800;">Gelatina Mounjaro</span></h2>
+                <p class="subtitle text-center mt-1 mb-4" style="color: #9ca3af; font-size: 0.95rem;">Simples, prático e eficaz</p>
+
+                <div class="como-usar-image-container mx-auto mb-4" style="text-align: center;">
+                    <img src="assets/mulher_gelatina_calendario-CcxgGxU0.png" alt="Como usar" class="img-fluid" style="max-width: 250px; margin: 0 auto; display: block;">
+                </div>
+
+                <div class="como-usar-steps-card">
+                    <div class="como-usar-step-item">
+                        <div class="step-circle bg-orange">1</div>
+                        <div class="step-text">
+                            <div class="step-title">Prepare a gelatina</div>
+                            <div class="step-desc">Receita simples do app</div>
+                        </div>
+                        <div class="step-icon">✨</div>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="como-usar-step-item">
+                        <div class="step-circle bg-purple">2</div>
+                        <div class="step-text">
+                            <div class="step-title">Consuma 2x ao dia</div>
+                            <div class="step-desc">Manhã e antes de dormir</div>
+                        </div>
+                        <div class="step-icon">🕘</div>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="como-usar-step-item">
+                        <div class="step-circle bg-green">3</div>
+                        <div class="step-text">
+                            <div class="step-title">Siga por 30 dias</div>
+                            <div class="step-desc">Protocolo completo</div>
+                        </div>
+                        <div class="step-icon">🗓️</div>
+                    </div>
+                </div>
+
+                <div class="como-usar-timeline-card mt-4">
+                    <div class="timeline-nodes">
+                        <div class="timeline-line-bg"></div>
+                        <div class="node">
+                            <div class="node-icon">🌅</div>
+                            <div class="node-title">Manhã</div>
+                            <div class="node-desc">Em jejum</div>
+                        </div>
+                        <div class="node">
+                            <div class="node-icon">✨</div>
+                            <div class="node-title">Dia</div>
+                            <div class="node-desc">Sem fome</div>
+                        </div>
+                        <div class="node">
+                            <div class="node-icon">🌙</div>
+                            <div class="node-title">Noite</div>
+                            <div class="node-desc">Antes de dormir</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sticky-footer-btn mt-6">
+                    <button class="btn commit-btn w-full flex-center" onclick="goToStep('${step.nextStep}')">${step.buttonText}</button>
                 </div>
             </div>
-            <div class="highlight-promo">
-                <span class="text-purple semi-bold">El secreto para adelgazar:</span> no es comer menos, es activar el GLP-1. ¡La <span class="text-purple semi-bold">Gelatina Mounjaro</span> actúa como un "interruptor" hormonal natural!
-            </div>
-            <div class="testimonial-card">
-                <img src="assets/antes_depois.png" class="testimonial-img" alt="Antes y Después">
-                <div class="testimonial-footer">
-                    <div class="testimonial-title">"¡Perdí 12kg en 5 semanas!"</div>
-                    <div class="testimonial-author">María, 32 años</div>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
+        `;
+    }
+    else if (step.type === "radio-image-top") {
+        contentHTML = `
+            <div class="content-wrapper centered-padding pb-8">
+                <div style="max-width: 480px; margin: 0 auto; width: 100%;">
+                    <div class="radio-img-top-container mx-auto mb-2" style="display: flex; justify-content: center; position: relative; max-width: 280px;">
+                        <img src="${step.image}" alt="Transformação" class="img-fluid" style="height: 280px; width: 100%; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));">
+                        <div class="animated-arrow-right">›</div>
+                    </div>
+                    
+                    <div class="text-center" style="margin-top: -15px; margin-bottom: 20px; position: relative;">
+                        <div style="background: linear-gradient(90deg, #d946ef, #ec4899); color: white; padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.70rem; display: inline-block; box-shadow: 0 4px 6px rgba(236, 72, 153, 0.25); letter-spacing: 0.5px; position: relative; z-index: 10;">
+                            ${step.badge}
+                        </div>
+                    </div>
+
+                    <h2 class="title text-center text-xl mb-6" style="font-weight: 700; color: #1f2937; line-height: 1.4; font-size: 1.25rem;">
+                        ${step.title}
+                    </h2>
+                    
+                    <div class="options-list">
+                        ${step.options.map(opt => `
+                            <label class="option-row" style="padding: 1rem 1.25rem;" onclick="handleRadioSelect('${step.id}', '${opt.id}', '${step.nextStep}', ${step.autoAdvance})">
+                                <div class="flex-center">
+                                    <span class="icon" style="font-size: 1.5rem; margin-right: 12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">${opt.icon}</span>
+                                    <div class="label-wrapper">
+                                        <span class="label" style="font-weight: 600; color: #4b5563; font-size: 0.95rem;">${opt.label}</span>
+                                    </div>
+                                </div>
+                                <input type="radio" name="${step.id}" value="${opt.id}" class="radio-input">
+                                <span class="custom-radio"></span>
+                            </label>
+                        `).join('')}
+                    </div>
                 </div>
             </div>
-            <button class="btn gradient-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">${step.buttonText}</button>
         `;
     }
     else if (step.type === "dynamic-promise") {
@@ -719,53 +972,489 @@ function renderStep(stepId) {
             </div>
         `;
     }
-    else if (step.type === "loading-screen") {
-        let nomeUsuario = userAnswers["nome"] || "tú";
-        nomeUsuario = nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1).toLowerCase();
-        let pesoAlvo = userAnswers["peso-desejado"] ? userAnswers["peso-desejado"] + "kg" : "tu peso ideal";
-        let tempoDesejado = userAnswers["tempo-perda"] || "rápida";
-
+    else if (step.type === "circular-loading") {
         contentHTML = `
-            <div class="loading-container centered-padding">
-                <div class="spinner-container">
-                    <div class="spinner"></div>
-                    <div class="spinner-icon">🔬</div>
+            <div class="circular-loading-container centered-padding" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 4rem;">
+                
+                <div style="position: relative; width: 140px; height: 140px; margin: 0 auto;">
+                    <svg viewBox="0 0 36 36" style="width: 100%; height: 100%; transform: rotate(-90deg);">
+                        <!-- Background Circle -->
+                        <path stroke="#e5e7eb" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <!-- Progress Circle -->
+                        <path id="circular-progress-path" stroke="url(#pink-purple-grad)" stroke-width="3" stroke-dasharray="0, 100" stroke-linecap="round" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" style="transition: stroke-dasharray 0.3s ease-out;" />
+                        <defs>
+                            <linearGradient id="pink-purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#9b4dca" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div id="circular-percent-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.6rem; font-weight: 700; color: #a855f7;">0%</div>
                 </div>
-                <h3 id="loading-text" class="loading-title mt-4">Analizando el metabolismo de ${nomeUsuario}...</h3>
-                <div class="loading-progress-bar-bg mt-3">
-                    <div id="loading-bar-fill" class="loading-progress-bar-fill"></div>
+
+                <div class="flex-center mt-5" style="gap: 10px;">
+                    <span style="font-size: 1.5rem; opacity: 0.8;">📊</span>
+                    <span id="circular-loading-text" style="font-size: 1.1rem; font-weight: 500; color: #9ca3af;">Avaliando seu perfil corporal...</span>
                 </div>
-                <div id="loading-percentage" class="loading-percentage mt-2 text-muted">0% completado</div>
-                <p class="subtitle text-center mt-4">Espera mientras preparamos tu plan personalizado...</p>
+
+                <div class="loading-dots" style="display: flex; gap: 8px; margin-top: 1.25rem; justify-content: center;">
+                    <div class="loading-dot active" style="width: 10px; height: 10px; border-radius: 50%; background-color: #a855f7; transition: all 0.3s;"></div>
+                    <div class="loading-dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: #ec4899; transition: all 0.3s; opacity: 0.4;"></div>
+                    <div class="loading-dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: #ec4899; transition: all 0.3s; opacity: 0.4;"></div>
+                    <div class="loading-dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: #a855f7; transition: all 0.3s; opacity: 0.4;"></div>
+                    <div class="loading-dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: #6b7280; transition: all 0.3s; opacity: 0.4;"></div>
+                </div>
+
+                <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #9ca3af;">Aguarde um momento...</p>
             </div>
         `;
 
         let progress = 0;
         let pId = setInterval(() => {
-            // Slower progress to increase loading duration (around 8-10 seconds)
-            progress += Math.floor(Math.random() * 3) + 1;
+            progress += 1; // 100 ticks total
+            if (progress > 100) {
+                clearInterval(pId);
+                setTimeout(() => goToStep(step.nextStep), 300);
+                return;
+            }
+
+            const path = document.getElementById("circular-progress-path");
+            const txt = document.getElementById("circular-percent-text");
+            const loadingText = document.getElementById("circular-loading-text");
+            const dots = document.querySelectorAll('.loading-dots .loading-dot');
+
+            if (path) path.style.strokeDasharray = progress + ", 100";
+            if (txt) txt.innerText = progress + "%";
+
+            // Update loading text organically during the 30 seconds
+            if (loadingText) {
+                if (progress > 85) loadingText.innerText = "Finalizando a análise do perfil...";
+                else if (progress > 65) loadingText.innerText = "Calculando seu metabolismo ideal...";
+                else if (progress > 45) loadingText.innerText = "Buscando o protocolo de acordo...";
+                else if (progress > 25) loadingText.innerText = "Cruzando dados da sua rotina...";
+            }
+
+            // Animate dots slightly
+            if (dots && dots.length > 0) {
+                let activeDotIndex = Math.floor(progress / 5) % 5;
+                dots.forEach((dot, index) => {
+                    dot.style.opacity = index === activeDotIndex ? "1" : "0.4";
+                });
+            }
+
+        }, 100); // 1% per 100ms = 100% in 10 seconds
+    }
+    else if (step.type === "vsl") {
+        contentHTML = `
+            <div class="content-wrapper centered-padding pb-8">
+                <h2 style="font-size: 1.15rem; font-weight: 800; text-align: center; color: #1f2937; margin-bottom: 0.25rem; line-height: 1.4;">
+                    Agora assista à explicação rápida de <span style="color: #a855f7;">1 Minuto</span><br>
+                    <span style="font-size: 0.95em; color: #ec4899;">e entenda por que esse método está<br>chamando atenção 👀</span>
+                </h2>
+                
+                <div style="text-align: center; margin-bottom: 0.5rem; margin-top: 1rem;">
+                    <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block;">Clique no vídeo para Assistir ⬇️</div>
+                </div>
+
+                <div id="paradisePlayer_1773096418247Container" class="paradise-player-container" style="position: relative; width: 100%; max-width: 100%; margin: 20px auto;">
+                    <div id="paradisePlayer_1773096418247Wrapper" style="position: relative; width: 100%; padding-bottom: 177.78%; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px #ff47c550, 0 0 5px #ff47c580;">
+                        <video 
+                            id="paradisePlayer_1773096418247" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; cursor: pointer;" 
+                            playsinline 
+                            webkit-playsinline 
+                            preload="auto"
+                            poster="https://t3.ftcdn.net/jpg/05/25/58/46/360_F_525584616_lKJ9605fRFWk8wxJRLZfU9lonvJzV3fa.jpg"
+                            oncontextmenu="return false;"
+                        >
+                            <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773094770/mdpfozi5jsawphueab5d.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
+                        </video>
+                        <div id="paradisePlayer_1773096418247MuteOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #00000080; cursor: pointer; z-index: 20; backdrop-filter: blur(2px);">
+                            <div id="paradisePlayer_1773096418247MuteButton" class="paradise-mute-pulse" style="background: #ff47c5; padding: clamp(1.2rem, 5vw, 2rem) clamp(1.5rem, 7vw, 3rem); border-radius: 12px; text-align: center; color: white; transition: transform 0.3s ease; --animation-intensity: 1; box-shadow: 0 8px 25px rgba(0,0,0,0.3); max-width: 90vw; box-sizing: border-box;">
+                                <div style="font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 700; margin-bottom: 0.5rem;">¡Tu video ya comenzó!</div>
+                                <div style="margin-bottom: 0.6rem;"><img src="https://i.postimg.cc/2j9d2jbv/R.png" alt="Unmute" style="width:clamp(2.5rem, 8vw, 3.5rem); height:clamp(2.5rem, 8vw, 3.5rem); filter: brightness(0) invert(1); display: inline-block;"></div>
+                                <div style="font-size: clamp(0.8rem, 2.2vw, 1rem); font-weight: 500; opacity: 0.95;">Haz clic para activar el sonido</div>
+                            </div>
+                        </div>
+                        <div id="paradisePlayer_1773096418247Controls" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(15, 23, 42, 0.85)); backdrop-filter: blur(8px); padding: 10px 15px; display: flex; align-items: center; gap: 15px; opacity: 0; transition: opacity 0.3s ease; z-index: 21;">
+                            <button id="paradisePlayer_1773096418247PlayBtn" style="background: transparent; border: none; width: 32px; height: 32px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 24px;">▶</button>
+                            <div style="flex: 1; display: flex; align-items: center; gap: 10px;">
+                                <span id="paradisePlayer_1773096418247CurrentTime" style="color: white; font-size: 13px; font-variant-numeric: tabular-nums;">0:00</span>
+                                <div id="paradisePlayer_1773096418247ProgressContainer" style="flex: 1; height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; cursor: pointer; padding: 3px 0;">
+                                    <div id="paradisePlayer_1773096418247ProgressBar" style="height: 100%; background: linear-gradient(90deg, #ff47c5, #21bfeb); border-radius: 4px; width: 0%;"></div>
+                                </div>
+                                <span id="paradisePlayer_1773096418247Duration" style="color: white; font-size: 13px; font-variant-numeric: tabular-nums;">0:00</span>
+                            </div>
+                            <button id="paradisePlayer_1773096418247VolumeBtn" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 20px;">🔊</button>
+                            <button id="paradisePlayer_1773096418247FullscreenBtn" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 20px;">⛶</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vsl-progress-wrapper" style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; margin-top: 1rem; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; text-align: center; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.02)">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-bottom: 8px;">
+                        <span>🔒 Assista para continuar...</span>
+                        <span id="vsl-progress-text">0%</span>
+                    </div>
+                    <div style="background: #e5e7eb; height: 6px; border-radius: 3px; width: 100%; overflow: hidden;">
+                        <div id="vsl-progress-bar" style="background: linear-gradient(90deg, #9b4dca, #ec4899); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                    </div>
+                </div>
+
+                <button id="vsl-continue-btn" class="btn primary-btn mt-4 w-full" style="display: none; animation: paradise-fadeInUp 0.5s forwards;" onclick="goToStep('${step.nextStep}')">Continuar 🚀</button>
+
+                <style>
+                    #paradisePlayer_1773096418247::-webkit-media-controls, #paradisePlayer_1773096418247::-webkit-media-controls-enclosure { display: none !important; }
+                    .paradise-mute-bounce { animation: paradise-mute-bounce 2s ease-in-out infinite; }
+                    .paradise-mute-pulse { animation: paradise-mute-pulse 2s ease-in-out infinite; }
+                    .paradise-mute-shake { animation: paradise-mute-shake 0.8s ease-in-out infinite; }
+                    .paradise-mute-glow { animation: paradise-mute-glow 3s ease-in-out infinite; }
+                    .paradise-mute-scale { animation: paradise-mute-scale 2.5s ease-in-out infinite; }
+                    .paradise-mute-rotate { animation: paradise-mute-rotate 5s linear infinite; }
+                    #paradisePlayer_1773096418247MuteButton { transform: scale(1); }
+                    #paradisePlayer_1773096418247MuteButton:hover { transform: scale(1.05) !important; }
+                    @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+                    @keyframes paradise-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+                    @keyframes paradise-glow { 0%, 100% { box-shadow: 0 0 10px #8b5cf650; } 50% { box-shadow: 0 0 20px #8b5cf680, 0 0 30px #8b5cf660; } }
+                    @keyframes paradise-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+                    @keyframes paradise-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+                    @keyframes paradise-mute-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(calc(-10px * var(--animation-intensity))); } }
+                    @keyframes paradise-mute-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(calc(1 + 0.05 * var(--animation-intensity))); } }
+                    @keyframes paradise-mute-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(calc(-5px * var(--animation-intensity))); } 75% { transform: translateX(calc(5px * var(--animation-intensity))); } }
+                    @keyframes paradise-mute-glow { 0%, 100% { box-shadow: 0 0 calc(10px * var(--animation-intensity)) #ff47c550; } 50% { box-shadow: 0 0 calc(20px * var(--animation-intensity)) #ff47c580, 0 0 calc(30px * var(--animation-intensity)) #ff47c560; } }
+                    @keyframes paradise-mute-scale { 0%, 100% { transform: scale(1); } 50% { transform: scale(calc(1 + 0.1 * var(--animation-intensity))); } }
+                    @keyframes paradise-mute-rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                    .paradise-player-container * { transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+                </style>
+            </div>
+        `;
+
+        setTimeout(() => {
+            const video = document.getElementById('paradisePlayer_1773096418247');
+            const container = document.getElementById('paradisePlayer_1773096418247Container');
+            const playerWrapper = document.getElementById('paradisePlayer_1773096418247Wrapper');
+            const muteOverlay = document.getElementById('paradisePlayer_1773096418247MuteOverlay');
+            const controls = document.getElementById('paradisePlayer_1773096418247Controls');
+            const playBtn = document.getElementById('paradisePlayer_1773096418247PlayBtn');
+            const currentTimeSpan = document.getElementById('paradisePlayer_1773096418247CurrentTime');
+            const durationSpan = document.getElementById('paradisePlayer_1773096418247Duration');
+            const progressContainer = document.getElementById('paradisePlayer_1773096418247ProgressContainer');
+            const progressBar = document.getElementById('paradisePlayer_1773096418247ProgressBar');
+            const volumeBtn = document.getElementById('paradisePlayer_1773096418247VolumeBtn');
+            const fullscreenBtn = document.getElementById('paradisePlayer_1773096418247FullscreenBtn');
+
+            const btnProgressWrapper = document.getElementById('vsl-progress-wrapper');
+            const btnProgressText = document.getElementById('vsl-progress-text');
+            const btnProgressBar = document.getElementById('vsl-progress-bar');
+            const continueBtn = document.getElementById('vsl-continue-btn');
+
+            if (!video) return;
+
+            video.playbackRate = 1;
+            video.muted = true;
+            let playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => { /* Autoplay was prevented */ });
+            }
+
+            if (muteOverlay) {
+                const unmuteHandler = () => {
+                    video.muted = false;
+                    video.currentTime = 0;
+                    video.play();
+                    muteOverlay.style.opacity = '0';
+                    setTimeout(() => { muteOverlay.style.display = 'none'; }, 300);
+                };
+                muteOverlay.addEventListener('click', unmuteHandler, { once: true });
+                muteOverlay.addEventListener('touchend', unmuteHandler, { once: true });
+            }
+
+            const formatTime = (seconds) => {
+                if (isNaN(seconds)) return '0:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return mins + ':' + (secs < 10 ? '0' : '') + secs;
+            }
+
+            const updatePlayButton = () => { if (playBtn) playBtn.innerHTML = video.paused ? '▶' : '⏸'; };
+
+            if (playBtn) playBtn.addEventListener('click', () => { if (video.paused) video.play(); else video.pause(); });
+            video.addEventListener('play', updatePlayButton);
+            video.addEventListener('pause', updatePlayButton);
+
+            video.addEventListener('timeupdate', () => {
+                if (!video.duration) return;
+
+                if (progressBar) progressBar.style.width = (video.currentTime / video.duration) * 100 + '%';
+                if (currentTimeSpan) currentTimeSpan.textContent = formatTime(video.currentTime);
+
+                const pct = Math.floor(Math.min(video.currentTime / video.duration, 1) * 100);
+                if (btnProgressText) btnProgressText.innerText = pct + '%';
+                if (btnProgressBar) btnProgressBar.style.width = pct + '%';
+
+                // Allow continuation slightly before the video totally finishes to avoid friction
+                if (pct >= 85 || video.currentTime > 50) {
+                    if (btnProgressWrapper) btnProgressWrapper.style.display = 'none';
+                    if (continueBtn) continueBtn.style.display = 'block';
+                }
+            });
+
+            video.addEventListener('loadedmetadata', () => { if (durationSpan) durationSpan.textContent = formatTime(video.duration); });
+
+            if (progressContainer) progressContainer.addEventListener('click', (e) => {
+                const rect = progressContainer.getBoundingClientRect();
+                video.currentTime = ((e.clientX - rect.left) / rect.width) * video.duration;
+            });
+
+            if (volumeBtn) volumeBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                volumeBtn.textContent = video.muted ? '🔇' : '🔊';
+            });
+
+            if (fullscreenBtn) fullscreenBtn.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    playerWrapper.requestFullscreen().catch(err => alert('Não foi possível entrar em modo tela cheia.'));
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+
+            if (playerWrapper && controls) {
+                playerWrapper.addEventListener('mouseenter', () => { controls.style.opacity = '1'; });
+                playerWrapper.addEventListener('mouseleave', () => { controls.style.opacity = '0'; });
+            }
+
+            video.addEventListener('ended', function () {
+                if (btnProgressWrapper) btnProgressWrapper.style.display = 'none';
+                if (continueBtn) continueBtn.style.display = 'block';
+            });
+        }, 50);
+    }
+    else if (step.type === "loading-screen") {
+        contentHTML = `
+            <div class="circular-loading-container centered-padding" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 4rem;">
+                
+                <div style="position: relative; width: 140px; height: 140px; margin: 0 auto;">
+                    <svg viewBox="0 0 36 36" style="width: 100%; height: 100%; transform: rotate(-90deg);">
+                        <!-- Background Circle -->
+                        <path stroke="#e5e7eb" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <!-- Progress Circle -->
+                        <path id="check-progress-path" stroke="url(#pink-purple-grad2)" stroke-width="3" stroke-dasharray="0, 100" stroke-linecap="round" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" style="transition: stroke-dasharray 0.3s ease-out;" />
+                        <defs>
+                            <linearGradient id="pink-purple-grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#9b4dca" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div id="check-percent-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.6rem; font-weight: 700; color: #1e293b;">0%</div>
+                </div>
+
+                <div class="mt-5 text-center">
+                    <div id="check-loading-title" style="font-size: 1.15rem; font-weight: 700; color: #1e293b; margin-bottom: 1.5rem;">Verificando seus dados...</div>
+                </div>
+
+                <div style="display:flex; flex-direction: column; gap: 12px; width: 100%; max-width: 280px; margin: 0 auto; margin-top: 0.5rem;">
+                    
+                    <div id="check-item-1" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-1" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Analisando suas respostas</span>
+                    </div>
+
+                    <div id="check-item-2" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-2" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Calculando seu déficit calórico</span>
+                    </div>
+
+                    <div id="check-item-3" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-3" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Selecionando ingredientes ideias</span>
+                    </div>
+
+                    <div id="check-item-4" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-4" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Verificação concluída!</span>
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+
+        let progress = 0;
+        let pId = setInterval(() => {
+            progress += 1;
             if (progress >= 100) {
                 progress = 100;
                 clearInterval(pId);
                 setTimeout(() => goToStep(step.nextStep), 300);
             }
 
-            const fill = document.getElementById("loading-bar-fill");
-            const pctText = document.getElementById("loading-percentage");
-            const txt = document.getElementById("loading-text");
+            const path = document.getElementById("check-progress-path");
+            const txt = document.getElementById("check-percent-text");
 
-            if (fill) fill.style.width = progress + "%";
-            if (pctText) pctText.innerText = progress + "% completado";
+            if (path) path.style.strokeDasharray = progress + ", 100";
+            if (txt) txt.innerText = progress + "%";
 
-            if (txt) {
-                if (progress > 90) txt.innerText = "¡Protocolo finalizado con éxito!";
-                else if (progress > 75) txt.innerText = "Reservando tu cupo oficial con la Nutri Luciana...";
-                else if (progress > 55) txt.innerText = `Ajustando la dosis de Gelatina Mounjaro para alcanzar la marca de ${pesoAlvo}...`;
-                else if (progress > 35) txt.innerText = "Buscando las comidas y menús enfocados en tu biotipo...";
-                else if (progress > 15) txt.innerText = `Cruzando tu perfil metabólico para actuar de forma ${tempoDesejado}...`;
+            // Ativar itens ao longo do tempo (25%, 50%, 75%, 100%)
+            const markActive = (num) => {
+                const item = document.getElementById(`check-item-${num}`);
+                const icon = document.getElementById(`check-icon-${num}`);
+                if (item) {
+                    item.style.opacity = "1";
+                    item.querySelector('span').style.color = "#1e293b";
+                }
+                if (icon) icon.style.background = "#22c55e"; // Green check
             }
 
-        }, 220);
+            if (progress > 10) markActive(1);
+            if (progress > 40) markActive(2);
+            if (progress > 70) markActive(3);
+            if (progress > 95) {
+                markActive(4);
+            }
+
+        }, 100); // 10 seconds total
+    }
+    else if (step.type === "loading-final") {
+        contentHTML = `
+            <div class="final-loading-container centered-padding" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 3rem; padding-bottom: 3rem;">
+                
+                <div style="width: 100%; max-width: 320px; margin: 0 auto 1.5rem auto; text-align: center;">
+                    <img src="assets/ChatGPT Image 9 de mar. de 2026, 20_22_25.png" style="width: 100%; max-width: 280px; height: auto;" alt="Protocolo Pronto">
+                </div>
+
+                <div style="display:flex; flex-direction: column; gap: 12px; width: 100%; max-width: 280px; margin: 0 auto;">
+                    
+                    <div id="check-item-f-1" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-f-1" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Perfil metabólico analisado</span>
+                    </div>
+
+                    <div id="check-item-f-2" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-f-2" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Meta de peso calculada</span>
+                    </div>
+
+                    <div id="check-item-f-3" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-f-3" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Compatibilidade verificada</span>
+                    </div>
+
+                    <div id="check-item-f-4" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-f-4" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Protocolo de 30 dias montado</span>
+                    </div>
+
+                    <div id="check-item-f-5" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-f-5" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Bônus exclusivos selecionados</span>
+                    </div>
+
+                    <div id="check-item-f-6" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
+                        <div id="check-icon-f-6" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
+                            <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Oferta especial preparada</span>
+                    </div>
+
+                </div>
+
+                <div class="mt-6 w-full" style="max-width: 280px; margin-left: auto; margin-right: auto;">
+                    <div style="width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+                        <div id="final-loading-bar-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #9b4dca, #ec4899, #22c55e); transition: width 0.3s ease;"></div>
+                    </div>
+                </div>
+                <p style="margin-top: 0.75rem; font-size: 0.75rem; color: #9ca3af; text-align: center;">Aguarde enquanto finalizamos tudo para você...</p>
+
+            </div>
+        `;
+
+        let progress = 0;
+        let pId = setInterval(() => {
+            progress += 1;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(pId);
+                setTimeout(() => goToStep(step.nextStep), 300);
+            }
+
+            const fill = document.getElementById("final-loading-bar-fill");
+            if (fill) fill.style.width = progress + "%";
+
+            // Mark items active progressively
+            const markActive = (num) => {
+                const item = document.getElementById(`check-item-f-${num}`);
+                const icon = document.getElementById(`check-icon-f-${num}`);
+                if (item) {
+                    item.style.opacity = "1";
+                    item.querySelector('span').style.color = "#1e293b";
+                }
+                if (icon) icon.style.background = "#22c55e"; // Green check
+            }
+
+            if (progress > 5) markActive(1);
+            if (progress > 20) markActive(2);
+            if (progress > 40) markActive(3);
+            if (progress > 60) markActive(4);
+            if (progress > 80) markActive(5);
+            if (progress > 95) markActive(6);
+
+        }, 100); // 10 seconds total
+    }
+    else if (step.type === "body-selection") {
+        contentHTML = `
+            <h2 class="title text-center">${step.title}</h2>
+            <p class="subtitle text-center mt-2 mb-4">${step.subtitle}</p>
+            
+            <div class="body-selection-container">
+                <img src="${step.image}" alt="Personagem" class="body-character">
+                
+                <div class="body-overlay overlay-corpo-todo" id="overlay-corpo-todo"></div>
+                <div class="body-overlay overlay-papada" id="overlay-papada"></div>
+                <div class="body-overlay overlay-bracos" id="overlay-bracos"></div>
+                <div class="body-overlay overlay-bracos-2" id="overlay-bracos-2"></div>
+                <div class="body-overlay overlay-cintura" id="overlay-cintura"></div>
+                <div class="body-overlay overlay-cintura-2" id="overlay-cintura-2"></div>
+                <div class="body-overlay overlay-barriga" id="overlay-barriga"></div>
+                <div class="body-overlay overlay-gluteos" id="overlay-gluteos"></div>
+                <div class="body-overlay overlay-gluteos-2" id="overlay-gluteos-2"></div>
+                <div class="body-overlay overlay-culotes" id="overlay-culotes"></div>
+                <div class="body-overlay overlay-culotes-2" id="overlay-culotes-2"></div>
+                <div class="body-overlay overlay-coxas" id="overlay-coxas"></div>
+                <div class="body-overlay overlay-coxas-2" id="overlay-coxas-2"></div>
+
+                ${step.options.map(opt => `
+                    <div class="body-hotspot hotspot-${opt.id}" onclick="toggleBodyPart(this, '${opt.id}')">
+                        <div class="body-dot"></div>
+                        <div class="body-line"></div>
+                        <div class="body-label">${opt.label}</div>
+                    </div>
+                `).join('')}
+            </div>
+            
+            <button class="btn primary-btn mt-5 w-full" onclick="handleBodySelectionSubmit('${step.id}', '${step.nextStep}')">${step.buttonText}</button>
+            <div id="body-selection-error" style="color: #ec4899; text-align: center; font-size: 0.85rem; margin-top: 12px; display: none; font-weight: 600;">Por favor, selecione pelo menos uma área.</div>
+        `;
     }
     else if (step.type === "checkout") {
         let nomeUsuario = userAnswers["nome"] || "tú";
@@ -777,195 +1466,196 @@ function renderStep(stepId) {
         let meta2 = Math.round(pAtual * 0.08);
         let meta3 = Math.round(pAtual * 0.12);
 
-        contentHTML = `
-            <div class="checkout-container fade-in">
-                <div class="checkout-header" style="text-align: center;">
-                    <div class="success-icon" style="width: 48px; height: 48px; border-radius: 50%; border: 3px solid #22c55e; display: flex; align-items: center; justify-content: center; margin: 0 auto; background: #f0fdf4; box-shadow: 0 0 15px rgba(34,197,94,0.1);">
-                        <svg style="width: 24px; height: 24px; color: #22c55e;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <h2 class="title mt-4" style="font-size: 1.25rem; font-weight:800; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.35rem;">
-                        <span style="color: #c084fc;">${nomeUsuario},</span>
-                        <span style="background: #dcfce7; color: #16a34a; padding: 4px 12px; border-radius: 8px; font-size:1.05rem;">¡tu plan ha sido generado!</span>
-                    </h2>
-                    <p class="subtitle text-center mt-3" style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Es exclusivo y generado solo una vez, no salgas de esta página para no perderlo.</p>
+        contentHTML = \`
+            <div class="checkout-container fade-in" style="background: #fafafa; padding-bottom: 40px; min-height: 100vh;">
+                <!-- Pink Banner Top -->
+                <div style="background: #e879f9; color: white; text-align: center; padding: 8px 10px; font-weight: 700; font-size: 0.85rem; border-radius: 8px; margin: 10px auto; max-width: 480px; box-shadow: 0 4px 10px rgba(232, 121, 249, 0.3);">
+                    ⏳ Seu protocolo expira em: <span id="countdown-timer">06:26</span>
                 </div>
 
-                <div class="checkout-card mt-5" style="border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); background: white;">
-                    <div class="card-header bg-pink text-white" style="padding: 12px; text-align: center;">
-                        <b style="font-size: 0.95rem;">Tu Plan: 1 MES DE TRATAMIENTO</b>
+                <div class="checkout-header" style="text-align: center; max-width: 480px; margin: 0 auto; padding: 0 10px;">
+                    <div class="success-icon" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #22c55e; display: flex; align-items: center; justify-content: center; margin: 15px auto 10px auto; background: #f0fdf4; box-shadow: 0 0 15px rgba(34,197,94,0.15);">
+                        <svg style="width: 20px; height: 20px; color: #22c55e;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
-                    <div class="card-body" style="padding: 1rem;">
-                        <p class="text-center text-sm mb-4" style="color: #64748b; font-size: 0.8rem;">${nomeUsuario}, según tu perfil, alcanzarás tu cuerpo ideal en <span class="text-purple" style="font-weight: 700;">1 mes</span> con la Gelatina Mounjaro.</p>
+                    
+                    <h2 class="title" style="font-size: 1.15rem; font-weight:800; line-height: 1.4; color: #1e293b; margin-top: 5px;">
+                        <span style="color: #c084fc; font-size: 1.25rem;">${nomeUsuario}</span>, seu<br>
+                        <span style="display:inline-block; margin-top:4px;">Plano da Gelatina de 30 dias foi</span><br>
+                        <span style="background: #dcfce7; color: #16a34a; padding: 4px 12px; border-radius: 6px; font-size:1.15rem; display:inline-block; margin-top: 5px;">Gerado com Sucesso!</span>
+                    </h2>
+                    
+                    <p class="subtitle text-center mt-3" style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Ele é exclusivo e gerado só uma vez, não saia dessa página para não perdê-lo.</p>
+
+                    <div style="margin: 20px 0;">
+                        <img src="assets/antes_depois_realistic-BQbSAZb6.png" alt="Antes e Depois Realistic" style="width: 100%; max-width: 280px; height: auto;">
+                    </div>
+                </div>
+
+                <div class="checkout-card mt-3 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
+                    <div class="card-header" style="background: linear-gradient(90deg, #d946ef, #ec4899); color: white; padding: 12px; text-align: center;">
+                        <div style="font-size: 0.7rem; font-weight: 700; opacity: 0.9; letter-spacing: 1px;">SEU PLANO EXCLUSIVO</div>
+                        <b style="font-size: 1.1rem; display: block; margin-top: 2px;">1 Mês de Tratamento 🧊</b>
+                    </div>
+                    <div class="card-body" style="padding: 1.25rem;">
+                        <p class="text-center text-sm mb-4" style="color: #64748b; font-size: 0.8rem; line-height: 1.4;"><span style="color: #ec4899; font-weight: 700;">${nomeUsuario}</span>, seguindo o protocolo certinho, veja o que vai acontecer:</p>
                         
                         <div class="timeline-vertical">
                             <div class="t-row" style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1.2rem; background: #faf5ff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">✨</div>
+                                <div class="t-icon" style="font-size: 1rem; background: #faf5ff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">✨</div>
                                 <div class="t-content" style="flex: 1;">
-                                    <div class="t-title text-purple" style="font-size: 0.75rem; font-weight: 700; margin-bottom: 2px;">Semana 1</div>
-                                    <div class="t-desc" style="font-size: 0.85rem; color: #1e293b; font-weight: 600;">Primeros resultados</div>
+                                    <div class="t-title text-purple" style="font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 1</div>
+                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Desincha e primeiros resultados</div>
                                 </div>
                             </div>
                             <div class="t-row" style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1.2rem; background: #faf5ff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; opacity:0.8;">📉</div>
+                                <div class="t-icon" style="font-size: 1rem; background: #faf5ff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; opacity:0.8;">📉</div>
                                 <div class="t-content" style="flex: 1;">
-                                    <div class="t-title text-purple" style="font-size: 0.75rem; font-weight: 700; margin-bottom: 2px;">Semana 2</div>
-                                    <div class="t-desc" style="font-size: 0.85rem; color: #1e293b; font-weight: 600;">Pérdida de hasta ${Math.max(2, meta1)} kg</div>
+                                    <div class="t-title text-purple" style="font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 2</div>
+                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Perda de até ${Math.max(2, meta1)} kg</div>
                                 </div>
                             </div>
                             <div class="t-row" style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1.2rem; background: #faf5ff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; opacity:0.6;">⚡</div>
+                                <div class="t-icon" style="font-size: 1rem; background: #faf5ff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; opacity:0.6;">⚡</div>
                                 <div class="t-content" style="flex: 1;">
-                                    <div class="t-title text-purple" style="font-size: 0.75rem; font-weight: 700; margin-bottom: 2px;">Semana 3</div>
-                                    <div class="t-desc" style="font-size: 0.85rem; color: #1e293b; font-weight: 600;">Pérdida de ${Math.max(4, meta1)} a ${Math.max(6, meta2)} kg</div>
+                                    <div class="t-title text-purple" style="font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 3</div>
+                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Perda de ${Math.max(4, meta1)} a ${Math.max(6, meta2)} kg</div>
                                 </div>
                             </div>
                             <div class="t-row" style="padding: 10px 0; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1.2rem; background: #faf5ff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; opacity:0.5;">🔥</div>
-                                <div class="t-content" style="flex: 1;">
-                                    <div class="t-title text-purple" style="font-size: 0.75rem; font-weight: 700; margin-bottom: 2px;">Semana 4</div>
-                                    <div class="t-desc" style="font-size: 0.85rem; color: #1e293b; font-weight: 600;">Pérdida de ${Math.max(7, meta2)} a ${Math.max(9, meta3)} kg</div>
+                                <div class="t-icon" style="font-size: 1rem; background: #f0fdf4; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; opacity:0.8;">🔥</div>
+                                <div class="t-content" style="flex: 1; display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <div class="t-title" style="color: #16a34a; font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 4</div>
+                                        <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Perda de ${Math.max(7, meta2)} a ${Math.max(9, meta3)} kg</div>
+                                    </div>
+                                    <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.65rem; font-weight: 800;">META</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; margin-top: 15px; text-align: center;">
+                            <span style="font-size: 0.75rem; color: #16a34a; font-weight: 700;">🎉 Resultado esperado: -${Math.max(7, meta2)} a -${Math.max(9, meta3)} kg em 30 dias</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="checkout-card mt-4" style="border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); background: white;">
-                    <div class="card-header bg-purple text-white text-center" style="padding: 16px 12px; line-height:1.3;">
+                <div class="checkout-card mt-5 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
+                    <div class="card-header" style="background: #a855f7; color: white; text-align: center; padding: 16px 12px; line-height:1.3;">
                         <b style="font-size:1.05rem">Gelatina Mounjaro + APP Protocolo Completo</b><br>
-                        <span style="font-size:0.75rem; opacity:0.9; text-transform: uppercase;">ACCESO VITALICIO</span>
+                        <span style="font-size:0.75rem; opacity:0.9; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-top: 4px;">ACESSO VITALÍCIO</span>
                     </div>
                     <div class="card-body" style="padding: 1.5rem 1.25rem;">
                         <div class="text-center py-2" style="display: flex; justify-content: center;">
-                             <img src="assets/bowl-gelatina-novo.jpg" style="width: 150px; max-width:100%;" alt="Gelatina Mounjaro">
+                             <img src="assets/bowl-gelatina-novo.jpg" style="width: 140px; border-radius: 12px; max-width:100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Gelatina Mounjaro">
                         </div>
-                        <ul class="check-list mt-3" style="list-style: none; padding: 0;">
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.85rem; color: #1e293b; margin-bottom: 10px;">
+                        <ul class="check-list mt-4" style="list-style: none; padding: 0;">
+                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Receta completa de la Gelatina Mounjaro
+                                Receita completa da Gelatina Mounjaro
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.85rem; color: #1e293b; margin-bottom: 10px;">
+                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Protocolo de 30 días paso a paso
+                                Protocolo de 30 dias passo a passo
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.85rem; color: #1e293b; margin-bottom: 10px;">
+                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Acceso a la Aplicación Exclusiva
+                                Acesso ao Aplicativo Exclusivo
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.85rem; color: #1e293b; margin-bottom: 10px;">
+                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Lista completa de ingredientes
+                                Lista completa dos ingredientes
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.85rem; color: #1e293b; margin-bottom: 10px;">
+                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Consejos para acelerar resultados
+                                Dicas para acelerar resultados
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.85rem; color: #1e293b; margin-bottom: 10px;">
+                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Acceso vitalicio a la app
+                                Acesso vitalício ao app
                             </li>
                         </ul>
                         
-                        <div class="bonus-box mt-4" style="background:#fdf4ff; border: 1px solid #f8e1fe; border-radius:12px; padding:12px;">
-                            <div class="bonus-item text-purple" style="font-size:0.8rem; font-weight:600; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-                                <span>🎁</span> BONO: Dietas completas
+                        <div class="bonus-box mt-4" style="background:#faf5ff; border: 1px solid #f3e8ff; border-radius:12px; padding:12px;">
+                            <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                                <span>🎁</span> BÔNUS: Dietas completas
                             </div>
-                            <div class="bonus-item text-purple" style="font-size:0.8rem; font-weight:600; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
-                                <span>🎁</span> BONO: Recetas dulces saludables
+                            <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                                <span>🎁</span> BÔNUS: Receitas doces saudáveis
                             </div>
-                            <div class="bonus-item text-purple" style="font-size:0.8rem; font-weight:600; display:flex; align-items:center; gap:6px;">
-                                <span>🎁</span> BONO: Clases en video de pilates en la pared
+                            <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; display:flex; align-items:center; gap:8px;">
+                                <span>🎁</span> BÔNUS: Aulas em vídeo de pilates na parede
                             </div>
                         </div>
 
                         <div class="price-section mt-5 text-center">
-                            <div class="crossed-price" style="text-decoration: line-through; color: #94a3b8; font-size: 0.75rem;">TODO ESTO POR $59.90</div>
-                            <div class="mt-1" style="color: #64748b; font-weight:600; font-size: 0.75rem;">POR SOLO</div>
-                            <div class="main-price text-green" style="font-size: 3.5rem; font-weight: 900; line-height:1; margin-top:0.25rem;">$9.90</div>
+                            <div class="crossed-price" style="text-decoration: line-through; color: #94a3b8; font-size: 0.75rem;">TUDO ISSO DE R$ 109,90</div>
+                            <div class="mt-1" style="color: #64748b; font-weight:600; font-size: 0.75rem;">POR APENAS</div>
+                            <div class="main-price text-green" style="font-size: 3.5rem; color: #16a34a; font-weight: 900; line-height:1; margin-top:0.25rem;">R$ 27</div>
+                            <div class="installments mt-1" style="color: #64748b; font-size: 0.8rem;">Ou 6x de R$5,32</div>
                         </div>
                         
-                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
+                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
                     </div>
                 </div>
 
-                <div class="timer-box mt-4 text-center" style="background: #fff5f8; padding: 14px; border-radius: 12px;">
-                    <span style="color: #64748b; font-size: 0.8rem; display:block; margin-bottom:2px;">⏰ Tu plan expira en:</span>
-                    <div id="countdown-timer" class="countdown-text text-purple font-bold" style="font-size: 1.4rem;">14:51</div>
+                <div class="guarantee-card mt-5 mx-auto text-center p-4" style="max-width: 480px; background:#fffbeb; border: 1px solid #fef08a; border-radius: 12px;">
+                    <img src="assets/selo-garantia.png" alt="Selo Garantia 30 Dias" class="guarantee-seal mx-auto mb-3" style="width: 100px; border-radius: 0; box-shadow: none;">
+                    <div class="font-bold mb-2" style="font-size: 1rem; color: #1e293b;">Garantia de Reembolso</div>
+                    <p style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.5rem; line-height: 1.4;">Todo o produto tem garantia oficial de 7 dias, porém confiamos tanto em nossa fórmula que nossa garantia é de 30 dias corridos.</p>
+                    <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Ou seja, se você não gostar, devolveremos seu dinheiro na hora, sem questionar.</p>
                 </div>
 
-                <div class="guarantee-card mt-4 text-center p-4" style="background:#fffbeb; border: 1px solid #fef08a; border-radius: 12px;">
-                    <img src="assets/selo-garantia.png" alt="Selo Garantia 30 Dias" class="guarantee-seal mx-auto mb-3" style="width: 110px; border-radius: 0; box-shadow: none;">
-                    <div class="font-bold mb-2" style="font-size: 1rem; color: #1e293b;">Garantía de Reembolso</div>
-                    <p style="font-size: 0.7rem; color: #64748b; margin-bottom: 0.5rem; line-height: 1.4;">Todo producto está obligado a dar al menos 7 días de garantía, pero confiamos tanto en la fórmula que ofrecemos 30 días calendario.</p>
-                    <p style="font-size: 0.7rem; color: #64748b; line-height: 1.4;">Es decir, si no te gusta o no funciona para ti, te reembolsaremos cada centavo que hayas pagado, sin hacer preguntas.</p>
+                <div class="mx-auto mt-4" style="max-width: 480px;">
+                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
                 </div>
 
-                <button class="btn green-cta mt-4 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
-
-                <div class="author-card mt-4 text-center p-4" style="background:white; border: 1px solid var(--border-color); border-radius:12px; display: flex; flex-direction: column; align-items: center;">
-                    <img src="assets/nutri-luciana-2.png" alt="Nutri Luciana Britto" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" >
-                    <p style="font-size: 0.7rem; color: #64748b; margin-bottom: 2px;">Plan generado por:</p>
-                    <p class="font-bold" style="font-size: 0.9rem; color: #1e293b;">Nutri Luciana Britto</p>
-                    <p style="font-size: 0.7rem; color: #64748b;">Nutricionista • CRN-PR 08-7734</p>
-                </div>
-                
-                <button class="btn green-cta mt-4 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#16a34a; border-radius:8px; padding:16px; font-size:1.1rem; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);">¡QUIERO MI GELATINA AHORA!</button>
-                <div class="text-center text-muted mb-4" style="font-size: 0.7rem; display: flex; align-items: center; justify-content: center; gap: 4px; color: #64748b;">
-                    <span style="color: #f59e0b;">🔒</span> Compra 100% segura • Garantía de 30 días
-                </div>
-
-                <div class="payment-methods mt-2 text-center">
-                    <p style="font-size: 0.70rem; color: #94a3b8; margin-bottom: 8px; font-weight: 500;">Opciones de pago locales disponibles para LATAM</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
-                        <div style="background: #1a1f71; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 900; font-size: 0.65rem; font-style: italic; letter-spacing: 0.5px;">VISA</div>
-                        <div style="background: #1e1e1e; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 0.65rem; display: flex; align-items: center; gap: 6px;">
-                            <div style="display:flex;">
-                               <div style="width:10px; height:10px; border-radius:50%; background:#eb001b;"></div>
-                               <div style="width:10px; height:10px; border-radius:50%; background:#f79e1b; margin-left:-4px;"></div>
-                            </div>
-                            mastercard
-                        </div>
-                        <div style="background: #0070ba; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 800; font-size: 0.65rem; font-style: italic;">PayPal</div>
-                        <div style="background: #e11422; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">OXXO</div>
-                        <div style="background: #fcb316; color: #1e293b; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">pagoefectivo</div>
-                        <div style="background: #facc15; color: #1e293b; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">Efecty</div>
-                        <div style="background: #1e3a8a; color: white; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.65rem;">Sencillito</div>
-                    </div>
-                </div>
-
-                <div class="faq-container mt-6 mx-auto" style="max-width: 500px; text-align: left; padding-bottom: 30px;">
-                    <h3 class="font-bold text-xl text-center mb-4" style="color:#1e293b;">Preguntas Frecuentes</h3>
+                <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
+                    <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.2rem;">❓ Perguntas Frequentes</h3>
                     
-                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿La Gelatina Mounjaro es segura?</h4>
-                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">Sí, la fórmula es 100% natural, basada en ingredientes comprobados que activan de forma segura la quema de grasa sin causar efectos secundarios como los medicamentos tradicionales.</p>
+                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">A Gelatina Mounjaro realmente funciona?</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Sim, a fórmula é 100% natural, baseada em ingredientes comprovados que ativam de forma segura a queima de gordura sem causar efeitos colaterais.</p>
                     </div>
                     
-                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿En cuánto tiempo veré resultados?</h4>
-                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">La mayoría de nuestras clientes sienten una gran desinflamación en los primeros 3 a 5 días y una pérdida de peso notable al finalizar la segunda semana.</p>
+                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">Quanto tempo leva para ver resultados?</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">A maioria de nossas clientes sente uma grande desinflamação nos primeiros 3 a 5 dias e uma perda de peso notável ao finalizar a segunda semana.</p>
                     </div>
 
-                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿Tendré que hacer dietas estrictas?</h4>
-                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">No. El enfoque principal está en la activación metabólica mediante el protocolo de la gelatina y la app, sin necesidad de pasar hambre o eliminar todos los carbohidratos.</p>
+                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">É seguro? Tem efeitos colaterais?</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">A receita e o protocolo não possuem contraindicação e não tem efeitos colaterais desde que usados sob acompanhamento saudável, todos os ingredientes são naturais.</p>
                     </div>
 
-                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿Cómo recibiré mi acceso?</h4>
-                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">Inmediatamente después de la confirmación de tu compra, recibirás un correo electrónico con tu enlace exclusivo para acceder a todo el material en la Aplicación Oficial.</p>
+                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">Como vou receber o protocolo?</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Imediatamente após a confirmação da sua compra, você receberá um e-mail com o link para acessar todo o material no nosso Aplicativo Exclusivo.</p>
                     </div>
                     
-                    <div class="faq-item" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #c084fc; font-size: 0.95rem;">¿Es una suscripción mensual?</h4>
-                        <p style="font-size: 0.8rem; color: #64748b; line-height: 1.4;">No. ¡El pago es único! Pagarás una sola vez el valor promocional hoy y tendrás acceso VITALICIO a todo el contenido y beneficios de bonificación.</p>
+                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">E se não funcionar para mim?</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Se por qualquer motivo você não se adaptar ao protocolo em 30 dias, basta entrar em contato solicitando o reembolso e devolveremos seu investimento.</p>
+                    </div>
+
+                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">O pagamento é seguro?</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Completamente seguro. Todo o pagamento é processado via Hotmart e Braip, duas das plataformas mais seguras e confiáveis da América Latina.</p>
+                    </div>
+
+                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
+                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">Preciso comprar ingredientes caros?</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Não, a ideia da Gelatina Mounjaro é justamente usar ingredientes que você encontra facilmente em qualquer supermercado e com baixo custo.</p>
+                    </div>
+                    
+                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
+                    
+                    <div class="text-center text-muted mb-4" style="font-size: 0.70rem; color: #94a3b8; margin-top: 15px; display:flex; align-items:center; justify-content:center; gap: 4px;">
+                        <span>🔒 Compra 100% segura • Garantia de 30 dias</span>
                     </div>
                 </div>
-
             </div>
         `;
-
-        // Start Timer
+// Start Timer
         let timeRemaining = 14 * 60 + 51;
         let cId = setInterval(() => {
             timeRemaining--;
@@ -988,12 +1678,37 @@ function renderStep(stepId) {
         }, 100);
     }
 
+    // Setup Back button visibility
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        if (stepId !== "start" && step.type !== "loading-screen" && step.type !== "checkout" && step.type !== "dynamic-promise") {
+            backBtn.style.display = "flex";
+        } else {
+            backBtn.style.display = "none";
+        }
+    }
+
     currentStepId = stepId;
 }
 
 function goToStep(nextStepId) {
     if (nextStepId) {
+        if (currentStepId && currentStepId !== "start") {
+            // Check if we are not navigating to the exact same step
+            if (stepHistory[stepHistory.length - 1] !== currentStepId) {
+                stepHistory.push(currentStepId);
+            }
+        } else if (currentStepId === "start") {
+            stepHistory.push("start");
+        }
         renderStep(nextStepId);
+    }
+}
+
+function goBack() {
+    if (stepHistory.length > 0) {
+        const prevStep = stepHistory.pop();
+        renderStep(prevStep);
     }
 }
 
@@ -1072,6 +1787,60 @@ function updatePicker(delta, min, max, isGoal) {
 function handlePickerSubmit(stepId, nextStepId) {
     userAnswers[stepId] = window.currentPickerValue;
     goToStep(nextStepId);
+}
+
+function toggleBodyPart(el, id) {
+    const isSelected = el.classList.toggle('selected');
+    const overlay = document.getElementById('overlay-' + id);
+    if (overlay) {
+        if (isSelected) overlay.classList.add('active');
+        else overlay.classList.remove('active');
+    }
+
+    // For doubled parts like arms/legs
+    const overlay2 = document.getElementById('overlay-' + id + '-2');
+    if (overlay2) {
+        if (isSelected) overlay2.classList.add('active');
+        else overlay2.classList.remove('active');
+    }
+
+    if (id === 'corpo-todo') {
+        const allHotspots = document.querySelectorAll('.body-hotspot');
+        const allOverlays = document.querySelectorAll('.body-overlay');
+        if (isSelected) {
+            allHotspots.forEach(h => h.classList.add('selected'));
+            allOverlays.forEach(o => o.classList.add('active'));
+        } else {
+            allHotspots.forEach(h => h.classList.remove('selected'));
+            allOverlays.forEach(o => o.classList.remove('active'));
+        }
+    } else {
+        if (!isSelected) {
+            const corpoTodo = document.querySelector('.hotspot-corpo-todo');
+            if (corpoTodo) corpoTodo.classList.remove('selected');
+        }
+    }
+
+    const errorMsg = document.getElementById('body-selection-error');
+    if (errorMsg && errorMsg.style.display === 'block') {
+        errorMsg.style.display = 'none';
+    }
+}
+
+function handleBodySelectionSubmit(stepId, nextStep) {
+    const selected = Array.from(document.querySelectorAll('.body-hotspot.selected')).map(el => {
+        const idClass = Array.from(el.classList).find(c => c.startsWith('hotspot-'));
+        return idClass ? idClass.replace('hotspot-', '') : null;
+    }).filter(id => id !== null);
+
+    const errorMsg = document.getElementById('body-selection-error');
+    if (selected.length === 0) {
+        if (errorMsg) errorMsg.style.display = 'block';
+        return;
+    }
+
+    userAnswers[stepId] = selected;
+    goToStep(nextStep);
 }
 
 // Start app
