@@ -1132,7 +1132,7 @@ function renderStep(stepId) {
                         justify-content:center;
                         align-items:center;
                         cursor:pointer;
-                        z-index:5;
+                        z-index:999;
                     }
 
                     @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -1230,8 +1230,15 @@ function renderStep(stepId) {
             });
 
             if (btn) {
-                btn.onclick = function () {
-                    player.togglePlay();
+                btn.onclick = function (e) {
+                    e.stopPropagation();
+                    if (player.playing || !player.paused) {
+                        player.pause();
+                        btn.innerHTML = "▶";
+                    } else {
+                        player.play();
+                        btn.innerHTML = "❚❚";
+                    }
                 }
             }
         }, 50);
