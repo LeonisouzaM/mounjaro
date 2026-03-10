@@ -1047,6 +1047,98 @@ function renderStep(stepId) {
     else if (step.type === "vsl") {
         contentHTML = `
             <div class="content-wrapper centered-padding pb-8">
+                <style>
+                    .vsl-wrapper{
+                        position:relative;
+                        width:100%;
+                        max-width:360px;
+                        margin: 20px auto;
+                        aspect-ratio: 9 / 16;
+                        overflow:hidden;
+                        border-radius:20px;
+                        box-shadow: 0 0 20px #ff47c550, 0 0 5px #ff47c580;
+                    }
+
+                    .vsl-wrapper video{
+                        width:100%;
+                        height:100%;
+                        object-fit:cover;
+                    }
+
+                    /* overlay estilo VSL */
+                    .vsl-overlay{
+                        position:absolute;
+                        top:50%;
+                        left:50%;
+                        transform:translate(-50%,-50%);
+                        background:#ff3ab5;
+                        padding:30px 25px;
+                        border-radius:14px;
+                        text-align:center;
+                        color:white;
+                        cursor:pointer;
+                        z-index:10;
+                        width:230px;
+                        box-shadow:0 8px 25px rgba(0,0,0,0.3);
+                        animation: paradise-mute-pulse 2s ease-in-out infinite;
+                    }
+
+                    .vsl-overlay-top{
+                        font-size:20px;
+                        font-weight:bold;
+                        margin-bottom:15px;
+                    }
+
+                    .vsl-overlay-icon{
+                        font-size:42px;
+                        margin-bottom:15px;
+                        line-height: 1;
+                    }
+
+                    .vsl-overlay-bottom{
+                        font-size:18px;
+                    }
+
+                    /* barra fake */
+                    .fakebar{
+                        position:absolute;
+                        bottom:0;
+                        left:0;
+                        width:100%;
+                        height:10px;
+                        background:#222;
+                    }
+
+                    .fakeprogress{
+                        height:100%;
+                        width:0%;
+                        background:#ff2aa5;
+                        transition:width .3s;
+                    }
+
+                    /* botão play pause */
+                    .playbtn{
+                        position:absolute;
+                        bottom:20px;
+                        left:20px;
+                        background:#ff2aa5;
+                        border:none;
+                        width:40px;
+                        height:40px;
+                        border-radius:50%;
+                        color:white;
+                        font-size:16px;
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        cursor:pointer;
+                        z-index:5;
+                    }
+
+                    @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+                    @keyframes paradise-mute-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+                </style>
+
                 <h2 style="font-size: 1.15rem; font-weight: 800; text-align: center; color: #1f2937; margin-bottom: 0.25rem; line-height: 1.4;">
                     Agora assista à explicação rápida de <span style="color: #a855f7;">1 Minuto</span><br>
                     <span style="font-size: 0.95em; color: #ec4899;">e entenda por que esse método está<br>chamando atenção 👀</span>
@@ -1056,179 +1148,89 @@ function renderStep(stepId) {
                     <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block;">Clique no vídeo para Assistir ⬇️</div>
                 </div>
 
-                <div id="paradisePlayer_1773096418247Container" class="paradise-player-container" style="position: relative; width: 100%; max-width: 100%; margin: 20px auto;">
-                    <div id="paradisePlayer_1773096418247Wrapper" style="position: relative; width: 100%; padding-bottom: 177.78%; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px #ff47c550, 0 0 5px #ff47c580;">
-                        <video 
-                            id="paradisePlayer_1773096418247" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; cursor: pointer;" 
-                            playsinline 
-                            webkit-playsinline 
-                            preload="auto"
-                            poster="https://t3.ftcdn.net/jpg/05/25/58/46/360_F_525584616_lKJ9605fRFWk8wxJRLZfU9lonvJzV3fa.jpg"
-                            oncontextmenu="return false;"
-                        >
-                            <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773094770/mdpfozi5jsawphueab5d.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos HTML5.
-                        </video>
-                        <div id="paradisePlayer_1773096418247MuteOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #00000080; cursor: pointer; z-index: 20; backdrop-filter: blur(2px);">
-                            <div id="paradisePlayer_1773096418247MuteButton" class="paradise-mute-pulse" style="background: #ff47c5; padding: clamp(1.2rem, 5vw, 2rem) clamp(1.5rem, 7vw, 3rem); border-radius: 12px; text-align: center; color: white; transition: transform 0.3s ease; --animation-intensity: 1; box-shadow: 0 8px 25px rgba(0,0,0,0.3); max-width: 90vw; box-sizing: border-box;">
-                                <div style="font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 700; margin-bottom: 0.5rem;">¡Tu video ya comenzó!</div>
-                                <div style="margin-bottom: 0.6rem;"><img src="https://i.postimg.cc/2j9d2jbv/R.png" alt="Unmute" style="width:clamp(2.5rem, 8vw, 3.5rem); height:clamp(2.5rem, 8vw, 3.5rem); filter: brightness(0) invert(1); display: inline-block;"></div>
-                                <div style="font-size: clamp(0.8rem, 2.2vw, 1rem); font-weight: 500; opacity: 0.95;">Haz clic para activar el sonido</div>
-                            </div>
-                        </div>
-                        <div id="paradisePlayer_1773096418247Controls" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(15, 23, 42, 0.85)); backdrop-filter: blur(8px); padding: 10px 15px; display: flex; align-items: center; gap: 15px; opacity: 0; transition: opacity 0.3s ease; z-index: 21;">
-                            <button id="paradisePlayer_1773096418247PlayBtn" style="background: transparent; border: none; width: 32px; height: 32px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 24px;">▶</button>
-                            <div style="flex: 1; display: flex; align-items: center; gap: 10px;">
-                                <span id="paradisePlayer_1773096418247CurrentTime" style="color: white; font-size: 13px; font-variant-numeric: tabular-nums;">0:00</span>
-                                <div id="paradisePlayer_1773096418247ProgressContainer" style="flex: 1; height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; cursor: pointer; padding: 3px 0;">
-                                    <div id="paradisePlayer_1773096418247ProgressBar" style="height: 100%; background: linear-gradient(90deg, #ff47c5, #21bfeb); border-radius: 4px; width: 0%;"></div>
-                                </div>
-                                <span id="paradisePlayer_1773096418247Duration" style="color: white; font-size: 13px; font-variant-numeric: tabular-nums;">0:00</span>
-                            </div>
-                            <button id="paradisePlayer_1773096418247VolumeBtn" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 20px;">🔊</button>
-                            <button id="paradisePlayer_1773096418247FullscreenBtn" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 20px;">⛶</button>
-                        </div>
+                <div class="vsl-wrapper">
+                    <div class="vsl-overlay" id="vsl-overlay">
+                        <div class="vsl-overlay-top">¡Tu video ya comenzó!</div>
+                        <div class="vsl-overlay-icon">🔇</div>
+                        <div class="vsl-overlay-bottom">Haz clic para activar el sonido</div>
                     </div>
-                </div>
 
-                <div id="vsl-progress-wrapper" style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; margin-top: 1rem; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; text-align: center; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.02)">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #6b7280; font-weight: 600; margin-bottom: 8px;">
-                        <span>🔒 Assista para continuar...</span>
-                        <span id="vsl-progress-text">0%</span>
-                    </div>
-                    <div style="background: #e5e7eb; height: 6px; border-radius: 3px; width: 100%; overflow: hidden;">
-                        <div id="vsl-progress-bar" style="background: linear-gradient(90deg, #9b4dca, #ec4899); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                    <video
+                        id="vsl-player"
+                        playsinline
+                        autoplay
+                        muted
+                        preload="auto"
+                        controlslist="nodownload"
+                        disablepictureinpicture
+                        poster="https://t3.ftcdn.net/jpg/05/25/58/46/360_F_525584616_lKJ9605fRFWk8wxJRLZfU9lonvJzV3fa.jpg"
+                    >
+                        <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773094770/mdpfozi5jsawphueab5d.mp4" type="video/mp4">
+                    </video>
+
+                    <button class="playbtn" id="playbtn">❚❚</button>
+
+                    <div class="fakebar">
+                        <div class="fakeprogress" id="fakeprogress"></div>
                     </div>
                 </div>
 
                 <button id="vsl-continue-btn" class="btn primary-btn mt-4 w-full" style="display: none; animation: paradise-fadeInUp 0.5s forwards;" onclick="goToStep('${step.nextStep}')">Continuar 🚀</button>
 
-                <style>
-                    #paradisePlayer_1773096418247::-webkit-media-controls, #paradisePlayer_1773096418247::-webkit-media-controls-enclosure { display: none !important; }
-                    .paradise-mute-bounce { animation: paradise-mute-bounce 2s ease-in-out infinite; }
-                    .paradise-mute-pulse { animation: paradise-mute-pulse 2s ease-in-out infinite; }
-                    .paradise-mute-shake { animation: paradise-mute-shake 0.8s ease-in-out infinite; }
-                    .paradise-mute-glow { animation: paradise-mute-glow 3s ease-in-out infinite; }
-                    .paradise-mute-scale { animation: paradise-mute-scale 2.5s ease-in-out infinite; }
-                    .paradise-mute-rotate { animation: paradise-mute-rotate 5s linear infinite; }
-                    #paradisePlayer_1773096418247MuteButton { transform: scale(1); }
-                    #paradisePlayer_1773096418247MuteButton:hover { transform: scale(1.05) !important; }
-                    @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-                    @keyframes paradise-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-                    @keyframes paradise-glow { 0%, 100% { box-shadow: 0 0 10px #8b5cf650; } 50% { box-shadow: 0 0 20px #8b5cf680, 0 0 30px #8b5cf660; } }
-                    @keyframes paradise-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
-                    @keyframes paradise-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-                    @keyframes paradise-mute-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(calc(-10px * var(--animation-intensity))); } }
-                    @keyframes paradise-mute-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(calc(1 + 0.05 * var(--animation-intensity))); } }
-                    @keyframes paradise-mute-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(calc(-5px * var(--animation-intensity))); } 75% { transform: translateX(calc(5px * var(--animation-intensity))); } }
-                    @keyframes paradise-mute-glow { 0%, 100% { box-shadow: 0 0 calc(10px * var(--animation-intensity)) #ff47c550; } 50% { box-shadow: 0 0 calc(20px * var(--animation-intensity)) #ff47c580, 0 0 calc(30px * var(--animation-intensity)) #ff47c560; } }
-                    @keyframes paradise-mute-scale { 0%, 100% { transform: scale(1); } 50% { transform: scale(calc(1 + 0.1 * var(--animation-intensity))); } }
-                    @keyframes paradise-mute-rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-                    .paradise-player-container * { transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-                </style>
             </div>
         `;
 
         setTimeout(() => {
-            const video = document.getElementById('paradisePlayer_1773096418247');
-            const container = document.getElementById('paradisePlayer_1773096418247Container');
-            const playerWrapper = document.getElementById('paradisePlayer_1773096418247Wrapper');
-            const muteOverlay = document.getElementById('paradisePlayer_1773096418247MuteOverlay');
-            const controls = document.getElementById('paradisePlayer_1773096418247Controls');
-            const playBtn = document.getElementById('paradisePlayer_1773096418247PlayBtn');
-            const currentTimeSpan = document.getElementById('paradisePlayer_1773096418247CurrentTime');
-            const durationSpan = document.getElementById('paradisePlayer_1773096418247Duration');
-            const progressContainer = document.getElementById('paradisePlayer_1773096418247ProgressContainer');
-            const progressBar = document.getElementById('paradisePlayer_1773096418247ProgressBar');
-            const volumeBtn = document.getElementById('paradisePlayer_1773096418247VolumeBtn');
-            const fullscreenBtn = document.getElementById('paradisePlayer_1773096418247FullscreenBtn');
+            const playerEl = document.getElementById('vsl-player');
+            if (!playerEl || typeof Plyr === 'undefined') return;
 
-            const btnProgressWrapper = document.getElementById('vsl-progress-wrapper');
-            const btnProgressText = document.getElementById('vsl-progress-text');
-            const btnProgressBar = document.getElementById('vsl-progress-bar');
+            const player = new Plyr('#vsl-player', { controls: [] });
+
+            // Tenta dar play mutado assim que carregar
+            player.muted = true;
+            let playPromise = player.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => { });
+            }
+
+            const overlay = document.getElementById("vsl-overlay");
+            if (overlay) {
+                overlay.onclick = function () {
+                    player.muted = false;
+                    overlay.style.display = "none";
+                }
+            }
+
+            const progress = document.getElementById("fakeprogress");
             const continueBtn = document.getElementById('vsl-continue-btn');
 
-            if (!video) return;
+            player.on('timeupdate', () => {
+                if (!player.duration) return;
+                let percent = (player.currentTime / player.duration) * 100;
+                if (progress) progress.style.width = percent + "%";
 
-            video.playbackRate = 1;
-            video.muted = true;
-            let playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => { /* Autoplay was prevented */ });
-            }
-
-            if (muteOverlay) {
-                const unmuteHandler = () => {
-                    video.muted = false;
-                    video.currentTime = 0;
-                    video.play();
-                    muteOverlay.style.opacity = '0';
-                    setTimeout(() => { muteOverlay.style.display = 'none'; }, 300);
-                };
-                muteOverlay.addEventListener('click', unmuteHandler, { once: true });
-                muteOverlay.addEventListener('touchend', unmuteHandler, { once: true });
-            }
-
-            const formatTime = (seconds) => {
-                if (isNaN(seconds)) return '0:00';
-                const mins = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return mins + ':' + (secs < 10 ? '0' : '') + secs;
-            }
-
-            const updatePlayButton = () => { if (playBtn) playBtn.innerHTML = video.paused ? '▶' : '⏸'; };
-
-            if (playBtn) playBtn.addEventListener('click', () => { if (video.paused) video.play(); else video.pause(); });
-            video.addEventListener('play', updatePlayButton);
-            video.addEventListener('pause', updatePlayButton);
-
-            video.addEventListener('timeupdate', () => {
-                if (!video.duration) return;
-
-                if (progressBar) progressBar.style.width = (video.currentTime / video.duration) * 100 + '%';
-                if (currentTimeSpan) currentTimeSpan.textContent = formatTime(video.currentTime);
-
-                const pct = Math.floor(Math.min(video.currentTime / video.duration, 1) * 100);
-                if (btnProgressText) btnProgressText.innerText = pct + '%';
-                if (btnProgressBar) btnProgressBar.style.width = pct + '%';
-
-                // Allow continuation slightly before the video totally finishes to avoid friction
-                if (pct >= 85 || video.currentTime > 50) {
-                    if (btnProgressWrapper) btnProgressWrapper.style.display = 'none';
+                // Allow continuation slightly before the video totally finishes
+                if (percent >= 85 || player.currentTime > 50) {
                     if (continueBtn) continueBtn.style.display = 'block';
                 }
             });
 
-            video.addEventListener('loadedmetadata', () => { if (durationSpan) durationSpan.textContent = formatTime(video.duration); });
-
-            if (progressContainer) progressContainer.addEventListener('click', (e) => {
-                const rect = progressContainer.getBoundingClientRect();
-                video.currentTime = ((e.clientX - rect.left) / rect.width) * video.duration;
-            });
-
-            if (volumeBtn) volumeBtn.addEventListener('click', () => {
-                video.muted = !video.muted;
-                volumeBtn.textContent = video.muted ? '🔇' : '🔊';
-            });
-
-            if (fullscreenBtn) fullscreenBtn.addEventListener('click', () => {
-                if (!document.fullscreenElement) {
-                    playerWrapper.requestFullscreen().catch(err => alert('Não foi possível entrar em modo tela cheia.'));
-                } else {
-                    document.exitFullscreen();
-                }
-            });
-
-            if (playerWrapper && controls) {
-                playerWrapper.addEventListener('mouseenter', () => { controls.style.opacity = '1'; });
-                playerWrapper.addEventListener('mouseleave', () => { controls.style.opacity = '0'; });
-            }
-
-            video.addEventListener('ended', function () {
-                if (btnProgressWrapper) btnProgressWrapper.style.display = 'none';
+            player.on('ended', () => {
                 if (continueBtn) continueBtn.style.display = 'block';
             });
+
+            const btn = document.getElementById("playbtn");
+            if (btn) {
+                btn.onclick = function () {
+                    if (player.playing) {
+                        player.pause();
+                        btn.innerHTML = "▶";
+                    } else {
+                        player.play();
+                        btn.innerHTML = "❚❚";
+                    }
+                }
+            }
         }, 50);
     }
     else if (step.type === "loading-screen") {
