@@ -1178,7 +1178,7 @@ function renderStep(stepId) {
                         ontimeupdate="vslTimeUpdate()"
                         poster="https://t3.ftcdn.net/jpg/05/25/58/46/360_F_525584616_lKJ9605fRFWk8wxJRLZfU9lonvJzV3fa.jpg"
                     >
-                        <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773094770/mdpfozi5jsawphueab5d.mp4" type="video/mp4">
+                        <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773105398/ebhtrqk5stfwhgy9hvmu.mp4" type="video/mp4">
                     </video>
 
                     <button class="playbtn" id="vsl-playbtn" onclick="vslTogglePlay()">❚❚</button>
