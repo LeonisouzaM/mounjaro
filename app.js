@@ -1158,7 +1158,7 @@ function renderStep(stepId) {
                 </h2>
                 
                 <div style="text-align: center; margin-bottom: 0.5rem; margin-top: 1rem;">
-                    <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block; animation: vsl-btn-pulse 1.5s ease-in-out infinite; box-shadow: 0 0 0 0 rgba(251,191,36,0.7);">Clique no vídeo para Assistir â¬‡ï¸</div>
+                    <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block; animation: vsl-btn-pulse 1.5s ease-in-out infinite; box-shadow: 0 0 0 0 rgba(251,191,36,0.7);">Clique no vídeo para Assistir ⬇️</div>
                 </div>
 
                 <div class="vsl-wrapper">
@@ -1186,7 +1186,7 @@ function renderStep(stepId) {
                         <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773105398/ebhtrqk5stfwhgy9hvmu.mp4" type="video/mp4">
                     </video>
 
-                    <button class="playbtn" id="vsl-playbtn" onclick="vslTogglePlay()">âšâš</button>
+                    <button class="playbtn" id="vsl-playbtn" onclick="vslTogglePlay()">⏸</button>
 
                     <div class="fakebar">
                         <div class="fakeprogress" id="fakeprogress"></div>
@@ -1220,7 +1220,7 @@ function renderStep(stepId) {
             };
             window.vslOnPlay = function () {
                 const btn = document.getElementById('vsl-playbtn');
-                if (btn) btn.innerHTML = 'âšâš';
+                if (btn) btn.innerHTML = '⏸';
             };
             window.vslOnPause = function () {
                 const btn = document.getElementById('vsl-playbtn');
