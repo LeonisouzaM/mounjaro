@@ -1080,7 +1080,7 @@ function renderStep(stepId) {
                         z-index:10;
                         width:230px;
                         box-shadow:0 8px 25px rgba(0,0,0,0.3);
-                        animation: paradise-mute-pulse 2s ease-in-out infinite;
+                        animation: vsl-mute-pulse 2s ease-in-out infinite;
                     }
 
                     .vsl-overlay-top{
@@ -1136,7 +1136,7 @@ function renderStep(stepId) {
                     }
 
                     @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-                    @keyframes paradise-mute-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+                    @keyframes vsl-mute-pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.05); } }
                 </style>
 
                 <h2 style="font-size: 1.15rem; font-weight: 800; text-align: center; color: #1f2937; margin-bottom: 0.25rem; line-height: 1.4;">
@@ -1220,15 +1220,18 @@ function renderStep(stepId) {
             });
 
             const btn = document.getElementById("playbtn");
+
+            player.on('play', () => {
+                if (btn) btn.innerHTML = "❚❚";
+            });
+
+            player.on('pause', () => {
+                if (btn) btn.innerHTML = "▶";
+            });
+
             if (btn) {
                 btn.onclick = function () {
-                    if (player.playing) {
-                        player.pause();
-                        btn.innerHTML = "▶";
-                    } else {
-                        player.play();
-                        btn.innerHTML = "❚❚";
-                    }
+                    player.togglePlay();
                 }
             }
         }, 50);
