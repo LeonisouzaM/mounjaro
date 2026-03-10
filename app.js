@@ -1057,12 +1057,14 @@ function renderStep(stepId) {
                         overflow:hidden;
                         border-radius:20px;
                         box-shadow: 0 0 20px #ff47c550, 0 0 5px #ff47c580;
+                        background:#000;
                     }
 
                     .vsl-wrapper video{
                         width:100%;
                         height:100%;
                         object-fit:cover;
+                        display:block;
                     }
 
                     /* overlay estilo VSL */
@@ -1079,6 +1081,7 @@ function renderStep(stepId) {
                         cursor:pointer;
                         z-index:10;
                         width:230px;
+                        box-sizing:border-box;
                         box-shadow:0 8px 25px rgba(0,0,0,0.3);
                         animation: vsl-mute-pulse 2s ease-in-out infinite;
                     }
@@ -1107,6 +1110,7 @@ function renderStep(stepId) {
                         width:100%;
                         height:10px;
                         background:#222;
+                        z-index:5;
                     }
 
                     .fakeprogress{
@@ -1123,8 +1127,8 @@ function renderStep(stepId) {
                         left:20px;
                         background:#ff2aa5;
                         border:none;
-                        width:40px;
-                        height:40px;
+                        width:44px;
+                        height:44px;
                         border-radius:50%;
                         color:white;
                         font-size:16px;
@@ -1132,7 +1136,9 @@ function renderStep(stepId) {
                         justify-content:center;
                         align-items:center;
                         cursor:pointer;
-                        z-index:999999;
+                        z-index:20;
+                        touch-action:manipulation;
+                        -webkit-tap-highlight-color: transparent;
                     }
 
                     @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -1140,7 +1146,7 @@ function renderStep(stepId) {
                 </style>
 
                 <h2 style="font-size: 1.15rem; font-weight: 800; text-align: center; color: #1f2937; margin-bottom: 0.25rem; line-height: 1.4;">
-                    Agora assista à explicação rápida de <span style="color: #a855f7;">1 Minuto</span><br>
+                    Ahora assista à explicação rápida de <span style="color: #a855f7;">1 Minuto</span><br>
                     <span style="font-size: 0.95em; color: #ec4899;">e entenda por que esse método está<br>chamando atenção 👀</span>
                 </h2>
                 
@@ -1158,17 +1164,18 @@ function renderStep(stepId) {
                     <video
                         id="vsl-player"
                         playsinline
-                        autoplay
+                        webkit-playsinline
                         muted
                         preload="auto"
-                        controlslist="nodownload"
+                        controlslist="nodownload nofullscreen"
                         disablepictureinpicture
+                        oncontextmenu="return false;"
                         poster="https://t3.ftcdn.net/jpg/05/25/58/46/360_F_525584616_lKJ9605fRFWk8wxJRLZfU9lonvJzV3fa.jpg"
                     >
                         <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773094770/mdpfozi5jsawphueab5d.mp4" type="video/mp4">
                     </video>
 
-                    <button class="playbtn" id="playbtn">❚❚</button>
+                    <button class="playbtn" id="vsl-playbtn">❚❚</button>
 
                     <div class="fakebar">
                         <div class="fakeprogress" id="fakeprogress"></div>
@@ -1181,71 +1188,60 @@ function renderStep(stepId) {
         `;
 
         setTimeout(() => {
-            const playerEl = document.getElementById('vsl-player');
-            if (!playerEl || typeof Plyr === 'undefined') return;
+            const video = document.getElementById('vsl-player');
+            if (!video) return;
 
-            const player = new Plyr('#vsl-player', {
-                controls: [],
-                fullscreen: { enabled: false, fallback: false },
-                clickToPlay: true
-            });
+            // Autoplay muted
+            video.muted = true;
+            video.play().catch(() => { });
 
-            // Tenta dar play mutado assim que carregar
-            player.muted = true;
-            let playPromise = player.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => { });
-            }
-
+            // Unmute overlay
             const overlay = document.getElementById("vsl-overlay");
             if (overlay) {
-                overlay.onclick = function () {
-                    player.muted = false;
+                overlay.addEventListener('click', function () {
+                    video.muted = false;
                     overlay.style.display = "none";
-                }
+                }, { once: true });
             }
 
+            // Progress bar
             const progress = document.getElementById("fakeprogress");
             const continueBtn = document.getElementById('vsl-continue-btn');
 
-            player.on('timeupdate', () => {
-                if (!player.duration) return;
-                let percent = (player.currentTime / player.duration) * 100;
+            video.addEventListener('timeupdate', function () {
+                if (!video.duration) return;
+                const percent = (video.currentTime / video.duration) * 100;
                 if (progress) progress.style.width = percent + "%";
-
-                // Allow continuation slightly before the video totally finishes
-                if (percent >= 85 || player.currentTime > 50) {
+                if (percent >= 85 || video.currentTime > 50) {
                     if (continueBtn) continueBtn.style.display = 'block';
                 }
             });
 
-            player.on('ended', () => {
+            video.addEventListener('ended', function () {
                 if (continueBtn) continueBtn.style.display = 'block';
             });
 
-            const btn = document.getElementById("playbtn");
-
-            player.on('play', () => {
-                if (btn) btn.innerHTML = "❚❚";
-            });
-
-            player.on('pause', () => {
-                if (btn) btn.innerHTML = "▶";
-            });
-
+            // Play/Pause button — using native video API, no Plyr
+            const btn = document.getElementById("vsl-playbtn");
             if (btn) {
-                btn.onclick = function (e) {
+                btn.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    if (player.playing || !player.paused) {
-                        player.pause();
-                        btn.innerHTML = "▶";
-                    } else {
-                        player.play();
+                    e.preventDefault();
+                    if (video.paused) {
+                        video.play();
                         btn.innerHTML = "❚❚";
+                    } else {
+                        video.pause();
+                        btn.innerHTML = "▶";
                     }
-                }
+                });
             }
-        }, 50);
+
+            // Sync icon when video state changes externally
+            video.addEventListener('play', function () { if (btn) btn.innerHTML = "❚❚"; });
+            video.addEventListener('pause', function () { if (btn) btn.innerHTML = "▶"; });
+
+        }, 100);
     }
     else if (step.type === "loading-screen") {
         contentHTML = `
