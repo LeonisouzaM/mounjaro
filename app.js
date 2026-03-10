@@ -1482,7 +1482,7 @@ function renderStep(stepId) {
             <div class="checkout-container fade-in" style="background: #fafafa; padding-bottom: 40px; min-height: 100vh;">
                 <!-- Pink Banner Top -->
                 <div style="background: #e879f9; color: white; text-align: center; padding: 8px 10px; font-weight: 700; font-size: 0.85rem; border-radius: 8px; margin: 10px auto; max-width: 480px; box-shadow: 0 4px 10px rgba(232, 121, 249, 0.3);">
-                    â³ Seu protocolo expira em: <span id="countdown-timer">06:26</span>
+                    ⏳ Seu protocolo expira em: <span id="countdown-timer">06:26</span>
                 </div>
 
                 <div class="checkout-header" style="text-align: center; max-width: 480px; margin: 0 auto; padding: 0 10px;">
@@ -1507,7 +1507,7 @@ function renderStep(stepId) {
                         </div>
                         <!-- Seta central pulsando -->
                         <div style="flex-shrink:0; display:flex; flex-direction:column; align-items:center; padding: 0 4px;">
-                            <div id="arrow-pulse" style="font-size: 1.8rem; animation: arrow-pulse-right 1s ease-in-out infinite;">➡ï¸</div>
+                            <div id="arrow-pulse" style="font-size: 1.8rem; animation: arrow-pulse-right 1s ease-in-out infinite;">➡️</div>
                         </div>
                         <!-- Depois -->
                         <div style="flex:1; text-align:center;">
@@ -1575,7 +1575,7 @@ function renderStep(stepId) {
                 <div class="checkout-card mt-5 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
                     <div class="card-header" style="background: #a855f7; color: white; text-align: center; padding: 16px 12px; line-height:1.3;">
                         <b style="font-size:1.05rem">Gelatina Mounjaro + APP Protocolo Completo</b><br>
-                        <span style="font-size:0.75rem; opacity:0.9; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-top: 4px;">ACESSO VITALÃCIO</span>
+                        <span style="font-size:0.75rem; opacity:0.9; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-top: 4px;">ACESSO VITALÍCIO</span>
                     </div>
                     <div class="card-body" style="padding: 1.5rem 1.25rem;">
                         <div class="text-center py-2" style="display: flex; justify-content: center;">
@@ -1610,13 +1610,13 @@ function renderStep(stepId) {
                         
                         <div class="bonus-box mt-4" style="background:#faf5ff; border: 1px solid #f3e8ff; border-radius:12px; padding:12px;">
                             <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-                                <span>ðŸŽ</span> BÔNUS: Dietas completas
+                                <span>🎁</span> BÔNUS: Dietas completas
                             </div>
                             <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-                                <span>ðŸŽ</span> BÔNUS: Receitas doces saudáveis
+                                <span>🎁</span> BÔNUS: Receitas doces saudáveis
                             </div>
                             <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; display:flex; align-items:center; gap:8px;">
-                                <span>ðŸŽ</span> BÔNUS: Aulas em vídeo de pilates na parede
+                                <span>🎁</span> BÔNUS: Aulas em vídeo de pilates na parede
                             </div>
                         </div>
 
@@ -1627,7 +1627,7 @@ function renderStep(stepId) {
                             <div class="installments mt-1" style="color: #64748b; font-size: 0.8rem;">Ou 6x de R$5,32</div>
                         </div>
                         
-                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR ðŸ“</button>
+                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
                     </div>
                 </div>
 
@@ -1639,11 +1639,11 @@ function renderStep(stepId) {
                 </div>
 
                 <div class="mx-auto mt-4" style="max-width: 480px;">
-                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR ðŸ“</button>
+                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
                 </div>
 
                 <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
-                    <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.2rem;">â“ Perguntas Frequentes</h3>
+                    <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.2rem;">❓ Perguntas Frequentes</h3>
 
                     <style>
                         .faq-item { border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 10px; background: white; overflow: hidden; }
@@ -1712,7 +1712,7 @@ function renderStep(stepId) {
                         <div class="faq-answer"><p>Não, a ideia da Gelatina Mounjaro é justamente usar ingredientes que você encontra facilmente em qualquer supermercado e com baixo custo.</p></div>
                     </div>
 
-                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR ðŸ“</button>
+                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
                     
                     <div class="text-center text-muted mb-4" style="font-size: 0.70rem; color: #94a3b8; margin-top: 15px; display:flex; align-items:center; justify-content:center; gap: 4px;">
                         <span>🔒 Compra 100% segura • Garantia de 30 dias</span>
