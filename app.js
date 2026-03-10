@@ -1132,7 +1132,7 @@ function renderStep(stepId) {
                         justify-content:center;
                         align-items:center;
                         cursor:pointer;
-                        z-index:999;
+                        z-index:999999;
                     }
 
                     @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -1184,7 +1184,11 @@ function renderStep(stepId) {
             const playerEl = document.getElementById('vsl-player');
             if (!playerEl || typeof Plyr === 'undefined') return;
 
-            const player = new Plyr('#vsl-player', { controls: [] });
+            const player = new Plyr('#vsl-player', {
+                controls: [],
+                fullscreen: { enabled: false, fallback: false },
+                clickToPlay: true
+            });
 
             // Tenta dar play mutado assim que carregar
             player.muted = true;
