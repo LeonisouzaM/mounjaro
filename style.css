@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --primary: #9b4dca;
     --primary-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
     --bg-color: #ffffff;
@@ -1475,7 +1475,7 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
 }
 
 .body-hotspot.selected .body-label::before {
-    content: '✓';
+    content: 'âœ“';
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1646,7 +1646,7 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
     line-height: 1.4;
 }
 
-/* RESULTADO DA ANÁLISE PAGE */
+/* RESULTADO DA ANÃLISE PAGE */
 .resultado-imc-card {
     background: white;
     border: 1px solid #e5e7eb;
@@ -1722,7 +1722,7 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
 }
 
 .x-icon::before {
-    content: '✕';
+    content: 'âœ•';
 }
 
 .resultado-verde-box {
@@ -1772,7 +1772,7 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
 }
 
 .check-circle::before {
-    content: '✓';
+    content: 'âœ“';
 }
 
 /* COMO USAR PAGE */
@@ -1930,7 +1930,7 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
 }
 
 .btn-check-icon::before {
-    content: '✓';
+    content: 'âœ“';
     font-weight: 900;
     font-size: 12px;
 }
