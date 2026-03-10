@@ -1466,7 +1466,7 @@ function renderStep(stepId) {
         let meta2 = Math.round(pAtual * 0.08);
         let meta3 = Math.round(pAtual * 0.12);
 
-        contentHTML = \`
+        contentHTML = `
             <div class="checkout-container fade-in" style="background: #fafafa; padding-bottom: 40px; min-height: 100vh;">
                 <!-- Pink Banner Top -->
                 <div style="background: #e879f9; color: white; text-align: center; padding: 8px 10px; font-weight: 700; font-size: 0.85rem; border-radius: 8px; margin: 10px auto; max-width: 480px; box-shadow: 0 4px 10px rgba(232, 121, 249, 0.3);">
@@ -1655,7 +1655,7 @@ function renderStep(stepId) {
                 </div>
             </div>
         `;
-// Start Timer
+        // Start Timer
         let timeRemaining = 14 * 60 + 51;
         let cId = setInterval(() => {
             timeRemaining--;
