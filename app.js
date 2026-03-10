@@ -1065,6 +1065,7 @@ function renderStep(stepId) {
                         height:100%;
                         object-fit:cover;
                         display:block;
+                        pointer-events:none;
                     }
 
                     /* overlay estilo VSL */
@@ -1136,9 +1137,10 @@ function renderStep(stepId) {
                         justify-content:center;
                         align-items:center;
                         cursor:pointer;
-                        z-index:20;
+                        z-index:30;
                         touch-action:manipulation;
                         -webkit-tap-highlight-color: transparent;
+                        user-select:none;
                     }
 
                     @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -1155,7 +1157,7 @@ function renderStep(stepId) {
                 </div>
 
                 <div class="vsl-wrapper">
-                    <div class="vsl-overlay" id="vsl-overlay">
+                    <div class="vsl-overlay" id="vsl-overlay" onclick="vslUnmute()">
                         <div class="vsl-overlay-top">¡Tu video ya comenzó!</div>
                         <div class="vsl-overlay-icon">🔇</div>
                         <div class="vsl-overlay-bottom">Haz clic para activar el sonido</div>
@@ -1170,12 +1172,16 @@ function renderStep(stepId) {
                         controlslist="nodownload nofullscreen"
                         disablepictureinpicture
                         oncontextmenu="return false;"
+                        onplay="vslOnPlay()"
+                        onpause="vslOnPause()"
+                        onended="vslOnEnded()"
+                        ontimeupdate="vslTimeUpdate()"
                         poster="https://t3.ftcdn.net/jpg/05/25/58/46/360_F_525584616_lKJ9605fRFWk8wxJRLZfU9lonvJzV3fa.jpg"
                     >
                         <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773094770/mdpfozi5jsawphueab5d.mp4" type="video/mp4">
                     </video>
 
-                    <button class="playbtn" id="vsl-playbtn">❚❚</button>
+                    <button class="playbtn" id="vsl-playbtn" onclick="vslTogglePlay()">❚❚</button>
 
                     <div class="fakebar">
                         <div class="fakeprogress" id="fakeprogress"></div>
@@ -1195,53 +1201,42 @@ function renderStep(stepId) {
             video.muted = true;
             video.play().catch(() => { });
 
-            // Unmute overlay
-            const overlay = document.getElementById("vsl-overlay");
-            if (overlay) {
-                overlay.addEventListener('click', function () {
-                    video.muted = false;
-                    overlay.style.display = "none";
-                }, { once: true });
-            }
-
-            // Progress bar
-            const progress = document.getElementById("fakeprogress");
-            const continueBtn = document.getElementById('vsl-continue-btn');
-
-            video.addEventListener('timeupdate', function () {
-                if (!video.duration) return;
-                const percent = (video.currentTime / video.duration) * 100;
-                if (progress) progress.style.width = percent + "%";
-                if (percent >= 85 || video.currentTime > 50) {
-                    if (continueBtn) continueBtn.style.display = 'block';
+            // Global VSL functions called by inline event handlers
+            window.vslTogglePlay = function () {
+                const v = document.getElementById('vsl-player');
+                if (!v) return;
+                if (v.paused) { v.play(); } else { v.pause(); }
+            };
+            window.vslUnmute = function () {
+                const v = document.getElementById('vsl-player');
+                const ov = document.getElementById('vsl-overlay');
+                if (v) v.muted = false;
+                if (ov) ov.style.display = 'none';
+            };
+            window.vslOnPlay = function () {
+                const btn = document.getElementById('vsl-playbtn');
+                if (btn) btn.innerHTML = '❚❚';
+            };
+            window.vslOnPause = function () {
+                const btn = document.getElementById('vsl-playbtn');
+                if (btn) btn.innerHTML = '▶';
+            };
+            window.vslOnEnded = function () {
+                const btn = document.getElementById('vsl-continue-btn');
+                if (btn) btn.style.display = 'block';
+            };
+            window.vslTimeUpdate = function () {
+                const v = document.getElementById('vsl-player');
+                if (!v || !v.duration) return;
+                const pct = (v.currentTime / v.duration) * 100;
+                const bar = document.getElementById('fakeprogress');
+                if (bar) bar.style.width = pct + '%';
+                if (pct >= 85 || v.currentTime > 50) {
+                    const cb = document.getElementById('vsl-continue-btn');
+                    if (cb) cb.style.display = 'block';
                 }
-            });
-
-            video.addEventListener('ended', function () {
-                if (continueBtn) continueBtn.style.display = 'block';
-            });
-
-            // Play/Pause button — using native video API, no Plyr
-            const btn = document.getElementById("vsl-playbtn");
-            if (btn) {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    if (video.paused) {
-                        video.play();
-                        btn.innerHTML = "❚❚";
-                    } else {
-                        video.pause();
-                        btn.innerHTML = "▶";
-                    }
-                });
-            }
-
-            // Sync icon when video state changes externally
-            video.addEventListener('play', function () { if (btn) btn.innerHTML = "❚❚"; });
-            video.addEventListener('pause', function () { if (btn) btn.innerHTML = "▶"; });
-
-        }, 100);
+            };
+        }, 50);
     }
     else if (step.type === "loading-screen") {
         contentHTML = `
