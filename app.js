@@ -26,7 +26,7 @@ const stepsData = [
         subtitle: "Selecciona tu rango de edad.",
         options: [
             { id: "18-27", label: "18 - 27 años", icon: "🌸" },
-            { id: "28-39", label: "28 - 39 años", icon: "ðŸ’" },
+            { id: "28-39", label: "28 - 39 años", icon: "🌹" },
             { id: "40-54", label: "40 - 54 años", icon: "🌺" },
             { id: "54+", label: "54+ años", icon: "🌷" }
         ],
