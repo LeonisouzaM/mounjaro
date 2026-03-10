@@ -1498,9 +1498,30 @@ function renderStep(stepId) {
                     
                     <p class="subtitle text-center mt-3" style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Ele é exclusivo e gerado só uma vez, não saia dessa página para não perdê-lo.</p>
 
-                    <div style="margin: 20px 0;">
-                        <img src="assets/antes_depois_realistic-BQbSAZb6.png" alt="Antes e Depois Realistic" style="width: 100%; max-width: 280px; height: auto;">
+                    <!-- Before/After com seta pulsando -->
+                    <div style="margin: 20px auto; max-width: 340px; display: flex; align-items: center; justify-content: center; gap: 0;">
+                        <!-- Antes -->
+                        <div style="flex:1; text-align:center; position:relative;">
+                            <img src="assets/antes_depois_realistic-BQbSAZb6.png" alt="Antes" style="width: 100%; max-width: 140px; height: auto; object-fit: cover; object-position: left; clip-path: inset(0 50% 0 0);">
+                            <div style="margin-top:4px; background:#ef4444; color:white; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:12px; display:inline-block;">ANTES</div>
+                        </div>
+                        <!-- Seta central pulsando -->
+                        <div style="flex-shrink:0; display:flex; flex-direction:column; align-items:center; padding: 0 4px;">
+                            <div id="arrow-pulse" style="font-size: 1.8rem; animation: arrow-pulse-right 1s ease-in-out infinite;">➡️</div>
+                        </div>
+                        <!-- Depois -->
+                        <div style="flex:1; text-align:center;">
+                            <img src="assets/antes_depois_realistic-BQbSAZb6.png" alt="Depois" style="width: 100%; max-width: 140px; height: auto; object-fit: cover; object-position: right; clip-path: inset(0 0 0 50%); transform: translateX(-50%); margin-left: 50%;">
+                            <div style="margin-top:4px; background:#22c55e; color:white; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:12px; display:inline-block;">DEPOIS</div>
+                        </div>
                     </div>
+                    <style>
+                        @keyframes arrow-pulse-right {
+                            0%   { transform: translateX(0);    opacity: 1; }
+                            50%  { transform: translateX(6px);  opacity: 0.7; }
+                            100% { transform: translateX(0);    opacity: 1; }
+                        }
+                    </style>
                 </div>
 
                 <div class="checkout-card mt-3 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
@@ -1623,42 +1644,74 @@ function renderStep(stepId) {
 
                 <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
                     <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.2rem;">❓ Perguntas Frequentes</h3>
-                    
-                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">A Gelatina Mounjaro realmente funciona?</h4>
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Sim, a fórmula é 100% natural, baseada em ingredientes comprovados que ativam de forma segura a queima de gordura sem causar efeitos colaterais.</p>
-                    </div>
-                    
-                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">Quanto tempo leva para ver resultados?</h4>
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">A maioria de nossas clientes sente uma grande desinflamação nos primeiros 3 a 5 dias e uma perda de peso notável ao finalizar a segunda semana.</p>
+
+                    <style>
+                        .faq-item { border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 10px; background: white; overflow: hidden; }
+                        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 14px; cursor: pointer; }
+                        .faq-question h4 { color: #a855f7; font-size: 0.9rem; font-weight: 700; margin: 0; flex:1; }
+                        .faq-arrow { font-size: 1rem; color: #a855f7; transition: transform 0.3s; margin-left: 10px; flex-shrink:0; }
+                        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; padding: 0 14px; }
+                        .faq-answer p { font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0 0 14px 0; }
+                        .faq-item.open .faq-answer { max-height: 200px; padding: 0 14px; }
+                        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+                    </style>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>A Gelatina Mounjaro realmente funciona?</h4>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer"><p>Sim, a fórmula é 100% natural, baseada em ingredientes comprovados que ativam de forma segura a queima de gordura sem causar efeitos colaterais.</p></div>
                     </div>
 
-                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">É seguro? Tem efeitos colaterais?</h4>
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">A receita e o protocolo não possuem contraindicação e não tem efeitos colaterais desde que usados sob acompanhamento saudável, todos os ingredientes são naturais.</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Quanto tempo leva para ver resultados?</h4>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer"><p>A maioria de nossas clientes sente uma grande desinflamação nos primeiros 3 a 5 dias e uma perda de peso notável ao finalizar a segunda semana.</p></div>
                     </div>
 
-                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">Como vou receber o protocolo?</h4>
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Imediatamente após a confirmação da sua compra, você receberá um e-mail com o link para acessar todo o material no nosso Aplicativo Exclusivo.</p>
-                    </div>
-                    
-                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">E se não funcionar para mim?</h4>
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Se por qualquer motivo você não se adaptar ao protocolo em 30 dias, basta entrar em contato solicitando o reembolso e devolveremos seu investimento.</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>É seguro? Tem efeitos colaterais?</h4>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer"><p>A receita e o protocolo não possuem contraindicação e não tem efeitos colaterais desde que usados sob acompanhamento saudável, todos os ingredientes são naturais.</p></div>
                     </div>
 
-                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">O pagamento é seguro?</h4>
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Completamente seguro. Todo o pagamento é processado via Hotmart e Braip, duas das plataformas mais seguras e confiáveis da América Latina.</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Como vou receber o protocolo?</h4>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer"><p>Imediatamente após a confirmação da sua compra, você receberá um e-mail com o link para acessar todo o material no nosso Aplicativo Exclusivo.</p></div>
                     </div>
 
-                    <div class="faq-item" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: white;">
-                        <h4 class="font-bold mb-1" style="color: #a855f7; font-size: 0.9rem;">Preciso comprar ingredientes caros?</h4>
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Não, a ideia da Gelatina Mounjaro é justamente usar ingredientes que você encontra facilmente em qualquer supermercado e com baixo custo.</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>E se não funcionar para mim?</h4>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer"><p>Se por qualquer motivo você não se adaptar ao protocolo em 30 dias, basta entrar em contato solicitando o reembolso e devolveremos seu investimento.</p></div>
                     </div>
-                    
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>O pagamento é seguro?</h4>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer"><p>Completamente seguro. Todo o pagamento é processado via Hotmart e Braip, duas das plataformas mais seguras e confiáveis da América Latina.</p></div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Preciso comprar ingredientes caros?</h4>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <div class="faq-answer"><p>Não, a ideia da Gelatina Mounjaro é justamente usar ingredientes que você encontra facilmente em qualquer supermercado e com baixo custo.</p></div>
+                    </div>
+
                     <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
                     
                     <div class="text-center text-muted mb-4" style="font-size: 0.70rem; color: #94a3b8; margin-top: 15px; display:flex; align-items:center; justify-content:center; gap: 4px;">
@@ -1701,6 +1754,15 @@ function renderStep(stepId) {
     }
 
     currentStepId = stepId;
+}
+
+function toggleFaq(questionEl) {
+    const item = questionEl.parentElement;
+    const isOpen = item.classList.contains('open');
+    // Close all open items
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    // Open clicked one if it wasn't open
+    if (!isOpen) item.classList.add('open');
 }
 
 function goToStep(nextStepId) {
