@@ -12,7 +12,7 @@ const stepsData = [
     {
         id: "intro",
         type: "intro",
-        progress: 10,
+        progress: 5,
         title: "¡Comencemos tu viaje! 🚀",
         subtitle: "Responde algunas preguntas rápidas para personalizar tu plan.",
         buttonText: "¡Vamos! 💪",
@@ -21,7 +21,7 @@ const stepsData = [
     {
         id: "idade",
         type: "radio",
-        progress: 20,
+        progress: 12,
         title: "¿Cuál es tu edad?",
         subtitle: "Selecciona tu rango de edad.",
         options: [
@@ -36,7 +36,7 @@ const stepsData = [
     {
         id: "corpo",
         type: "image-grid",
-        progress: 40,
+        progress: 22,
         title: "¿Cómo clasificas <span class='text-purple'>tu cuerpo?</span>",
         subtitle: "Selecciona la opción que mejor te describa",
         options: [
@@ -51,7 +51,7 @@ const stepsData = [
     {
         id: "body-areas",
         type: "body-selection",
-        progress: 45,
+        progress: 28,
         title: "Quais as áreas que você <span class='text-purple'>mais quer perder gordura?</span>",
         subtitle: "Toque nas áreas do corpo que deseja melhorar.",
         image: "assets/personagem.png",
@@ -71,7 +71,7 @@ const stepsData = [
     {
         id: "afeta-vida",
         type: "radio",
-        progress: 50,
+        progress: 34,
         title: "¿Cómo afecta el peso a tu vida?",
         subtitle: "Entender esto nos ayuda a crear tu protocolo ideal",
         options: [
@@ -86,7 +86,7 @@ const stepsData = [
     {
         id: "nome",
         type: "text",
-        progress: 60,
+        progress: 42,
         title: "¿Cuál es tu nombre?",
         subtitle: "Para personalizar tu experiencia.",
         placeholder: "Tu primer nombre",
@@ -96,7 +96,7 @@ const stepsData = [
     {
         id: "explicacao",
         type: "explanation",
-        progress: 65,
+        progress: 50,
         title: "¡Excelente, {nome}! 🎉",
         subtitle: "Sin esfuerzo ni dietas aburridas: la Gelatina Mounjaro hace el trabajo pesado por ti, activando la quema de grasa con ingredientes caseros que preparas en minutos.",
         image: "assets/bowl.png",
@@ -106,7 +106,7 @@ const stepsData = [
     {
         id: "feliz-aparencia",
         type: "radio",
-        progress: 70,
+        progress: 58,
         title: "¿Estás feliz con tu apariencia actual?",
         subtitle: "Sé sincera contigo misma",
         options: [
@@ -120,7 +120,7 @@ const stepsData = [
     {
         id: "impede-emagrecer",
         type: "checkbox-list",
-        progress: 80,
+        progress: 64,
         title: "¿Qué te impide adelgazar?",
         subtitle: "Selecciona todas las barreras que enfrentas",
         options: [
@@ -135,7 +135,7 @@ const stepsData = [
     {
         id: "objetivos",
         type: "checkbox",
-        progress: 90,
+        progress: 70,
         title: "¿Qué quieres lograr?",
         subtitle: "Selecciona tus mayores objetivos",
         options: [
@@ -152,13 +152,13 @@ const stepsData = [
     {
         id: "como-funciona",
         type: "como-funciona",
-        progress: 91,
+        progress: 74,
         nextStep: "peso-atual"
     },
     {
         id: "peso-atual",
         type: "number-picker",
-        progress: 92,
+        progress: 78,
         title: "¿Cuál es tu peso actual?",
         subtitle: "Sé sincera para un resultado preciso",
         buttonText: "Continuar",
@@ -172,7 +172,7 @@ const stepsData = [
     {
         id: "altura",
         type: "number-picker",
-        progress: 94,
+        progress: 82,
         title: "¿Cuál es tu estatura?",
         subtitle: "Necesitamos esto para calcular tu IMC",
         buttonText: "Continuar",
@@ -186,7 +186,7 @@ const stepsData = [
     {
         id: "peso-desejado",
         type: "number-picker",
-        progress: 98,
+        progress: 86,
         title: "¿Cuál es tu peso deseado?",
         subtitle: "¿Qué peso sueñas alcanzar?",
         buttonText: "Continuar",
@@ -201,14 +201,14 @@ const stepsData = [
     {
         id: "otimo-objetivo",
         type: "otimo-objetivo",
-        progress: 98,
+        progress: 88,
         buttonText: "Ok, Vamos lá! 🚀",
         nextStep: "gestacoes"
     },
     {
         id: "gestacoes",
         type: "radio",
-        progress: 98,
+        progress: 90,
         title: "<span class='text-purple'>Quantas gestações</span> você já teve?",
         subtitle: "Isso ajuda a personalizar seu plano.",
         options: [
@@ -223,7 +223,7 @@ const stepsData = [
     {
         id: "rotina",
         type: "checkbox-list",
-        progress: 98,
+        progress: 92,
         title: "Como é sua <span class='text-purple'>rotina diária?</span>",
         subtitle: "Selecione todas as que se encaixam.",
         options: [
@@ -238,7 +238,7 @@ const stepsData = [
     {
         id: "sono",
         type: "radio",
-        progress: 98,
+        progress: 94,
         title: "Quantas horas <span class='text-purple'>você dorme por noite?</span>",
         subtitle: "O sono é essencial para o emagrecimento.",
         options: [
@@ -253,7 +253,7 @@ const stepsData = [
     {
         id: "agua",
         type: "radio",
-        progress: 99,
+        progress: 96,
         title: "¿Cuánta agua bebes al día?",
         subtitle: "La hidratación acelera los resultados.",
         options: [
@@ -268,7 +268,7 @@ const stepsData = [
     {
         id: "resultado-analise",
         type: "analysis",
-        progress: 100,
+        progress: 98,
         title: "Resultado de tu análisis, tú",
         buttonText: "Continuar",
         nextStep: "como-usar"
@@ -1145,6 +1145,11 @@ function renderStep(stepId) {
 
                     @keyframes paradise-fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
                     @keyframes vsl-mute-pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.05); } }
+                    @keyframes vsl-btn-pulse {
+                        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(251,191,36,0.7); }
+                        50% { transform: scale(1.07); box-shadow: 0 0 0 10px rgba(251,191,36,0); }
+                        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(251,191,36,0); }
+                    }
                 </style>
 
                 <h2 style="font-size: 1.15rem; font-weight: 800; text-align: center; color: #1f2937; margin-bottom: 0.25rem; line-height: 1.4;">
@@ -1153,7 +1158,7 @@ function renderStep(stepId) {
                 </h2>
                 
                 <div style="text-align: center; margin-bottom: 0.5rem; margin-top: 1rem;">
-                    <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block;">Clique no vídeo para Assistir ⬇️</div>
+                    <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block; animation: vsl-btn-pulse 1.5s ease-in-out infinite; box-shadow: 0 0 0 0 rgba(251,191,36,0.7);">Clique no vídeo para Assistir ⬇️</div>
                 </div>
 
                 <div class="vsl-wrapper">
