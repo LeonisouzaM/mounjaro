@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --primary: #9b4dca;
     --primary-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
     --bg-color: #ffffff;
@@ -1722,7 +1722,7 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
 }
 
 .x-icon::before {
-    content: 'âœ•';
+    content: '✖';
 }
 
 .resultado-verde-box {
@@ -1772,7 +1772,7 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
 }
 
 .check-circle::before {
-    content: 'âœ“';
+    content: '✓';
 }
 
 /* COMO USAR PAGE */

@@ -52,18 +52,17 @@ const stepsData = [
         id: "body-areas",
         type: "body-selection",
         progress: 28,
-        title: "Quais as áreas que você <span class='text-purple'>mais quer perder gordura?</span>",
-        subtitle: "Toque nas áreas do corpo que deseja melhorar.",
-        image: "assets/personagem.webp",
+        title: "¿En qué áreas quieres <span class=\'text-purple\'>perder más grasa?</span>",
+        subtitle: "Toca las áreas deseadas.",
+        image: "assets/body_silhouette_new-BD3Ymrmf.jpg",
         options: [
-            { id: "papada", label: "Papada" },
-            { id: "bracos", label: "Braços" },
-            { id: "cintura", label: "Cintura" },
-            { id: "barriga", label: "Barriga" },
-            { id: "gluteos", label: "Glúteos" },
-            { id: "culotes", label: "Culotes" },
-            { id: "coxas", label: "Coxas" },
-            { id: "corpo-todo", label: "Corpo Todo" }
+            { id: "papada", label: "Papada", icon: "🌝" },
+            { id: "bracos", label: "Brazos", icon: "💪" },
+            { id: "barriga", label: "Barriga", icon: "🎯" },
+            { id: "cintura", label: "Cintura", icon: "👙" },
+            { id: "gluteos", label: "Glúteos", icon: "🍑" },
+            { id: "coxas", label: "Muslos", icon: "🦵" },
+            { id: "corpo-todo", label: "Cuerpo Completo", icon: "✨" }
         ],
         buttonText: "Continuar",
         nextStep: "afeta-vida"
@@ -202,20 +201,20 @@ const stepsData = [
         id: "otimo-objetivo",
         type: "otimo-objetivo",
         progress: 88,
-        buttonText: "Ok, Vamos lá! 🚀",
+        buttonText: "¡Ok, vamos! 🚀",
         nextStep: "gestacoes"
     },
     {
         id: "gestacoes",
         type: "radio",
         progress: 90,
-        title: "<span class='text-purple'>Quantas gestações</span> você já teve?",
-        subtitle: "Isso ajuda a personalizar seu plano.",
+        title: "¿<span class=\'text-purple\'>Cuántos embarazos</span> has tenido?",
+        subtitle: "Esto ayuda a personalizar tu plan.",
         options: [
-            { id: "0", label: "Nunca estive grávida", icon: "<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='#ff4b4b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='4.93' y1='4.93' x2='19.07' y2='19.07'></line></svg>" },
-            { id: "1", label: "1 gestação", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>1</div>" },
-            { id: "2", label: "2 gestações", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>2</div>" },
-            { id: "3", label: "3 ou mais gestações", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>3</div>" }
+            { id: "0", label: "Nunca estuve embarazada", icon: "<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='#ff4b4b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='4.93' y1='4.93' x2='19.07' y2='19.07'></line></svg>" },
+            { id: "1", label: "1 embarazo", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>1</div>" },
+            { id: "2", label: "2 embarazos", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>2</div>" },
+            { id: "3", label: "3 o más embarazos", icon: "<div style='background-color: #4b8ce2; color: white; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold;'>3</div>" }
         ],
         nextStep: "rotina",
         autoAdvance: true
@@ -224,13 +223,13 @@ const stepsData = [
         id: "rotina",
         type: "checkbox-list",
         progress: 92,
-        title: "Como é sua <span class='text-purple'>rotina diária?</span>",
-        subtitle: "Selecione todas as que se encaixam.",
+        title: "¿Cómo es tu <span class=\'text-purple\'>rutina diaria?</span>",
+        subtitle: "Selecciona todas las que correspondan.",
         options: [
-            { id: "trabalho-fora", label: "Trabalho fora de casa", icon: "🏢" },
-            { id: "home-office", label: "Trabalho em home office", icon: "🏡" },
-            { id: "casa-familia", label: "Cuido da casa/família", icon: "👨‍👩‍👧‍👦" },
-            { id: "estudo", label: "Estudo", icon: "📚" }
+            { id: "trabalho-fora", label: "Trabajo fuera de casa", icon: "🏢" },
+            { id: "home-office", label: "Hago home office", icon: "🏡" },
+            { id: "casa-familia", label: "Cuido la casa/familia", icon: "👨‍👩‍👧‍👦" },
+            { id: "estudo", label: "Estudio", icon: "📚" }
         ],
         buttonText: "Continuar",
         nextStep: "sono"
@@ -239,13 +238,13 @@ const stepsData = [
         id: "sono",
         type: "radio",
         progress: 94,
-        title: "Quantas horas <span class='text-purple'>você dorme por noite?</span>",
-        subtitle: "O sono é essencial para o emagrecimento.",
+        title: "¿Cuántas horas <span class=\'text-purple\'>duermes por noche?</span>",
+        subtitle: "El sueño es esencial para adelgazar.",
         options: [
             { id: "menos-5", label: "Menos de 5 horas", icon: "😴" },
             { id: "5-7", label: "5 a 7 horas", icon: "🛏️" },
             { id: "7-9", label: "7 a 9 horas", icon: "🥰" },
-            { id: "mais-9", label: "Mais de 9 horas", icon: "💤" }
+            { id: "mais-9", label: "Más de 9 horas", icon: "💤" }
         ],
         nextStep: "agua",
         autoAdvance: true
@@ -277,20 +276,20 @@ const stepsData = [
         id: "como-usar",
         type: "como-usar",
         progress: 100,
-        buttonText: "<span class='btn-check-icon'></span> Sim, eu me comprometo!",
+        buttonText: "<span class='btn-check-icon'></span> ¡Sí, me comprometo!",
         nextStep: "compromisso-semana"
     },
     {
         id: "compromisso-semana",
         type: "radio-image-top",
         progress: 100,
-        title: "Você se compromete a aplicar o <span class='text-purple'>protocolo</span> por pelo menos 1 semana para poder ver os resultados?",
+        title: "¿Te comprometes a aplicar el <span class=\'text-purple\'>protocolo</span> por al menos 1 semana para ver resultados?",
         image: "assets/before_after_v2-BwdiI3Uv.webp",
-        badge: "🔒 PARA LIBERAR SEU PLANO, PRECISO SABER:",
+        badge: "🔒 PARA LIBERAR TU PLAN, NECESITO SABER:",
         options: [
-            { id: "sim-comprometo", label: "Sim me comprometo!", icon: "🥰" },
-            { id: "comecar-hoje", label: "Quero começar hoje", icon: "😎" },
-            { id: "nao-sei", label: "Não sei...", icon: "🙄" }
+            { id: "sim-comprometo", label: "¡Sí, me comprometo!", icon: "🥰" },
+            { id: "comecar-hoje", label: "Quiero empezar hoy", icon: "😎" },
+            { id: "nao-sei", label: "No lo sé...", icon: "🙄" }
         ],
         nextStep: "loading-analise",
         autoAdvance: true
@@ -611,7 +610,7 @@ function renderStep(stepId) {
                         <div class="check-icon">✓</div> 2 vezes ao dia
                     </div>
                     <div class="funciona-check-item">
-                        <div class="check-icon">✓</div> Receita 100% Natural
+                        <div class="check-icon">✓</div> Receta 100% Natural
                     </div>
                 </div>
 
@@ -714,44 +713,44 @@ function renderStep(stepId) {
 
         contentHTML = `
             <div class="content-wrapper centered-padding pb-8">
-                <h2 class="title text-center text-xl mb-4">Resultado da sua <span class="text-purple">análise</span>, <span class="text-purple">${nomeUsuario}</span></h2>
+                <h2 class="title text-center text-xl mb-4">Resultado de tu <span class="text-purple">análisis</span>, <span class="text-purple">${nomeUsuario}</span></h2>
                 
                 <div class="resultado-imc-card">
                     <div class="resultado-imc-value text-purple">${imcVal}</div>
-                    <div class="resultado-imc-status">Seu IMC: <span class="text-alert-red">${statusIMC}</span></div>
+                    <div class="resultado-imc-status">Tu IMC: <span class="text-alert-red">${statusIMC}</span></div>
                     
                     <div class="resultado-alert-box">
-                        <div class="resultado-alert-title">⚠ï¸ Sinais de alerta identificados:</div>
+                        <div class="resultado-alert-title">🚨 Sinais de alerta identificados:</div>
                         <ul class="resultado-alert-list">
                             <li><span class="x-icon"></span> Metabolismo desacelerado</li>
-                            <li><span class="x-icon"></span> Risco de acúmulo de gordura visceral</li>
-                            <li><span class="x-icon"></span> Hormônios de saciedade desregulados</li>
+                            <li><span class="x-icon"></span> Riesgo de acumulación de grasa visceral</li>
+                            <li><span class="x-icon"></span> Hormonas de saciedad desreguladas</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="resultado-verde-box">
-                    🌿 O segredo para secar: <strong style="color: #16a34a">ativar o GLP-1.</strong> A <strong style="color: #16a34a">Gelatina Mounjaro</strong> é o "interruptor" hormonal natural!
+                    🌿 El secreto para secar: <strong style="color: #16a34a">activar el GLP-1.</strong> A <strong style="color: #16a34a">Gelatina Mounjaro</strong> es el "interruptor" hormonal natural!
                 </div>
                 
-                <h3 class="resultado-beneficios-title text-center mt-4 mb-3" style="font-size: 1rem; color: #111827; font-weight: 700;">Benefícios da <span class="text-purple">Gelatina Mounjaro 👇</span></h3>
+                <h3 class="resultado-beneficios-title text-center mt-4 mb-3" style="font-size: 1rem; color: #111827; font-weight: 700;">Beneficios de la <span class="text-purple">Gelatina Mounjaro 👇</span></h3>
                 
                 <div class="resultado-beneficios-list mb-4">
-                    <div class="beneficio-item"><span class="check-circle"></span> Receita 100% Natural</div>
-                    <div class="beneficio-item"><span class="check-circle"></span> Ativa o GLP-1 do seu corpo</div>
-                    <div class="beneficio-item"><span class="check-circle"></span> Queima de Gordura localizada</div>
-                    <div class="beneficio-item"><span class="check-circle"></span> Regula o seu Metabolismo</div>
-                    <div class="beneficio-item"><span class="check-circle"></span> Leveza e corpo Desinchado</div>
-                    <div class="beneficio-item"><span class="check-circle"></span> Menos impulsos por doces</div>
-                    <div class="beneficio-item"><span class="check-circle"></span> Fácil de fazer e seguir</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Receta 100% Natural</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Activa el GLP-1 de tu cuerpo</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Quema de grasa localizada</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Regula tu Metabolismo</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Ligereza y cuerpo desinflamado</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Menos impulsos por dulces</div>
+                    <div class="beneficio-item"><span class="check-circle"></span> Fácil de hacer y seguir</div>
                 </div>
 
                 <div class="testimonial-card shadow-sm mb-4" style="border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0,0,0,0.02)">
                     <img src="assets/gelatina_resultado-CbO72sN0.webp" class="testimonial-img" alt="Antes e Depois" style="width: 100%; display: block;">
                     <div class="testimonial-footer bg-white" style="padding: 1rem;">
-                        <div class="testimonial-title font-bold text-center" style="font-size: 1rem; color: #1f2937;">"Perdi 12kg em 5 semanas!"</div>
-                        <div class="testimonial-author text-center text-gray-500 mt-1" style="font-size: 0.75rem; color: #6b7280;">Maria, 32 anos - São Paulo</div>
-                        <div class="stars text-center mt-1" style="font-size: 0.9rem;">â­â­â­â­â­</div>
+                        <div class="testimonial-title font-bold text-center" style="font-size: 1rem; color: #1f2937;">"¡Perdí 12kg en 5 semanas!"</div>
+                        <div class="testimonial-author text-center text-gray-500 mt-1" style="font-size: 0.75rem; color: #6b7280;">María, 32 años - Santiago</div>
+                        <div class="stars text-center mt-1" style="font-size: 0.9rem;">⭐⭐⭐⭐⭐</div>
                     </div>
                 </div>
                 
@@ -762,8 +761,8 @@ function renderStep(stepId) {
     else if (step.type === "como-usar") {
         contentHTML = `
             <div class="content-wrapper centered-padding pb-8">
-                <h2 class="title text-center text-xl mb-1">Como usar a <span class="text-purple font-bold" style="font-weight: 800;">Gelatina Mounjaro</span></h2>
-                <p class="subtitle text-center mt-1 mb-4" style="color: #9ca3af; font-size: 0.95rem;">Simples, prático e eficaz</p>
+                <h2 class="title text-center text-xl mb-1">Cómo usar la <span class="text-purple font-bold" style="font-weight: 800;">Gelatina Mounjaro</span></h2>
+                <p class="subtitle text-center mt-1 mb-4" style="color: #9ca3af; font-size: 0.95rem;">Simple, práctico y eficaz</p>
 
                 <div class="como-usar-image-container mx-auto mb-4" style="text-align: center;">
                     <img src="assets/mulher_gelatina_calendario-CcxgGxU0.webp" alt="Como usar" class="img-fluid" style="max-width: 250px; margin: 0 auto; display: block;">
@@ -773,8 +772,8 @@ function renderStep(stepId) {
                     <div class="como-usar-step-item">
                         <div class="step-circle bg-orange">1</div>
                         <div class="step-text">
-                            <div class="step-title">Prepare a gelatina</div>
-                            <div class="step-desc">Receita simples do app</div>
+                            <div class="step-title">Prepara la gelatina</div>
+                            <div class="step-desc">Receta simple de la app</div>
                         </div>
                         <div class="step-icon">✨</div>
                     </div>
@@ -782,8 +781,8 @@ function renderStep(stepId) {
                     <div class="como-usar-step-item">
                         <div class="step-circle bg-purple">2</div>
                         <div class="step-text">
-                            <div class="step-title">Consuma 2x ao dia</div>
-                            <div class="step-desc">Manhã e antes de dormir</div>
+                            <div class="step-title">Consume 2 veces al día</div>
+                            <div class="step-desc">Mañana y antes de dormir</div>
                         </div>
                         <div class="step-icon">🕘</div>
                     </div>
@@ -803,17 +802,17 @@ function renderStep(stepId) {
                         <div class="timeline-line-bg"></div>
                         <div class="node">
                             <div class="node-icon">🌅</div>
-                            <div class="node-title">Manhã</div>
-                            <div class="node-desc">Em jejum</div>
+                            <div class="node-title">Mañana</div>
+                            <div class="node-desc">En ayunas</div>
                         </div>
                         <div class="node">
                             <div class="node-icon">✨</div>
-                            <div class="node-title">Dia</div>
-                            <div class="node-desc">Sem fome</div>
+                            <div class="node-title">Día</div>
+                            <div class="node-desc">Sin hambre</div>
                         </div>
                         <div class="node">
                             <div class="node-icon">🌙</div>
-                            <div class="node-title">Noite</div>
+                            <div class="node-title">Noche</div>
                             <div class="node-desc">Antes de dormir</div>
                         </div>
                     </div>
@@ -829,9 +828,27 @@ function renderStep(stepId) {
         contentHTML = `
             <div class="content-wrapper centered-padding pb-8">
                 <div style="max-width: 480px; margin: 0 auto; width: 100%;">
-                    <div class="radio-img-top-container mx-auto mb-2" style="display: flex; justify-content: center; position: relative; max-width: 280px;">
-                        <img src="${step.image}" alt="Transformação" class="img-fluid" style="height: 280px; width: 100%; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));">
-                        <div class="animated-arrow-right">›</div>
+                    <div style="margin: 0 auto 10px auto; max-width: 380px; display: flex; align-items: stretch; justify-content: center; position: relative;">
+                        <!-- Antes -->
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+                            <div style="width: 100%; overflow: hidden; border-radius: 12px 0 0 12px; position: relative; padding-bottom: 110%; background: #f8fafc; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <img src="${step.image}" alt="Antes" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: 20% center;">
+                            </div>
+                        </div>
+                        
+                        <!-- Seta Centralizada -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
+                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #a855f7, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4); animation: arrow-pulse-right 1.5s ease-in-out infinite;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Depois -->
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+                            <div style="width: 100%; overflow: hidden; border-radius: 0 12px 12px 0; position: relative; padding-bottom: 110%; background: #f0fdf4; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <img src="${step.image}" alt="Depois" style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; object-fit: cover; object-position: 80% center;">
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="text-center" style="margin-top: -15px; margin-bottom: 20px; position: relative;">
@@ -994,7 +1011,7 @@ function renderStep(stepId) {
 
                 <div class="flex-center mt-5" style="gap: 10px;">
                     <span style="font-size: 1.5rem; opacity: 0.8;">📊</span>
-                    <span id="circular-loading-text" style="font-size: 1.1rem; font-weight: 500; color: #9ca3af;">Avaliando seu perfil corporal...</span>
+                    <span id="circular-loading-text" style="font-size: 1.1rem; font-weight: 500; color: #9ca3af;">Evaluando tu perfil corporal...</span>
                 </div>
 
                 <div class="loading-dots" style="display: flex; gap: 8px; margin-top: 1.25rem; justify-content: center;">
@@ -1168,6 +1185,13 @@ function renderStep(stepId) {
                         <div class="vsl-overlay-bottom">Haz clic para activar el sonido</div>
                     </div>
 
+                    <div class="vsl-resume-overlay" id="vsl-resume-overlay" style="display: none; position:absolute; top:0; left:0; width:100%; height:100%; background:#ec4899; padding:20px; text-align:center; color:white; z-index:20; box-sizing:border-box; flex-direction:column; justify-content:center; align-items:center;">
+                        <div style="font-size:1.1rem; font-weight:bold; margin-bottom:10px; line-height: 1.3;">¡Ya habías comenzado<br>a ver!</div>
+                        <div style="font-size:0.85rem; margin-bottom:20px; opacity: 0.9;">¿Dónde deseas continuar?</div>
+                        <button onclick="vslResumeVideo()" style="background:#22c55e; color:white; border:none; padding:12px; border-radius:8px; width:100%; font-weight:800; margin-bottom:12px; cursor:pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.15); font-size: 0.95rem; text-transform: uppercase;">▶ Continuar Viendo</button>
+                        <button onclick="vslRestartVideo()" style="background:transparent; color:white; border:2px solid white; padding:10px; border-radius:8px; width:100%; font-weight:bold; cursor:pointer; font-size: 0.85rem;">🔄 Ver desde el Inicio</button>
+                    </div>
+
                     <video
                         id="vsl-player"
                         playsinline
@@ -1181,7 +1205,6 @@ function renderStep(stepId) {
                         onpause="vslOnPause()"
                         onended="vslOnEnded()"
                         ontimeupdate="vslTimeUpdate()"
-                        poster="https://t3.ftcdn.net/jpg/05/25/58/46/360_F_525584616_lKJ9605fRFWk8wxJRLZfU9lonvJzV3fa.jpg"
                     >
                         <source src="https://res.cloudinary.com/duie23dpv/video/upload/v1773105398/ebhtrqk5stfwhgy9hvmu.mp4" type="video/mp4">
                     </video>
@@ -1202,34 +1225,86 @@ function renderStep(stepId) {
             const video = document.getElementById('vsl-player');
             if (!video) return;
 
-            // Autoplay muted
-            video.muted = true;
-            video.play().catch(() => { });
+            const savedTime = localStorage.getItem('vsl_savedTime');
+            
+            if (savedTime && parseFloat(savedTime) > 2) {
+                // User has progress, show the resume overlay
+                document.getElementById('vsl-overlay').style.display = 'none';
+                document.getElementById('vsl-resume-overlay').style.display = 'flex';
+                
+                // wait for metadata to set the time correctly to the screenshot
+                video.addEventListener('loadedmetadata', function() {
+                    video.currentTime = parseFloat(savedTime);
+                }, { once: true });
+                
+                // If it's already loaded
+                if (video.readyState >= 1) {
+                    video.currentTime = parseFloat(savedTime);
+                }
+            } else {
+                // Autoplay muted from start
+                video.muted = true;
+                video.play().catch(() => { });
+            }
 
             // Global VSL functions called by inline event handlers
+            window.vslResumeVideo = function () {
+                const v = document.getElementById('vsl-player');
+                const ov = document.getElementById('vsl-resume-overlay');
+                if (v) {
+                    v.muted = false;
+                    v.play();
+                }
+                if (ov) ov.style.display = 'none';
+            };
+            
+            window.vslRestartVideo = function () {
+                const v = document.getElementById('vsl-player');
+                const ov = document.getElementById('vsl-resume-overlay');
+                if (v) {
+                    v.currentTime = 0;
+                    v.muted = false;
+                    v.play();
+                }
+                if (ov) ov.style.display = 'none';
+            };
+
             window.vslTogglePlay = function () {
                 const v = document.getElementById('vsl-player');
                 if (!v) return;
                 if (v.paused) { v.play(); } else { v.pause(); }
             };
+            
             window.vslUnmute = function () {
                 const v = document.getElementById('vsl-player');
                 const ov = document.getElementById('vsl-overlay');
-                if (v) v.muted = false;
+                if (v) {
+                    v.muted = false;
+                    v.currentTime = 0;
+                }
                 if (ov) ov.style.display = 'none';
             };
+            
             window.vslOnPlay = function () {
                 const btn = document.getElementById('vsl-playbtn');
                 if (btn) btn.innerHTML = '⏸';
             };
+            
             window.vslOnPause = function () {
                 const btn = document.getElementById('vsl-playbtn');
                 if (btn) btn.innerHTML = '▶';
+                const v = document.getElementById('vsl-player');
+                if (v && v.currentTime > 2) {
+                    localStorage.setItem('vsl_savedTime', v.currentTime);
+                }
             };
+            
             window.vslOnEnded = function () {
                 const btn = document.getElementById('vsl-continue-btn');
                 if (btn) btn.style.display = 'block';
+                localStorage.removeItem('vsl_savedTime');
             };
+            
             window.vslTimeUpdate = function () {
                 const v = document.getElementById('vsl-player');
                 if (!v || !v.duration) return;
@@ -1239,6 +1314,12 @@ function renderStep(stepId) {
                 if (pct >= 85 || v.currentTime > 50) {
                     const cb = document.getElementById('vsl-continue-btn');
                     if (cb) cb.style.display = 'block';
+                }
+                
+                // Save progress periodically (throttling manually or just saving often)
+                // In local storage it's ok to write frequently, or we could just write every 2s
+                if (v.currentTime > 2 && !v.paused) {
+                    localStorage.setItem('vsl_savedTime', v.currentTime);
                 }
             };
         }, 50);
@@ -1264,7 +1345,7 @@ function renderStep(stepId) {
                 </div>
 
                 <div class="mt-5 text-center">
-                    <div id="check-loading-title" style="font-size: 1.15rem; font-weight: 700; color: #1e293b; margin-bottom: 1.5rem;">Verificando seus dados...</div>
+                    <div id="check-loading-title" style="font-size: 1.15rem; font-weight: 700; color: #1e293b; margin-bottom: 1.5rem;">Verificando tus datos...</div>
                 </div>
 
                 <div style="display:flex; flex-direction: column; gap: 12px; width: 100%; max-width: 280px; margin: 0 auto; margin-top: 0.5rem;">
@@ -1273,28 +1354,28 @@ function renderStep(stepId) {
                         <div id="check-icon-1" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Analisando suas respostas</span>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Analizando tus respuestas</span>
                     </div>
 
                     <div id="check-item-2" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
                         <div id="check-icon-2" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Calculando seu déficit calórico</span>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Calculando tu déficit calórico</span>
                     </div>
 
                     <div id="check-item-3" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
                         <div id="check-icon-3" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Selecionando ingredientes ideias</span>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Seleccionando ingredientes ideales</span>
                     </div>
 
                     <div id="check-item-4" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
                         <div id="check-icon-4" style="width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:14px; height:14px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">Verificação concluída!</span>
+                        <span style="font-size: 0.85rem; font-weight: 500; color: #64748b;">¡Verificación concluida!</span>
                     </div>
 
                 </div>
@@ -1351,7 +1432,7 @@ function renderStep(stepId) {
                         <div id="check-icon-f-1" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Perfil metabólico analisado</span>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Perfil metabólico analizado</span>
                     </div>
 
                     <div id="check-item-f-2" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
@@ -1365,21 +1446,21 @@ function renderStep(stepId) {
                         <div id="check-icon-f-3" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Compatibilidade verificada</span>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Compatibilidad verificada</span>
                     </div>
 
                     <div id="check-item-f-4" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
                         <div id="check-icon-f-4" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Protocolo de 30 dias montado</span>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Protocolo de 30 días creado</span>
                     </div>
 
                     <div id="check-item-f-5" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
                         <div id="check-icon-f-5" style="width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: background 0.3s;">
                             <svg style="width:12px; height:12px; color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Bônus exclusivos selecionados</span>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #64748b;">Bonos exclusivos seleccionados</span>
                     </div>
 
                     <div id="check-item-f-6" style="display:flex; align-items:center; gap: 10px; opacity: 0.4; transition: opacity 0.3s;">
@@ -1396,7 +1477,7 @@ function renderStep(stepId) {
                         <div id="final-loading-bar-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #9b4dca, #ec4899, #22c55e); transition: width 0.3s ease;"></div>
                     </div>
                 </div>
-                <p style="margin-top: 0.75rem; font-size: 0.75rem; color: #9ca3af; text-align: center;">Aguarde enquanto finalizamos tudo para você...</p>
+                <p style="margin-top: 0.75rem; font-size: 0.75rem; color: #9ca3af; text-align: center;">Espera mientras preparamos todo para ti...</p>
 
             </div>
         `;
@@ -1435,37 +1516,65 @@ function renderStep(stepId) {
     }
     else if (step.type === "body-selection") {
         contentHTML = `
-            <h2 class="title text-center">${step.title}</h2>
-            <p class="subtitle text-center mt-2 mb-4">${step.subtitle}</p>
-            
-            <div class="body-selection-container">
-                <img src="${step.image}" alt="Personagem" class="body-character">
+            <div class="content-wrapper centered-padding pb-8">
+                <h2 class="title text-center text-xl sm-text-2xl">${step.title}</h2>
+                <p class="subtitle text-center mt-2 mb-6">${step.subtitle}</p>
                 
-                <div class="body-overlay overlay-corpo-todo" id="overlay-corpo-todo"></div>
-                <div class="body-overlay overlay-papada" id="overlay-papada"></div>
-                <div class="body-overlay overlay-bracos" id="overlay-bracos"></div>
-                <div class="body-overlay overlay-bracos-2" id="overlay-bracos-2"></div>
-                <div class="body-overlay overlay-cintura" id="overlay-cintura"></div>
-                <div class="body-overlay overlay-cintura-2" id="overlay-cintura-2"></div>
-                <div class="body-overlay overlay-barriga" id="overlay-barriga"></div>
-                <div class="body-overlay overlay-gluteos" id="overlay-gluteos"></div>
-                <div class="body-overlay overlay-gluteos-2" id="overlay-gluteos-2"></div>
-                <div class="body-overlay overlay-culotes" id="overlay-culotes"></div>
-                <div class="body-overlay overlay-culotes-2" id="overlay-culotes-2"></div>
-                <div class="body-overlay overlay-coxas" id="overlay-coxas"></div>
-                <div class="body-overlay overlay-coxas-2" id="overlay-coxas-2"></div>
-
-                ${step.options.map(opt => `
-                    <div class="body-hotspot hotspot-${opt.id}" onclick="toggleBodyPart(this, '${opt.id}')">
-                        <div class="body-dot"></div>
-                        <div class="body-line"></div>
-                        <div class="body-label">${opt.label}</div>
+                <div style="display: flex; align-items: stretch; justify-content: center; gap: 1rem; width: 100%; max-width: 440px; margin: 0 auto;">
+                    <!-- Left Silhouette -->
+                    <div style="flex: 0 0 32%; display: flex; align-items: center; justify-content: center;">
+                        <img src="${step.image}" alt="Silhueta do Corpo" style="width: 100%; max-width: 140px; height: auto; object-fit: contain;">
                     </div>
-                `).join('')}
+                    
+                    <!-- Right Options -->
+                    <div class="options-list" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 8px;">
+                        ${step.options.map(opt => `
+                            <label class="option-row" style="padding: 10px 14px; margin: 0; border: 1px solid #e5e7eb; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s; background: white;" onclick="document.getElementById('${step.id}-error').style.display='none';">
+                                <div class="flex-center" style="gap: 12px;">
+                                    <span class="icon" style="font-size: 1.25rem;">${opt.icon}</span>
+                                    <span class="label" style="font-weight: 600; font-size: 0.95rem; color: #1f2937;">${opt.label}</span>
+                                </div>
+                                <div class="checkbox-container" style="position: relative; width: 22px; height: 22px;">
+                                    <input type="checkbox" value="${opt.id}" data-step="${step.id}" style="display: none;" onchange="
+                                        if(this.value === 'corpo-todo' && this.checked) {
+                                            const all = document.querySelectorAll('input[data-step=${step.id}]');
+                                            all.forEach(c => { if(c !== this) c.checked = false; });
+                                        } else if(this.value !== 'corpo-todo' && this.checked) {
+                                            const ct = document.querySelector('input[data-step=${step.id}][value=corpo-todo]');
+                                            if(ct) ct.checked = false;
+                                        }
+                                    ">
+                                    <div class="custom-checkbox-round" style="width: 22px; height: 22px; border: 2px solid #e5e7eb; border-radius: 6px; background-color: white; transition: all 0.2s; position: absolute; top:0; left:0; pointer-events:none;"></div>
+                                    <style>
+                                        .option-row:has(input[type="checkbox"]:checked) {
+                                            border-color: var(--primary) !important;
+                                            box-shadow: 0 1px 3px rgba(168, 85, 247, 0.1);
+                                        }
+                                        input[type="checkbox"]:checked + .custom-checkbox-round {
+                                            background-color: var(--primary) !important;
+                                            border-color: var(--primary) !important;
+                                        }
+                                        input[type="checkbox"]:checked + .custom-checkbox-round::after {
+                                            content: '';
+                                            position: absolute;
+                                            left: 6px;
+                                            top: 2px;
+                                            width: 5px;
+                                            height: 11px;
+                                            border: solid white;
+                                            border-width: 0 2px 2px 0;
+                                            transform: rotate(45deg);
+                                        }
+                                    </style>
+                                </div>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <button class="btn primary-btn mt-6 w-full" style="padding: 1rem; border-radius: 12px; font-size: 1.05rem;" onclick="handleBodySelectionSubmit('${step.id}', '${step.nextStep}')">${step.buttonText}</button>
+                <div id="${step.id}-error" style="color: #ec4899; text-align: center; font-size: 0.85rem; margin-top: 12px; display: none; font-weight: 600;">Por favor, selecciona por lo menos un área.</div>
             </div>
-            
-            <button class="btn primary-btn mt-5 w-full" onclick="handleBodySelectionSubmit('${step.id}', '${step.nextStep}')">${step.buttonText}</button>
-            <div id="body-selection-error" style="color: #ec4899; text-align: center; font-size: 0.85rem; margin-top: 12px; display: none; font-weight: 600;">Por favor, selecione pelo menos uma área.</div>
         `;
     }
     else if (step.type === "checkout") {
@@ -1479,211 +1588,230 @@ function renderStep(stepId) {
         let meta3 = Math.round(pAtual * 0.12);
 
         contentHTML = `
-            <div class="checkout-container fade-in" style="background: #fafafa; padding-bottom: 40px; min-height: 100vh;">
+            <div class="checkout-container fade-in" style="background: #ffffff; padding-bottom: 40px; min-height: 100vh;">
+                <!-- Product Logo / Branding Top -->
+                <div class="checkout-app-header" style="text-align: center; padding-top: 10px;">
+                    <img src="assets/capa1.webp" alt="Mounjaro" style="height: 35px; width: auto; object-fit: contain;">
+                </div>
+
                 <!-- Pink Banner Top -->
-                <div style="background: #e879f9; color: white; text-align: center; padding: 8px 10px; font-weight: 700; font-size: 0.85rem; border-radius: 8px; margin: 10px auto; max-width: 480px; box-shadow: 0 4px 10px rgba(232, 121, 249, 0.3);">
-                    ⏳ Seu protocolo expira em: <span id="countdown-timer">06:26</span>
+                <div style="background: #e84fc4; color: white; text-align: center; padding: 10px 10px; font-weight: 700; font-size: 0.85rem; border-radius: 8px; margin: 10px auto; max-width: 480px; box-shadow: 0 4px 10px rgba(232, 121, 249, 0.3);">
+                    ⏳ Tu protocolo expira en: <span id="countdown-timer">09:37</span>
                 </div>
 
                 <div class="checkout-header" style="text-align: center; max-width: 480px; margin: 0 auto; padding: 0 10px;">
-                    <div class="success-icon" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #22c55e; display: flex; align-items: center; justify-content: center; margin: 15px auto 10px auto; background: #f0fdf4; box-shadow: 0 0 15px rgba(34,197,94,0.15);">
+                    <div class="success-icon" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #22c55e; display: flex; align-items: center; justify-content: center; margin: 10px auto 10px auto; background: #f0fdf4; box-shadow: 0 0 15px rgba(34,197,94,0.15);">
                         <svg style="width: 20px; height: 20px; color: #22c55e;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     
                     <h2 class="title" style="font-size: 1.15rem; font-weight:800; line-height: 1.4; color: #1e293b; margin-top: 5px;">
-                        <span style="color: #c084fc; font-size: 1.25rem;">${nomeUsuario}</span>, seu<br>
-                        <span style="display:inline-block; margin-top:4px;">Plano da Gelatina de 30 dias foi</span><br>
-                        <span style="background: #dcfce7; color: #16a34a; padding: 4px 12px; border-radius: 6px; font-size:1.15rem; display:inline-block; margin-top: 5px;">Gerado com Sucesso!</span>
+                        <span style="color: #ec4899; font-size: 1.25rem;">${nomeUsuario}</span>, tu<br>
+                        <span style="background: #dcfce7; color: #16a34a; padding: 4px 12px; border-radius: 6px; font-size:1.15rem; display:inline-block; margin-top: 5px;">Plan de Gelatina de 30 días fue</span><br>
+                        <span style="background: #dcfce7; color: #16a34a; padding: 4px 12px; border-radius: 6px; font-size:1.15rem; display:inline-block; margin-top: 5px;">¡Generado con Éxito!</span>
                     </h2>
                     
-                    <p class="subtitle text-center mt-3" style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Ele é exclusivo e gerado só uma vez, não saia dessa página para não perdê-lo.</p>
+                    <p class="subtitle text-center mt-3" style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Es exclusivo y generado solo una vez, no salgas de esta página para no perderlo.</p>
 
                     <!-- Before/After com seta pulsando -->
-                    <div style="margin: 20px auto; max-width: 340px; display: flex; align-items: center; justify-content: center; gap: 0;">
+                    <div style="margin: 25px auto; max-width: 440px; display: flex; align-items: stretch; justify-content: center; position: relative;">
                         <!-- Antes -->
-                        <div style="flex:1; text-align:center; position:relative;">
-                            <img src="assets/antes_depois_realistic-BQbSAZb6.webp" alt="Antes" style="width: 100%; max-width: 140px; height: auto; object-fit: cover; object-position: left; clip-path: inset(0 50% 0 0);">
-                            <div style="margin-top:4px; background:#ef4444; color:white; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:12px; display:inline-block;">ANTES</div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+                            <div style="width: 100%; overflow: hidden; border-radius: 12px 0 0 12px; position: relative; padding-bottom: 130%; background: #f8fafc;">
+                                <img src="assets/antes_depois_realistic-BQbSAZb6.webp" alt="Antes" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: 20% center;">
+                            </div>
+                            <div style="margin-top:-14px; z-index: 2; background:#4b5563; color:white; font-size:0.75rem; font-weight:800; padding:6px 22px; border-radius:20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px;">Antes</div>
                         </div>
-                        <!-- Seta central pulsando -->
-                        <div style="flex-shrink:0; display:flex; flex-direction:column; align-items:center; padding: 0 4px;">
-                            <div id="arrow-pulse" style="font-size: 1.8rem; animation: arrow-pulse-right 1s ease-in-out infinite;">➡️</div>
+                        
+                        <!-- Seta -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; margin-top: -10px;">
+                            <div id="arrow-pulse" style="width: 38px; height: 38px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(34,197,94,0.5); animation: arrow-pulse-right 1s ease-in-out infinite;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </div>
                         </div>
+
                         <!-- Depois -->
-                        <div style="flex:1; text-align:center;">
-                            <img src="assets/antes_depois_realistic-BQbSAZb6.webp" alt="Depois" style="width: 100%; max-width: 140px; height: auto; object-fit: cover; object-position: right; clip-path: inset(0 0 0 50%); transform: translateX(-50%); margin-left: 50%;">
-                            <div style="margin-top:4px; background:#22c55e; color:white; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:12px; display:inline-block;">DEPOIS</div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+                            <div style="width: 100%; overflow: hidden; border-radius: 0 12px 12px 0; position: relative; padding-bottom: 130%; background: #f0fdf4;">
+                                <img src="assets/antes_depois_realistic-BQbSAZb6.webp" alt="Depois" style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; object-fit: cover; object-position: 80% center;">
+                            </div>
+                            <div style="margin-top:-14px; z-index: 2; background:#22c55e; color:white; font-size:0.75rem; font-weight:800; padding:6px 22px; border-radius:20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px;">Después</div>
                         </div>
                     </div>
                     <style>
                         @keyframes arrow-pulse-right {
-                            0%   { transform: translateX(0);    opacity: 1; }
-                            50%  { transform: translateX(6px);  opacity: 0.7; }
-                            100% { transform: translateX(0);    opacity: 1; }
+                            0%   { transform: translateX(0);    opacity: 1; box-shadow: 0 0 10px rgba(34,197,94,0.4); }
+                            50%  { transform: translateX(4px);  opacity: 0.8; box-shadow: 0 0 20px rgba(34,197,94,0.8); }
+                            100% { transform: translateX(0);    opacity: 1; box-shadow: 0 0 10px rgba(34,197,94,0.4); }
                         }
                     </style>
                 </div>
 
                 <div class="checkout-card mt-3 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
-                    <div class="card-header" style="background: linear-gradient(90deg, #d946ef, #ec4899); color: white; padding: 12px; text-align: center;">
-                        <div style="font-size: 0.7rem; font-weight: 700; opacity: 0.9; letter-spacing: 1px;">SEU PLANO EXCLUSIVO</div>
-                        <b style="font-size: 1.1rem; display: block; margin-top: 2px;">1 Mês de Tratamento 🧊</b>
+                    <div class="card-header" style="background: #d946ef; color: white; padding: 12px; text-align: center;">
+                        <div style="font-size: 0.6rem; font-weight: 700; opacity: 0.9; letter-spacing: 1px; text-transform: uppercase;">TU PLAN EXCLUSIVO</div>
+                        <b style="font-size: 1.1rem; display: block; margin-top: 2px;">1 Mes de Tratamiento 🧊</b>
                     </div>
                     <div class="card-body" style="padding: 1.25rem;">
-                        <p class="text-center text-sm mb-4" style="color: #64748b; font-size: 0.8rem; line-height: 1.4;"><span style="color: #ec4899; font-weight: 700;">${nomeUsuario}</span>, seguindo o protocolo certinho, veja o que vai acontecer:</p>
+                        <p class="text-center text-sm mb-4" style="color: #64748b; font-size: 0.75rem; line-height: 1.4;"><span style="color: #ec4899; font-weight: 700;">${nomeUsuario}</span>, siguiendo el protocolo, mira lo que pasará:</p>
                         
                         <div class="timeline-vertical">
-                            <div class="t-row" style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1rem; background: #faf5ff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">✨</div>
-                                <div class="t-content" style="flex: 1;">
-                                    <div class="t-title text-purple" style="font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 1</div>
-                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Desincha e primeiros resultados</div>
+                            <div class="t-row" style="padding: 10px; background: #faf5ff; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; text-align: center; justify-content: center;">
+                                <div class="t-icon" style="font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">✨</div>
+                                <div class="t-content">
+                                    <div class="t-title text-purple" style="font-size: 0.65rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 1</div>
+                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Desinflamación y primeros resultados</div>
                                 </div>
                             </div>
-                            <div class="t-row" style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1rem; background: #faf5ff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; opacity:0.8;">📉</div>
-                                <div class="t-content" style="flex: 1;">
-                                    <div class="t-title text-purple" style="font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 2</div>
-                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Perda de até ${Math.max(2, meta1)} kg</div>
+                            <div class="t-row" style="padding: 10px; background: #fdf2f8; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; text-align: center; justify-content: center;">
+                                <div class="t-icon" style="font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">📉</div>
+                                <div class="t-content">
+                                    <div class="t-title" style="color: #ec4899; font-size: 0.65rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 2</div>
+                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Pérdida de hasta ${Math.max(2, meta1)} kg</div>
                                 </div>
                             </div>
-                            <div class="t-row" style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1rem; background: #faf5ff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; opacity:0.6;">⚡</div>
-                                <div class="t-content" style="flex: 1;">
-                                    <div class="t-title text-purple" style="font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 3</div>
-                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Perda de ${Math.max(4, meta1)} a ${Math.max(6, meta2)} kg</div>
+                            <div class="t-row" style="padding: 10px; background: #fff1f2; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; text-align: center; justify-content: center;">
+                                <div class="t-icon" style="font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">⚡</div>
+                                <div class="t-content">
+                                    <div class="t-title" style="color: #f43f5e; font-size: 0.65rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 3</div>
+                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Pérdida de ${Math.max(4, meta1)} a ${Math.max(6, meta2)} kg</div>
                                 </div>
                             </div>
-                            <div class="t-row" style="padding: 10px 0; display: flex; align-items: center; gap: 12px;">
-                                <div class="t-icon" style="font-size: 1rem; background: #f0fdf4; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; opacity:0.8;">🔥</div>
-                                <div class="t-content" style="flex: 1; display: flex; justify-content: space-between; align-items: center;">
-                                    <div>
-                                        <div class="t-title" style="color: #16a34a; font-size: 0.7rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 4</div>
-                                        <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Perda de ${Math.max(7, meta2)} a ${Math.max(9, meta3)} kg</div>
-                                    </div>
-                                    <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.65rem; font-weight: 800;">META</span>
+                            <div class="t-row" style="padding: 10px; background: #f0fdf4; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; text-align: center; justify-content: center; position: relative;">
+                                <div class="t-icon" style="font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">🔥</div>
+                                <div class="t-content">
+                                    <div class="t-title" style="color: #16a34a; font-size: 0.65rem; font-weight: 700; margin-bottom: 2px; text-transform: uppercase;">SEMANA 4</div>
+                                    <div class="t-desc" style="font-size: 0.8rem; color: #1e293b; font-weight: 600;">Pérdida de ${Math.max(7, meta2)} a ${Math.max(9, meta3)} kg</div>
                                 </div>
+                                <span style="position: absolute; right: 10px; background: #22c55e; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.6rem; font-weight: 800;">META</span>
                             </div>
                         </div>
 
                         <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px; margin-top: 15px; text-align: center;">
-                            <span style="font-size: 0.75rem; color: #16a34a; font-weight: 700;">🎉 Resultado esperado: -${Math.max(7, meta2)} a -${Math.max(9, meta3)} kg em 30 dias</span>
+                            <span style="font-size: 0.75rem; color: #16a34a; font-weight: 700;">🎉 Resultado esperado: -${Math.max(7, meta2)} a -${Math.max(9, meta3)} kg en 30 días</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="checkout-card mt-5 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
-                    <div class="card-header" style="background: #a855f7; color: white; text-align: center; padding: 16px 12px; line-height:1.3;">
+                <div class="checkout-card mt-4 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
+                    <div class="card-header" style="background: linear-gradient(90deg, #d946ef, #a855f7); color: white; text-align: center; padding: 16px 12px; line-height:1.3;">
                         <b style="font-size:1.05rem">Gelatina Mounjaro + APP Protocolo Completo</b><br>
-                        <span style="font-size:0.75rem; opacity:0.9; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-top: 4px;">ACESSO VITALÍCIO</span>
+                        <span style="font-size:0.75rem; opacity:0.9; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-top: 4px;">ACCESO VITALICIO</span>
                     </div>
                     <div class="card-body" style="padding: 1.5rem 1.25rem;">
-                        <div class="text-center py-2" style="display: flex; justify-content: center;">
+                        <div class="text-center py-2" style="display: flex; justify-content: center; margin-bottom: 20px;">
                              <img src="assets/bowl-gelatina-novo.webp" style="width: 140px; border-radius: 12px; max-width:100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Gelatina Mounjaro">
                         </div>
                         <ul class="check-list mt-4" style="list-style: none; padding: 0;">
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
-                                <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Receita completa da Gelatina Mounjaro
+                            <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
+                                <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
+                                Receta completa de la Gelatina Mounjaro
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
-                                <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Protocolo de 30 dias passo a passo
+                            <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
+                                <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
+                                Protocolo de 30 días paso a paso
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
-                                <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Acesso ao Aplicativo Exclusivo
+                            <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
+                                <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
+                                Acceso a la Aplicación Exclusiva
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
-                                <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Lista completa dos ingredientes
+                            <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
+                                <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
+                                Lista completa de los ingredientes
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
-                                <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Dicas para acelerar resultados
+                            <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
+                                <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
+                                Tips para acelerar los resultados
                             </li>
-                            <li style="display:flex; align-items:center; gap:8px; font-size: 0.8rem; color: #334155; margin-bottom: 12px;">
-                                <div style="display:flex; align-items:center; justify-content:center; min-width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 11px; font-weight: bold;">✓</div>
-                                Acesso vitalício ao app
+                            <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
+                                <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
+                                Acceso vitalicio a la app
                             </li>
                         </ul>
                         
                         <div class="bonus-box mt-4" style="background:#faf5ff; border: 1px solid #f3e8ff; border-radius:12px; padding:12px;">
-                            <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-                                <span>🎁</span> BÔNUS: Dietas completas
+                            <div class="bonus-item text-purple" style="font-size:0.7rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                                <span>🎁</span> BONO: Dietas completas
                             </div>
-                            <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-                                <span>🎁</span> BÔNUS: Receitas doces saudáveis
+                            <div class="bonus-item text-purple" style="font-size:0.7rem; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+                                <span>🎁</span> BONO: Recetas dulces saludables
                             </div>
-                            <div class="bonus-item text-purple" style="font-size:0.75rem; font-weight:700; display:flex; align-items:center; gap:8px;">
-                                <span>🎁</span> BÔNUS: Aulas em vídeo de pilates na parede
+                            <div class="bonus-item text-purple" style="font-size:0.7rem; font-weight:700; display:flex; align-items:center; gap:8px;">
+                                <span>🎁</span> BONO: Videoclases de pilates en pared
                             </div>
                         </div>
 
                         <div class="price-section mt-5 text-center">
-                            <div class="crossed-price" style="text-decoration: line-through; color: #94a3b8; font-size: 0.75rem;">TUDO ISSO DE R$ 109,90</div>
-                            <div class="mt-1" style="color: #64748b; font-weight:600; font-size: 0.75rem;">POR APENAS</div>
-                            <div class="main-price text-green" style="font-size: 3.5rem; color: #16a34a; font-weight: 900; line-height:1; margin-top:0.25rem;">R$ 27</div>
-                            <div class="installments mt-1" style="color: #64748b; font-size: 0.8rem;">Ou 6x de R$5,32</div>
+                            <div class="crossed-price" style="text-decoration: line-through; color: #94a3b8; font-size: 0.75rem;">TODO ESTO DE $39.00</div>
+                            <div class="mt-1" style="color: #64748b; font-weight:600; font-size: 0.75rem; text-transform: uppercase;">POR SOLO</div>
+                            <div class="main-price text-green" style="font-size: 3.5rem; color: #22c55e; font-weight: 900; line-height:1; margin-top:0.25rem;">$9.90</div>
+                            <div class="installments mt-1" style="color: #64748b; font-size: 0.8rem; font-weight: 500;">Pago único</div>
                         </div>
                         
-                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
+                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
+                        
+                        <!-- Formas de Pagamento LATAM -->
+                        <div class="payment-methods mt-3 text-center" style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="Visa" style="height: 16px; object-fit: contain;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard" style="height: 16px; object-fit: contain;">
+                            <img src="https://logospng.org/download/mercadopago/logo-mercadopago-icone-1024.png" alt="MercadoPago" style="height: 16px; object-fit: contain; margin-left: 2px;">
+                            <div style="font-size: 0.65rem; color: #64748b; font-weight: 600; margin-left: 5px;">y métodos locales (OXXO, PSE, Sencillito, PagoEfectivo...)</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="guarantee-card mt-5 mx-auto text-center p-4" style="max-width: 480px; background:#fffbeb; border: 1px solid #fef08a; border-radius: 12px;">
+                <div class="guarantee-card mt-5 mx-auto text-center p-4" style="max-width: 480px; background:#fffdeb; border: 1px solid #fef08a; border-radius: 12px;">
                     <img src="assets/selo-garantia.webp" alt="Selo Garantia 30 Dias" class="guarantee-seal mx-auto mb-3" style="width: 100px; border-radius: 0; box-shadow: none;">
-                    <div class="font-bold mb-2" style="font-size: 1rem; color: #1e293b;">Garantia de Reembolso</div>
-                    <p style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.5rem; line-height: 1.4;">Todo o produto tem garantia oficial de 7 dias, porém confiamos tanto em nossa fórmula que nossa garantia é de 30 dias corridos.</p>
-                    <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Ou seja, se você não gostar, devolveremos seu dinheiro na hora, sem questionar.</p>
+                    <div class="font-bold mb-2" style="font-size: 1.1rem; color: #1e293b;">Garantía de Reembolso</div>
+                    <p style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.5rem; line-height: 1.4;">Todo producto debe dar mínimo 7 días de garantía legal, pero confiamos tanto en nuestra fórmula que ofrecemos 30 días.</p>
+                    <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Si no te gusta o no te funciona, te devolveremos hasta el último centavo, sin hacer preguntas.</p>
                 </div>
 
-                <div class="mx-auto mt-4" style="max-width: 480px;">
-                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
+                <div class="mx-auto mt-4" style="max-width: 480px; padding: 0 10px;">
+                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                 </div>
 
                 <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
-                    <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.2rem;">❓ Perguntas Frequentes</h3>
+                    <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.1rem;">❓ Preguntas Frecuentes</h3>
 
                     <style>
-                        .faq-item { border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 10px; background: white; overflow: hidden; }
+                        .faq-item { border: 1px solid #f1f5f9; border-radius: 8px; margin-bottom: 8px; background: white; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
                         .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 14px; cursor: pointer; }
-                        .faq-question h4 { color: #a855f7; font-size: 0.9rem; font-weight: 700; margin: 0; flex:1; }
-                        .faq-arrow { font-size: 1rem; color: #a855f7; transition: transform 0.3s; margin-left: 10px; flex-shrink:0; }
+                        .faq-question h4 { color: #1e293b; font-size: 0.8rem; font-weight: 700; margin: 0; flex:1; }
+                        .faq-arrow { font-size: 1.2rem; color: #a855f7; transition: transform 0.3s; margin-left: 10px; flex-shrink:0; line-height: 1; }
                         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; padding: 0 14px; }
-                        .faq-answer p { font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0 0 14px 0; }
+                        .faq-answer p { font-size: 0.8rem; color: #64748b; line-height: 1.5; margin: 0 0 14px 0; }
                         .faq-item.open .faq-answer { max-height: 200px; padding: 0 14px; }
-                        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+                        .faq-item.open .faq-arrow { transform: rotate(45deg); }
                     </style>
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>A Gelatina Mounjaro realmente funciona?</h4>
-                            <span class="faq-arrow">▼</span>
+                            <h4>¿La Gelatina Mounjaro realmente funciona?</h4>
+                            <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>Sim, a fórmula é 100% natural, baseada em ingredientes comprovados que ativam de forma segura a queima de gordura sem causar efeitos colaterais.</p></div>
                     </div>
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>Quanto tempo leva para ver resultados?</h4>
-                            <span class="faq-arrow">▼</span>
+                            <h4>¿Cuánto tiempo tarda en dar resultados?</h4>
+                            <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>A maioria de nossas clientes sente uma grande desinflamação nos primeiros 3 a 5 dias e uma perda de peso notável ao finalizar a segunda semana.</p></div>
                     </div>
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>É seguro? Tem efeitos colaterais?</h4>
-                            <span class="faq-arrow">▼</span>
+                            <h4>¿Es seguro? ¿Tiene efectos secundarios?</h4>
+                            <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>A receita e o protocolo não possuem contraindicação e não tem efeitos colaterais desde que usados sob acompanhamento saudável, todos os ingredientes são naturais.</p></div>
                     </div>
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>Como vou receber o protocolo?</h4>
-                            <span class="faq-arrow">▼</span>
+                            <h4>¿Cómo recibiré el protocolo?</h4>
+                            <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>Imediatamente após a confirmação da sua compra, você receberá um e-mail com o link para acessar todo o material no nosso Aplicativo Exclusivo.</p></div>
                     </div>
@@ -1691,31 +1819,31 @@ function renderStep(stepId) {
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
                             <h4>E se não funcionar para mim?</h4>
-                            <span class="faq-arrow">▼</span>
+                            <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>Se por qualquer motivo você não se adaptar ao protocolo em 30 dias, basta entrar em contato solicitando o reembolso e devolveremos seu investimento.</p></div>
                     </div>
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>O pagamento é seguro?</h4>
-                            <span class="faq-arrow">▼</span>
+                            <h4>¿El pago es seguro?</h4>
+                            <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>Completamente seguro. Todo o pagamento é processado via Hotmart e Braip, duas das plataformas mais seguras e confiáveis da América Latina.</p></div>
                     </div>
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>Preciso comprar ingredientes caros?</h4>
-                            <span class="faq-arrow">▼</span>
+                            <h4>¿Necesito comprar ingredientes caros?</h4>
+                            <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>Não, a ideia da Gelatina Mounjaro é justamente usar ingredientes que você encontra facilmente em qualquer supermercado e com baixo custo.</p></div>
                     </div>
 
-                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUERO COMEÇAR 🍓</button>
+                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                     
-                    <div class="text-center text-muted mb-4" style="font-size: 0.70rem; color: #94a3b8; margin-top: 15px; display:flex; align-items:center; justify-content:center; gap: 4px;">
-                        <span>🔒 Compra 100% segura • Garantia de 30 dias</span>
+                    <div class="text-center text-muted mb-4" style="font-size: 0.65rem; color: #94a3b8; margin-top: 15px; display:flex; align-items:center; justify-content:center; gap: 4px;">
+                        <span>🔒 Compra 100% segura • Garantía de 30 días</span>
                     </div>
                 </div>
             </div>
@@ -1863,57 +1991,16 @@ function handlePickerSubmit(stepId, nextStepId) {
     goToStep(nextStepId);
 }
 
-function toggleBodyPart(el, id) {
-    const isSelected = el.classList.toggle('selected');
-    const overlay = document.getElementById('overlay-' + id);
-    if (overlay) {
-        if (isSelected) overlay.classList.add('active');
-        else overlay.classList.remove('active');
-    }
-
-    // For doubled parts like arms/legs
-    const overlay2 = document.getElementById('overlay-' + id + '-2');
-    if (overlay2) {
-        if (isSelected) overlay2.classList.add('active');
-        else overlay2.classList.remove('active');
-    }
-
-    if (id === 'corpo-todo') {
-        const allHotspots = document.querySelectorAll('.body-hotspot');
-        const allOverlays = document.querySelectorAll('.body-overlay');
-        if (isSelected) {
-            allHotspots.forEach(h => h.classList.add('selected'));
-            allOverlays.forEach(o => o.classList.add('active'));
-        } else {
-            allHotspots.forEach(h => h.classList.remove('selected'));
-            allOverlays.forEach(o => o.classList.remove('active'));
-        }
-    } else {
-        if (!isSelected) {
-            const corpoTodo = document.querySelector('.hotspot-corpo-todo');
-            if (corpoTodo) corpoTodo.classList.remove('selected');
-        }
-    }
-
-    const errorMsg = document.getElementById('body-selection-error');
-    if (errorMsg && errorMsg.style.display === 'block') {
-        errorMsg.style.display = 'none';
-    }
-}
-
 function handleBodySelectionSubmit(stepId, nextStep) {
-    const selected = Array.from(document.querySelectorAll('.body-hotspot.selected')).map(el => {
-        const idClass = Array.from(el.classList).find(c => c.startsWith('hotspot-'));
-        return idClass ? idClass.replace('hotspot-', '') : null;
-    }).filter(id => id !== null);
-
-    const errorMsg = document.getElementById('body-selection-error');
-    if (selected.length === 0) {
+    const checkedBoxes = document.querySelectorAll(`input[data-step="${stepId}"]:checked`);
+    if (checkedBoxes.length === 0) {
+        const errorMsg = document.getElementById(`${stepId}-error`);
         if (errorMsg) errorMsg.style.display = 'block';
         return;
     }
 
-    userAnswers[stepId] = selected;
+    const values = Array.from(checkedBoxes).map(cb => cb.value);
+    userAnswers[stepId] = values;
     goToStep(nextStep);
 }
 
