@@ -4,9 +4,9 @@ const stepsData = [
         type: "welcome",
         hideProgress: true,
         image: "assets/capa1.webp",
-        subtitle: "Descubra como ativar seu metabolismo e perder até <span class='text-purple'>12kg em 30 dias</span> com a <span class='text-purple'>Gelatina Mounjaro!</span>",
-        buttonText: "Quero saber se funciona para mim! 🔥",
-        footerText: "✓ 127.000+ mulheres &nbsp;•&nbsp; ✓ 100% Natural",
+        subtitle: "Descubre cómo activar tu metabolismo y perder hasta <span class='text-purple'>12kg en 30 días</span> con la <span class='text-purple'>Gelatina Mounjaro!</span>",
+        buttonText: "¡Quiero saber si funciona para mí! 🔥",
+        footerText: "✓ 127.000+ mujeres &nbsp;•&nbsp; ✓ 100% Natural",
         nextStep: "intro"
     },
     {
@@ -448,7 +448,7 @@ function renderStep(stepId) {
                     <img src="${step.image}" alt="Mounjaro Gelatina" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
                 </div>
                 <p class="subtitle mt-1" style="font-size: 1.1rem; line-height: 1.5; color: #6b7280; font-weight: 400; max-width: 95%; margin: 0 auto;">${step.subtitle}</p>
-                <button class="btn mt-4" style="background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); width: auto; min-width: 250px; font-size: 1.05rem; font-weight: 700; padding: 1rem 1.5rem; border-radius: 12px; box-shadow: 0 8px 25px -5px rgba(34, 197, 94, 0.5); margin-top: 1.5rem; border: 1px solid #16a34a; transition: transform 0.2s; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'" onclick="goToStep('${step.nextStep}')">Quero saber se funciona para mim! 🔥</button>
+                <button class="btn mt-4" style="background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); width: auto; min-width: 250px; font-size: 1.05rem; font-weight: 700; padding: 1rem 1.5rem; border-radius: 12px; box-shadow: 0 8px 25px -5px rgba(34, 197, 94, 0.5); margin-top: 1.5rem; border: 1px solid #16a34a; transition: transform 0.2s; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'" onclick="goToStep('${step.nextStep}')">¡Quiero saber si funciona para mí! 🔥</button>
                 <p class="footer-text" style="margin-top: 1.5rem; font-size: 0.85rem; color: #9ca3af; font-weight: 500;">${step.footerText}</p>
             </div>
         `;
@@ -599,15 +599,15 @@ function renderStep(stepId) {
 
         contentHTML = `
             <div class="content-wrapper">
-                <h2 class="title text-center text-xl font-bold">Ótimo, <span class="text-pink">${nomeUsuario}</span>! <span class="text-purple">Veja como funciona 🎉</span></h2>
-                <p class="subtitle text-center mt-2 mb-4 text-pink font-bold">A Gelatina Mounjaro ativa a queima de gordura natural com <span class="text-gray-500 font-normal">ingredientes caseiros que você prepara em minutos.</span></p>
+                <h2 class="title text-center text-xl font-bold">¡Excelente, <span class="text-pink">${nomeUsuario}</span>! <span class="text-purple">Mira cómo funciona 🎉</span></h2>
+                <p class="subtitle text-center mt-2 mb-4 text-pink font-bold">La Gelatina Mounjaro activa la quema de grasa natural con <span class="text-gray-500 font-normal">ingredientes caseros que preparas en minutos.</span></p>
 
                 <div class="funciona-check-list mb-4">
                     <div class="funciona-check-item">
                         <div class="check-icon">✓</div> Fácil de preparar
                     </div>
                     <div class="funciona-check-item">
-                        <div class="check-icon">✓</div> 2 vezes ao dia
+                        <div class="check-icon">✓</div> 2 veces al día
                     </div>
                     <div class="funciona-check-item">
                         <div class="check-icon">✓</div> Receta 100% Natural
@@ -621,7 +621,7 @@ function renderStep(stepId) {
                         <div class="funciona-img-box"><img src="assets/flow_antes-XnqC_31E.webp" alt="Antes"></div>
                         <div class="funciona-text">
                             <strong>Antes</strong>
-                            <span>Gordura acumulada e metabolismo lento</span>
+                            <span>Grasa acumulada y metabolismo lento</span>
                         </div>
                     </div>
                     <div class="funciona-arrow text-purple">↓</div>
@@ -632,7 +632,7 @@ function renderStep(stepId) {
                         <div class="funciona-img-box"><img src="assets/flow_gelatina-B9ryWXkD.webp" alt="Gelatina"></div>
                         <div class="funciona-text">
                             <strong class="text-purple">Gelatina Mounjaro</strong>
-                            <span>Receita caseira simples e poderosa</span>
+                            <span>Receta casera simple y poderosa</span>
                         </div>
                     </div>
                     <div class="funciona-arrow text-purple">↓</div>
@@ -640,10 +640,10 @@ function renderStep(stepId) {
                     <!-- Item 3 -->
                     <div class="funciona-timeline-item">
                         <div class="funciona-number bg-purple">3</div>
-                        <div class="funciona-img-box"><img src="assets/icone_queima.webp" alt="Queima"></div>
+                        <div class="funciona-img-box"><img src="assets/icone_queima.webp" alt="Quema"></div>
                         <div class="funciona-text">
-                            <strong>Queima natural ativada 🔥</strong>
-                            <span>Metabolismo acelerado sem dietas</span>
+                            <strong>Quema natural activada 🔥</strong>
+                            <span>Metabolismo acelerado sin dietas</span>
                         </div>
                     </div>
                     <div class="funciona-arrow text-green">↓</div>
@@ -651,19 +651,19 @@ function renderStep(stepId) {
                     <!-- Item 4 -->
                     <div class="funciona-timeline-item">
                         <div class="funciona-number bg-green">✨</div>
-                        <div class="funciona-img-box"><img src="assets/corpo_sonhos.webp" alt="Depois"></div>
+                        <div class="funciona-img-box"><img src="assets/corpo_sonhos.webp" alt="Después"></div>
                         <div class="funciona-text text-green">
-                            <strong class="text-green">Corpo dos sonhos!</strong>
-                            <span class="text-gray-500">Resultado visível em poucas semanas</span>
+                            <strong class="text-green">¡Cuerpo de los sueños!</strong>
+                            <span class="text-gray-500">Resultado visible en pocas semanas</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="funciona-info-box mt-4">
-                    <p>💡 <strong class="text-purple font-bold">Receita caseira</strong> que ativa o <strong class="font-bold">GLP-1</strong>, o mesmo hormônio do Mounjaro, de forma <strong class="text-purple font-bold">100% natural!</strong></p>
+                    <p>💡 <strong class="text-purple font-bold">Receta casera</strong> que activa el <strong class="font-bold">GLP-1</strong>, la misma hormona del Mounjaro, ¡de forma <strong class="text-purple font-bold">100% natural!</strong></p>
                 </div>
 
-                <button class="btn gradient-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">Entendi! Continuar 🚀</button>
+                <button class="btn gradient-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">¡Entendido! Continuar 🚀</button>
             </div>
         `;
     }
@@ -682,14 +682,14 @@ function renderStep(stepId) {
                 </div>
                 
                 <div class="objetivo-card text-center text-main" style="background: #faf5ff; border: 1px solid #f3e8ff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
-                    <h2 class="title text-lg font-bold mb-2">Esse é um ótimo objetivo, <span class="text-pink" style="display:inline-block">${nomeUsuario}! 💜</span></h2>
+                    <h2 class="title text-lg font-bold mb-2">¡Ese es un excelente objetivo, <span class="text-pink" style="display:inline-block">${nomeUsuario}! 💜</span></h2>
                     
                     <p class="objetivo-meta mb-3" style="color: #64748b; font-size: 0.85rem;">
                         Meta: ${pAtual}kg ➔ ${pDesejado}kg (${diferenca}kg)
                     </p>
                     
                     <p class="objetivo-desc" style="color: #64748b; font-size: 0.95rem; line-height: 1.5;">
-                        Agora vamos ajustar o próximo passo para você começar a perceber diferença <span class="text-purple font-bold">já nos primeiros dias.</span>
+                        Ahora vamos a ajustar el próximo paso para que comiences a notar la diferencia <span class="text-purple font-bold">ya en los primeros días.</span>
                     </p>
                 </div>
 
@@ -827,26 +827,23 @@ function renderStep(stepId) {
     else if (step.type === "radio-image-top") {
         contentHTML = `
             <div class="content-wrapper centered-padding pb-8">
+                <style>
+                    @keyframes inline-arrow-pulse-right {
+                        0%, 100% { transform: translateX(0); box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4); }
+                        50% { transform: translateX(8px); box-shadow: 0 4px 20px rgba(236, 72, 153, 0.6); }
+                    }
+                </style>
                 <div style="max-width: 480px; margin: 0 auto; width: 100%;">
                     <div style="margin: 0 auto 10px auto; max-width: 380px; display: flex; align-items: stretch; justify-content: center; position: relative;">
-                        <!-- Antes -->
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
-                            <div style="width: 100%; overflow: hidden; border-radius: 12px 0 0 12px; position: relative; padding-bottom: 110%; background: #f8fafc; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                                <img src="${step.image}" alt="Antes" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: 20% center;">
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1; position: relative;">
+                            <div style="width: 100%; overflow: hidden; border-radius: 12px; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                                <img src="${step.image}" alt="Transformação" style="width: 100%; height: auto; display: block; object-fit: contain;">
                             </div>
-                        </div>
-                        
-                        <!-- Seta Centralizada -->
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
-                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #a855f7, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4); animation: arrow-pulse-right 1.5s ease-in-out infinite;">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
-                        </div>
-
-                        <!-- Depois -->
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
-                            <div style="width: 100%; overflow: hidden; border-radius: 0 12px 12px 0; position: relative; padding-bottom: 110%; background: #f0fdf4; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                                <img src="${step.image}" alt="Depois" style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; object-fit: cover; object-position: 80% center;">
+                            <!-- Seta Centralizada -->
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; pointer-events: none;">
+                                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #a855f7, #ec4899); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: inline-arrow-pulse-right 1.5s ease-in-out infinite;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1022,7 +1019,7 @@ function renderStep(stepId) {
                     <div class="loading-dot" style="width: 10px; height: 10px; border-radius: 50%; background-color: #6b7280; transition: all 0.3s; opacity: 0.4;"></div>
                 </div>
 
-                <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #9ca3af;">Aguarde um momento...</p>
+                <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #9ca3af;">Espera un momento...</p>
             </div>
         `;
 
@@ -1045,10 +1042,10 @@ function renderStep(stepId) {
 
             // Update loading text organically during the 30 seconds
             if (loadingText) {
-                if (progress > 85) loadingText.innerText = "Finalizando a análise do perfil...";
-                else if (progress > 65) loadingText.innerText = "Calculando seu metabolismo ideal...";
-                else if (progress > 45) loadingText.innerText = "Buscando o protocolo de acordo...";
-                else if (progress > 25) loadingText.innerText = "Cruzando dados da sua rotina...";
+                if (progress > 85) loadingText.innerText = "Finalizando el análisis del perfil...";
+                else if (progress > 65) loadingText.innerText = "Calculando tu metabolismo ideal...";
+                else if (progress > 45) loadingText.innerText = "Buscando el protocolo adecuado...";
+                else if (progress > 25) loadingText.innerText = "Cruzando datos de tu rutina...";
             }
 
             // Animate dots slightly
@@ -1170,12 +1167,12 @@ function renderStep(stepId) {
                 </style>
 
                 <h2 style="font-size: 1.15rem; font-weight: 800; text-align: center; color: #1f2937; margin-bottom: 0.25rem; line-height: 1.4;">
-                    Ahora assista à explicação rápida de <span style="color: #a855f7;">1 Minuto</span><br>
-                    <span style="font-size: 0.95em; color: #ec4899;">e entenda por que esse método está<br>chamando atenção 👀</span>
+                    Ahora mira la explicación rápida de <span style="color: #a855f7;">1 Minuto</span><br>
+                    <span style="font-size: 0.95em; color: #ec4899;">y entiende por qué este método está<br>llamando la atención 👀</span>
                 </h2>
                 
                 <div style="text-align: center; margin-bottom: 0.5rem; margin-top: 1rem;">
-                    <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block; animation: vsl-btn-pulse 1.5s ease-in-out infinite; box-shadow: 0 0 0 0 rgba(251,191,36,0.7);">Clique no vídeo para Assistir ⬇️</div>
+                    <div style="background-color: #fbbf24; padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; color: #111827; display: inline-block; animation: vsl-btn-pulse 1.5s ease-in-out infinite; box-shadow: 0 0 0 0 rgba(251,191,36,0.7);">Haz clic en el video para ver ⬇️</div>
                 </div>
 
                 <div class="vsl-wrapper">
@@ -1750,11 +1747,27 @@ function renderStep(stepId) {
                         <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                         
                         <!-- Formas de Pagamento LATAM -->
-                        <div class="payment-methods mt-3 text-center" style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="Visa" style="height: 16px; object-fit: contain;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard" style="height: 16px; object-fit: contain;">
-                            <img src="https://logospng.org/download/mercadopago/logo-mercadopago-icone-1024.png" alt="MercadoPago" style="height: 16px; object-fit: contain; margin-left: 2px;">
-                            <div style="font-size: 0.65rem; color: #64748b; font-weight: 600; margin-left: 5px;">y métodos locales (OXXO, PSE, Sencillito, PagoEfectivo...)</div>
+                        <div class="payment-methods mt-4 text-center" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; max-width: 100%;">
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <!-- Visa -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" style="height: 14px; object-fit: contain;">
+                                <!-- Mastercard -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" alt="Mastercard" style="height: 20px; object-fit: contain;">
+                                <!-- Amex -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express" style="height: 20px; object-fit: contain;">
+                                <!-- Diners Club -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Diners_Club_Logo3.svg" alt="Diners Club" style="height: 18px; object-fit: contain;">
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
+                                <!-- Mercado Pago -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Mercado_Pago_logo.svg" alt="Mercado Pago" style="height: 20px; object-fit: contain;">
+                                <!-- OXXO (Mexico) -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/OXXO_logo.svg" alt="OXXO" style="height: 18px; object-fit: contain;">
+                                <!-- PSE (Colombia) -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Pse_logo.svg" alt="PSE" style="height: 22px; object-fit: contain;">
+                                <div style="font-size: 0.75rem; color: #475569; font-weight: 800; text-transform: italic;">+ Pagos Locales</div>
+                            </div>
+                            <div style="font-size: 0.65rem; color: #64748b; font-weight: 500; text-align: center; margin-top: 8px;">Soporte para PagoEfectivo, Sencillito, Mach, Efecty y cuotas habilitadas en LatAm 🌎</div>
                         </div>
                     </div>
                 </div>
