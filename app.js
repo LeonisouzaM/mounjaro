@@ -1611,27 +1611,21 @@ function renderStep(stepId) {
 
                     <!-- Before/After com seta pulsando -->
                     <div style="margin: 25px auto; max-width: 440px; display: flex; align-items: stretch; justify-content: center; position: relative;">
-                        <!-- Antes -->
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
-                            <div style="width: 100%; overflow: hidden; border-radius: 12px 0 0 12px; position: relative; padding-bottom: 130%; background: #f8fafc;">
-                                <img src="assets/antes_depois_realistic-BQbSAZb6.webp" alt="Antes" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: 20% center;">
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1; position: relative;">
+                            <div style="width: 100%; border-radius: 12px; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden;">
+                                <img src="assets/antes_depois_realistic-BQbSAZb6.webp" alt="Transformación" style="width: 100%; height: auto; display: block; object-fit: contain;">
                             </div>
-                            <div style="margin-top:-14px; z-index: 2; background:#4b5563; color:white; font-size:0.75rem; font-weight:800; padding:6px 22px; border-radius:20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px;">Antes</div>
-                        </div>
-                        
-                        <!-- Seta -->
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; margin-top: -10px;">
-                            <div id="arrow-pulse" style="width: 38px; height: 38px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(34,197,94,0.5); animation: arrow-pulse-right 1s ease-in-out infinite;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            
+                            <!-- Badges -->
+                            <div style="position: absolute; bottom: -12px; left: 15%; z-index: 2; background:#4b5563; color:white; font-size:0.75rem; font-weight:800; padding:6px 22px; border-radius:20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px;">Antes</div>
+                            <div style="position: absolute; bottom: -12px; right: 15%; z-index: 2; background:#22c55e; color:white; font-size:0.75rem; font-weight:800; padding:6px 22px; border-radius:20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px;">Después</div>
+                            
+                            <!-- Seta Centralizada -->
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
+                                <div id="arrow-pulse" style="width: 38px; height: 38px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(34,197,94,0.5); animation: arrow-pulse-right 1s ease-in-out infinite;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Depois -->
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
-                            <div style="width: 100%; overflow: hidden; border-radius: 0 12px 12px 0; position: relative; padding-bottom: 130%; background: #f0fdf4;">
-                                <img src="assets/antes_depois_realistic-BQbSAZb6.webp" alt="Depois" style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; object-fit: cover; object-position: 80% center;">
-                            </div>
-                            <div style="margin-top:-14px; z-index: 2; background:#22c55e; color:white; font-size:0.75rem; font-weight:800; padding:6px 22px; border-radius:20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px;">Después</div>
                         </div>
                     </div>
                     <style>
