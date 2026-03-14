@@ -416,6 +416,18 @@ function trackStep(stepId) {
 }
 
 function initApp() {
+    // Permite testar direto numa página específica pela URL (ex: ?step=checkout&nome=Leoni)
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetStep = urlParams.get('step');
+    
+    if (urlParams.has('nome')) {
+        userAnswers['nome'] = urlParams.get('nome');
+    }
+    
+    if (targetStep && stepsData.find(s => s.id === targetStep)) {
+        currentStepId = targetStep;
+    }
+    
     renderStep(currentStepId);
 }
 
