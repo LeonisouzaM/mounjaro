@@ -1746,8 +1746,8 @@ function renderStep(stepId) {
                         <div class="price-section mt-5 text-center">
                             <div class="crossed-price" style="font-size: 0.75rem;">
                                 <span style="color: #1e293b; font-weight: bold;">TODO ESTO DE </span>
-                                <span style="text-decoration: line-through; color: #ef4444; font-weight: bold;">
-                                    <span style="color: #1e293b;">$39.00</span>
+                                <span style="text-decoration: line-through; color: #1e293b; font-weight: bold;">
+                                    <span style="color: #ef4444;">$39.00</span>
                                 </span>
                             </div>
                             <div class="mt-1" style="color: #64748b; font-weight:600; font-size: 0.75rem; text-transform: uppercase;">POR SOLO</div>
