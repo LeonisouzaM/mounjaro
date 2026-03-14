@@ -1747,26 +1747,19 @@ function renderStep(stepId) {
                         
                         <!-- Formas de Pagamento LATAM -->
                         <div class="payment-methods mt-4 text-center" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; max-width: 100%;">
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px;">
-                                <!-- Visa -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="Visa" style="height: 14px; object-fit: contain;">
-                                <!-- Mastercard -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard" style="height: 16px; object-fit: contain;">
-                                <!-- Amex -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/196/196539.png" alt="American Express" style="height: 16px; object-fit: contain;">
-                                <!-- Diners Club -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/196/196548.png" alt="Diners Club" style="height: 16px; object-fit: contain;">
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 8px;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" style="height: 16px; width: auto; display: block; object-fit: contain;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" alt="Mastercard" style="height: 22px; width: auto; display: block; object-fit: contain;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="Amex" style="height: 22px; width: auto; display: block; object-fit: contain;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Diners_Club_Logo3.svg" alt="Diners Club" style="height: 20px; width: auto; display: block; object-fit: contain;">
                             </div>
                             <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
-                                <!-- Mercado Pago -->
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Mercado_Pago_logo.svg/320px-Mercado_Pago_logo.svg.png" alt="Mercado Pago" style="height: 20px; object-fit: contain;">
-                                <!-- OXXO (Mexico) -->
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/OXXO_logo.svg/320px-OXXO_logo.svg.png" alt="OXXO" style="height: 18px; object-fit: contain;">
-                                <!-- PSE (Colombia) -->
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Pse_logo.svg/320px-Pse_logo.svg.png" alt="PSE" style="height: 22px; object-fit: contain;">
+                                <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.19.5/mercadopago/logo__small@2x.png" alt="Mercado Pago" style="height: 22px; width: auto; display: block; object-fit: contain;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/OXXO_logo.svg" alt="OXXO" style="height: 20px; width: auto; display: block; object-fit: contain;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Pse_logo.svg" alt="PSE" style="height: 24px; width: auto; display: block; object-fit: contain;">
                                 <div style="font-size: 0.75rem; color: #475569; font-weight: 800; text-transform: italic;">+ Pagos Locales</div>
                             </div>
-                            <div style="font-size: 0.65rem; color: #64748b; font-weight: 500; text-align: center; margin-top: 8px;">Soporte para PagoEfectivo, Sencillito, Mach, Efecty y cuotas habilitadas en LatAm 🌎</div>
+                            <div style="font-size: 0.65rem; color: #64748b; font-weight: 500; text-align: center; margin-top: 10px;">Soporte para PagoEfectivo, Sencillito, Mach, Efecty y cuotas habilitadas en LatAm 🌎</div>
                         </div>
                     </div>
                 </div>
