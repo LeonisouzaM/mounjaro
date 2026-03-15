@@ -1814,10 +1814,6 @@ function renderStep(stepId) {
                     <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                 </div>
 
-                <a href="https://wa.me/5517981980763?text=Hola,%20necesito%20ayuda%20con%20el%20Protocolo%20Mounjaro" class="whatsapp-float" target="_blank" aria-label="WhatsApp Support">
-                    <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-2.32 0-4.515.903-6.156 2.544-1.64 1.64-2.543 3.837-2.544 6.156 0 2.321.903 4.515 2.544 6.156l.003.004c1.64 1.64 3.836 2.543 6.155 2.543 2.32 0 4.515-.903 6.156-2.544 1.64-1.64 2.543-3.837 2.544-6.156 0-2.32-.903-4.515-2.544-6.156l-.003-.004c-1.641-1.64-3.836-2.543-6.155-2.543Zm0 16.035c-1.921 0-3.725-.748-5.08-2.103-1.355-1.356-2.103-3.16-2.103-5.08 0-1.921.748-3.725 2.103-5.08 1.356-1.355 3.16-2.103 5.08-2.103a7.18 7.18 0 0 1 5.08 2.103c1.355 1.356 2.103 3.16 2.103 5.08 0 1.921-.747 3.724-2.102 5.08-1.355 1.355-3.159 2.103-5.081 2.103Zm3.194-4.275c-.175-.088-.415-.224-.614-.323-.199-.098-.567-.282-.733-.365-.165-.082-.284-.124-.403.042-.119.167-.46.582-.564.707-.104.124-.208.141-.383.054-.175-.088-.738-.272-1.405-.867-.519-.462-.871-1.034-.972-1.209-.101-.175-.011-.27.077-.357.081-.077.175-.205.263-.306.088-.101.117-.175.175-.292.058-.117.029-.22-.014-.306-.044-.088-.403-1.127-.552-1.511-.145-.373-.293-.323-.404-.323-.105 0-.225-.011-.345-.011-.119 0-.314.045-.48.225-.166.18-.636.621-.636 1.513 0 .891.648 1.753.738 1.876s1.275 1.947 3.089 2.729c1.814.782 1.814.521 2.144.49.329-.031 1.063-.434 1.21-.855.148-.42.148-.78.104-.855-.044-.075-.164-.119-.339-.207Z"/></svg>
-                </a>
-
                 <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
                     <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.1rem;">❓ Preguntas Frecuentes</h3>
 
@@ -1927,6 +1923,12 @@ function renderStep(stepId) {
         } else {
             backBtn.style.display = "none";
         }
+    }
+
+    // Toggle WhatsApp Button only on checkout page
+    const waBtn = document.getElementById('whatsapp-btn');
+    if (waBtn) {
+        waBtn.style.display = (stepId === 'plano-gerado') ? 'flex' : 'none';
     }
 
     currentStepId = stepId;
