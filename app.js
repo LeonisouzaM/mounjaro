@@ -1814,6 +1814,10 @@ function renderStep(stepId) {
                     <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                 </div>
 
+                <a href="https://wa.me/5517981980763?text=Hola,%20necesito%20ayuda%20con%20el%20Protocolo%20Mounjaro" class="whatsapp-float" target="_blank" aria-label="WhatsApp Support">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-2.32 0-4.515.903-6.156 2.544-1.64 1.64-2.543 3.837-2.544 6.156 0 2.321.903 4.515 2.544 6.156l.003.004c1.64 1.64 3.836 2.543 6.155 2.543 2.32 0 4.515-.903 6.156-2.544 1.64-1.64 2.543-3.837 2.544-6.156 0-2.32-.903-4.515-2.544-6.156l-.003-.004c-1.641-1.64-3.836-2.543-6.155-2.543Zm0 16.035c-1.921 0-3.725-.748-5.08-2.103-1.355-1.356-2.103-3.16-2.103-5.08 0-1.921.748-3.725 2.103-5.08 1.356-1.355 3.16-2.103 5.08-2.103a7.18 7.18 0 0 1 5.08 2.103c1.355 1.356 2.103 3.16 2.103 5.08 0 1.921-.747 3.724-2.102 5.08-1.355 1.355-3.159 2.103-5.081 2.103Zm3.194-4.275c-.175-.088-.415-.224-.614-.323-.199-.098-.567-.282-.733-.365-.165-.082-.284-.124-.403.042-.119.167-.46.582-.564.707-.104.124-.208.141-.383.054-.175-.088-.738-.272-1.405-.867-.519-.462-.871-1.034-.972-1.209-.101-.175-.011-.27.077-.357.081-.077.175-.205.263-.306.088-.101.117-.175.175-.292.058-.117.029-.22-.014-.306-.044-.088-.403-1.127-.552-1.511-.145-.373-.293-.323-.404-.323-.105 0-.225-.011-.345-.011-.119 0-.314.045-.48.225-.166.18-.636.621-.636 1.513 0 .891.648 1.753.738 1.876s1.275 1.947 3.089 2.729c1.814.782 1.814.521 2.144.49.329-.031 1.063-.434 1.21-.855.148-.42.148-.78.104-.855-.044-.075-.164-.119-.339-.207Z"/></svg>
+                </a>
+
                 <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
                     <h3 class="font-bold text-center mb-4" style="color:#1e293b; font-size: 1.1rem;">❓ Preguntas Frecuentes</h3>
 
@@ -1833,7 +1837,7 @@ function renderStep(stepId) {
                             <h4>¿La Gelatina Mounjaro realmente funciona?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>Sim, a fórmula é 100% natural, baseada em ingredientes comprovados que ativam de forma segura a queima de gordura sem causar efeitos colaterais.</p></div>
+                        <div class="faq-answer"><p>Sí, la fórmula es 100% natural, basada en ingredientes comprobados que activan de forma segura la quema de grasa sin causar efectos secundarios.</p></div>
                     </div>
 
                     <div class="faq-item">
@@ -1841,7 +1845,7 @@ function renderStep(stepId) {
                             <h4>¿Cuánto tiempo tarda en dar resultados?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>A maioria de nossas clientes sente uma grande desinflamação nos primeiros 3 a 5 dias e uma perda de peso notável ao finalizar a segunda semana.</p></div>
+                        <div class="faq-answer"><p>La mayoría de nuestras clientes siente una gran desinflamación en los primeros 3 a 5 días y una pérdida de peso notable al finalizar la segunda semana.</p></div>
                     </div>
 
                     <div class="faq-item">
@@ -1849,7 +1853,7 @@ function renderStep(stepId) {
                             <h4>¿Es seguro? ¿Tiene efectos secundarios?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>A receita e o protocolo não possuem contraindicação e não tem efeitos colaterais desde que usados sob acompanhamento saudável, todos os ingredientes são naturais.</p></div>
+                        <div class="faq-answer"><p>La receta y el protocolo no tienen contraindicaciones y no tienen efectos secundarios siempre que se usen bajo un seguimiento saludable, todos los ingredientes son naturales.</p></div>
                     </div>
 
                     <div class="faq-item">
@@ -1857,15 +1861,15 @@ function renderStep(stepId) {
                             <h4>¿Cómo recibiré el protocolo?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>Imediatamente após a confirmação da sua compra, você receberá um e-mail com o link para acessar todo o material no nosso Aplicativo Exclusivo.</p></div>
+                        <div class="faq-answer"><p>Inmediatamente después de la confirmación de su compra, recibirás un correo electrónico con el enlace para acceder a todo el material en nuestra Aplicación Exclusiva.</p></div>
                     </div>
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>E se não funcionar para mim?</h4>
+                            <h4>¿Y si no funciona para mí?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>Se por qualquer motivo você não se adaptar ao protocolo em 30 dias, basta entrar em contato solicitando o reembolso e devolveremos seu investimento.</p></div>
+                        <div class="faq-answer"><p>Si por cualquier motivo no te adaptas al protocolo en 30 días, basta con ponerte en contacto solicitando el reembolso y te devolveremos tu inversión.</p></div>
                     </div>
 
                     <div class="faq-item">
@@ -1873,7 +1877,7 @@ function renderStep(stepId) {
                             <h4>¿El pago es seguro?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>Completamente seguro. Todo o pagamento é processado via Hotmart e Braip, duas das plataformas mais seguras e confiáveis da América Latina.</p></div>
+                        <div class="faq-answer"><p>Completamente seguro. Todo el pago se procesa a través de Hotmart y Braip, dos de las plataformas más seguras y confiables de América Latina.</p></div>
                     </div>
 
                     <div class="faq-item">
@@ -1881,7 +1885,7 @@ function renderStep(stepId) {
                             <h4>¿Necesito comprar ingredientes caros?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>Não, a ideia da Gelatina Mounjaro é justamente usar ingredientes que você encontra facilmente em qualquer supermercado e com baixo custo.</p></div>
+                        <div class="faq-answer"><p>No, la idea de la Gelatina Mounjaro es justamente usar ingredientes que encuentras fácilmente en cualquier supermercado y de bajo costo.</p></div>
                     </div>
 
                     <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/J104701335C?bid=1772379518612')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
