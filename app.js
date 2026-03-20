@@ -13,9 +13,11 @@ const stepsData = [
         id: "intro",
         type: "intro",
         progress: 5,
-        title: "¡Comencemos tu viaje! 🚀",
-        subtitle: "Responde algunas preguntas rápidas para personalizar tu plan.",
-        buttonText: "¡Vamos! 💪",
+        title: "Si tu barriga no baja, hay una razón <span class='text-purple'>(y no es tu culpa)</span>",
+        subtitle: "Aunque hagas dieta o comas menos, tu cuerpo puede estar <span class='text-purple font-bold'>bloqueado sin que lo sepas</span>",
+        microtext: "Toma menos de 30 segundos",
+        buttonText: "QUIERO DESCUBRIRLO 🔥",
+        image: "assets/mulher_dor_abdominal.png",
         nextStep: "idade"
     },
     {
@@ -467,11 +469,49 @@ function renderStep(stepId) {
     }
     else if (step.type === "intro") {
         contentHTML = `
-            <div class="content-wrapper centered-padding">
-                <h2 class="title text-center text-xl sm-text-2xl">${step.title}</h2>
-                <p class="subtitle text-center mt-3">${step.subtitle}</p>
-                <button class="btn primary-btn mt-5" onclick="goToStep('${step.nextStep}')">${step.buttonText}</button>
+            <div class="content-wrapper centered-padding pb-8" style="display: flex; flex-direction: column; align-items: center; padding-top: 1.5rem;">
+                
+                <!-- Título (Dor) -->
+                <h2 class="title text-center mx-auto" style="font-size: 1.6rem; line-height: 1.3; font-weight: 900; color: #111827; margin-bottom: 0.75rem; max-width: 480px; letter-spacing: -0.5px;">
+                    ${step.title}
+                </h2>
+                
+                <!-- Subtítulo (Identificação e Curiosidade) -->
+                <p class="subtitle mt-1 text-center mx-auto" style="font-size: 1.15rem; line-height: 1.5; color: #374151; margin-bottom: 1.8rem; max-width: 460px; font-weight: 500;">
+                    ${step.subtitle}
+                </p>
+                
+                <!-- Imagem (Emoção / Foco na Dor) -->
+                <div class="intro-image-container mx-auto" style="width: 100%; max-width: 380px; margin-bottom: 1.5rem; position: relative;">
+                    <img src="${step.image}" alt="Erro oculto no metabolismo" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px -5px rgba(147, 51, 234, 0.25); border: 2px solid #fdf4ff; object-fit: cover;">
+                </div>
+
+                <!-- Microtexto -->
+                <p class="mx-auto" style="font-size: 0.95rem; color: #6b7280; text-align: center; margin-bottom: 1.2rem; font-weight: 600; max-width: 400px;">
+                    ${step.microtext}
+                </p>
+
+                <!-- Botão CTA (Alívio / Ação) -->
+                <button class="btn pulse-btn mt-1 mx-auto" style="background: linear-gradient(135deg, #d946ef 0%, #9333ea 50%, #7e22ce 100%); width: 100%; max-width: 400px; font-size: 1.25rem; font-weight: 900; padding: 1.3rem; border-radius: 14px; box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3), inset 0 2px 0 rgba(255,255,255,0.2); border: none; color: white; transition: all 0.2s ease; text-transform: uppercase; display: flex; align-items: center; justify-content: center; letter-spacing: 0.5px;" onclick="goToStep('${step.nextStep}')">
+                    ${step.buttonText}
+                </button>
             </div>
+            
+            <style>
+                @keyframes pulseEffect {
+                    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3), inset 0 2px 0 rgba(255,255,255,0.2); }
+                    50% { transform: scale(1.03); box-shadow: 0 15px 35px rgba(147, 51, 234, 0.5), inset 0 2px 0 rgba(255,255,255,0.2); }
+                    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3), inset 0 2px 0 rgba(255,255,255,0.2); }
+                }
+                .pulse-btn {
+                    animation: pulseEffect 2.2s infinite ease-in-out;
+                    cursor: pointer;
+                }
+                .pulse-btn:active {
+                    transform: scale(0.96) !important;
+                    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.3) !important;
+                }
+            </style>
         `;
     }
     else if (step.type === "radio") {
