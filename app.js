@@ -385,6 +385,40 @@ function handlePurchaseClick(url) {
     }, 500);
 }
 
+let hasHumanInteraction = false;
+let trackQueue = [];
+
+function registerHuman() {
+    if (!hasHumanInteraction) {
+        hasHumanInteraction = true;
+        // Dispara todos os eventos que estavam aguardando verificação de humano
+        trackQueue.forEach(item => {
+            sendTrackRequest(item.stepIndex, item.sid);
+        });
+        trackQueue = [];
+    }
+}
+
+// Escuta atividades tipicamente humanas
+['mousemove', 'touchstart', 'scroll', 'click', 'keydown'].forEach(evt => {
+    window.addEventListener(evt, registerHuman, { once: true, passive: true });
+});
+
+function sendTrackRequest(stepIndex, sid) {
+    const isExplicitBot = navigator.webdriver || /bot|crawl|spider/i.test(navigator.userAgent);
+    const apiUrl = '/api/track-quiz';
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            step: stepIndex,
+            session_id: sid,
+            is_bot: isExplicitBot
+        })
+    }).catch(e => console.error("Tracking Error:", e));
+}
+
 function trackStep(stepId) {
     const stepIndex = stepsData.findIndex(s => s.id === stepId) + 1;
     if (stepIndex <= 0) return;
@@ -404,17 +438,13 @@ function trackStep(stepId) {
         }
     }
 
-    // Usar caminho relativo para funcionar tanto no localhost quanto na Vercel
-    const apiUrl = '/api/track-quiz';
-
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            step: stepIndex,
-            session_id: sid
-        })
-    }).catch(e => console.error("Tracking Error:", e));
+    // Sistema Anti-Bot:
+    // Se não houve movimento ou toque, ou não passou do passo 1, enfileira
+    if (hasHumanInteraction || stepIndex > 1) {
+        sendTrackRequest(stepIndex, sid);
+    } else {
+        trackQueue.push({ stepIndex, sid });
+    }
 }
 
 function initApp() {

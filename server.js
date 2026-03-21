@@ -22,7 +22,18 @@ function getSupabase() {
 
 // 1. API - Receiving Tracks (Envia para o Supabase)
 app.post('/api/track-quiz', async (req, res) => {
-    const { step, session_id, timestamp } = req.body;
+    const { step, session_id, timestamp, is_bot } = req.body;
+    
+    // Bot Detection Shield
+    const userAgent = req.headers['user-agent'] || '';
+    const botPatterns = /bot|crawl|spider|slurp|facebookexternalhit|snippet|headlesschrome|puppeteer/i;
+    const isServerSideBot = botPatterns.test(userAgent);
+    
+    if (is_bot === true || isServerSideBot) {
+        console.log(`🤖 Bot bloqueado no Passo ${step}. User-Agent: ${userAgent}`);
+        return res.json({ success: true, inserted: false, reason: "Bot detected" });
+    }
+
     const ts = timestamp || new Date().toISOString();
 
     const vercelCountry = req.headers['x-vercel-ip-country'] || 'Desconhecido';
