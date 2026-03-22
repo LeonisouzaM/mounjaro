@@ -13,11 +13,11 @@ const stepsData = [
         id: "intro",
         type: "intro",
         progress: 5,
-        title: "Si tu barriga no baja, existe un <span class='text-purple'>bloqueo específico en tu cuerpo</span> — y tiene solución",
-        subtitle: "No es falta de fuerza de voluntad. Tu cuerpo tiene un patrón oculto que <span class='text-purple font-bold'>este test identifica en 30 segundos</span>",
-        microtext: "100% gratuito y personalizado. Sin cadastro.",
-        buttonText: "Descubrir mi bloqueo ahora →",
-        socialProof: "Más de 14.200 mujeres ya descubrieron su bloqueo",
+        title: "Si tu barriga no baja, este test puede mostrar <span class='text-purple'>cuánto peso puedes perder</span> en los próximos días",
+        subtitle: "Responde 3 preguntas rápidas y descubre tu resultado personalizado en <span class='text-purple font-bold'>menos de 30 segundos</span>",
+        microtext: "Gratis y sin registro",
+        buttonText: "Ver mi resultado ahora →",
+        socialProof: "Más de 14.200 mujeres ya hicieron este test",
         image: "assets/mulher_confiante_espelho.png",
         nextStep: "idade"
     },
@@ -572,8 +572,18 @@ function renderStep(stepId) {
                     </div>
                 </div>
 
-                <!-- Social Proof -->
-                <div class="intro-v2-social-proof" style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 1.4rem;">
+                <!-- CTA Button (Moved up) -->
+                <button class="intro-v2-cta pulse-btn" style="background: linear-gradient(135deg, #a855f7 0%, #7B2FBE 60%, #6d28d9 100%); width: 100%; max-width: 400px; font-size: 1.25rem; font-weight: 800; padding: 1.25rem 1.5rem; border-radius: 14px; box-shadow: 0 6px 22px rgba(123, 47, 190, 0.45), inset 0 2px 0 rgba(255,255,255,0.18); border: none; color: white; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; letter-spacing: 0.2px; cursor: pointer; margin-bottom: 0.5rem;" onclick="goToStep('${step.nextStep}')">
+                    ${step.buttonText}
+                </button>
+
+                <!-- Microcopy Reassurance -->
+                <p class="intro-v2-microcopy" style="font-size: 0.85rem; color: #9ca3af; text-align: center; margin-top: 0.25rem; margin-bottom: 1.4rem; font-weight: 600; max-width: 340px;">
+                    ${step.microtext}
+                </p>
+
+                <!-- Social Proof (Moved down) -->
+                <div class="intro-v2-social-proof" style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 0.5rem;">
                     <div style="display: flex; gap: 3px;">
                         <span style="color: #f59e0b; font-size: 1.1rem;">★</span>
                         <span style="color: #f59e0b; font-size: 1.1rem;">★</span>
@@ -583,16 +593,6 @@ function renderStep(stepId) {
                     </div>
                     <p style="font-size: 0.85rem; color: #6b7280; font-weight: 600; text-align: center; margin: 0;">${step.socialProof}</p>
                 </div>
-
-                <!-- CTA Button -->
-                <button class="intro-v2-cta pulse-btn" style="background: linear-gradient(135deg, #a855f7 0%, #7B2FBE 60%, #6d28d9 100%); width: 100%; max-width: 400px; font-size: 1.15rem; font-weight: 800; padding: 1.15rem 1.5rem; border-radius: 14px; box-shadow: 0 6px 22px rgba(123, 47, 190, 0.45), inset 0 2px 0 rgba(255,255,255,0.18); border: none; color: white; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; letter-spacing: 0.2px; cursor: pointer;" onclick="goToStep('${step.nextStep}')">
-                    ${step.buttonText}
-                </button>
-
-                <!-- Microcopy Reassurance -->
-                <p class="intro-v2-microcopy" style="font-size: 0.82rem; color: #9ca3af; text-align: center; margin-top: 0.65rem; font-weight: 500; max-width: 340px;">
-                    🔒 ${step.microtext}
-                </p>
             </div>
             
             <style>
