@@ -235,7 +235,12 @@ app.delete('/api/clear-stats', async (req, res) => {
 
     const [, credentials] = authHeader.split(' ');
     const decoded = Buffer.from(credentials, 'base64').toString().split(':');
-    if (decoded[0] !== process.env.ADMIN_USER || decoded[1] !== process.env.ADMIN_PASS) {
+    
+    // Verifica credenciais do .env OU usa o padrão do sistema
+    const validUser = process.env.ADMIN_USER || 'LeonisouzaM';
+    const validPass = process.env.ADMIN_PASS || 'Golf2007++';
+
+    if (decoded[0] !== validUser || decoded[1] !== validPass) {
         return res.status(401).json({ success: false, error: 'Credenciais inválidas' });
     }
 
