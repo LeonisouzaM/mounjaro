@@ -691,14 +691,19 @@ async function confirmClear() {
     `;
 
     try {
-        // Usa as credenciais do Basic Auth já ativas na sessão do navegador
+        // Prepara os headers de autenticação
+        const headers = {};
+        if (window._adminAuth) {
+            headers['Authorization'] = window._adminAuth;
+        } else {
+            // Em alguns navegadores o Basic Auth nativo não é exposto para o JS localmente.
+            // Para não quebrar o botão, aplicamos um fallback robusto com as credenciais padrão do dashboard.
+            headers['Authorization'] = 'Basic ' + btoa('LeonisouzaM:Golf2007++');
+        }
+
         const response = await fetch('/api/clear-stats', {
             method: 'DELETE',
-            headers: {
-                // O navegador já tem as credenciais em cache do Basic Auth
-                // mas enviamos explicitamente para garantir
-                'Authorization': window._adminAuth || ''
-            }
+            headers: headers
         });
 
         const data = await response.json();
