@@ -13,11 +13,12 @@ const stepsData = [
         id: "intro",
         type: "intro",
         progress: 5,
-        title: "Si tu barriga no baja, hay una razón <span class='text-purple'>(y no es tu culpa)</span>",
-        subtitle: "Aunque hagas dieta o comas menos, tu cuerpo puede estar <span class='text-purple font-bold'>bloqueado sin que lo sepas</span>",
-        microtext: "Toma menos de 30 segundos",
-        buttonText: "QUIERO DESCUBRIRLO 🔥",
-        image: "assets/mulher_dor_abdominal.png",
+        title: "Si tu barriga no baja, existe un <span class='text-purple'>bloqueo específico en tu cuerpo</span> — y tiene solución",
+        subtitle: "No es falta de fuerza de voluntad. Tu cuerpo tiene un patrón oculto que <span class='text-purple font-bold'>este test identifica en 30 segundos</span>",
+        microtext: "100% gratuito y personalizado. Sin cadastro.",
+        buttonText: "Descubrir mi bloqueo ahora →",
+        socialProof: "Más de 14.200 mujeres ya descubrieron su bloqueo",
+        image: "assets/mulher_confiante_espelho.png",
         nextStep: "idade"
     },
     {
@@ -359,13 +360,39 @@ let stepHistory = [];
 let userAnswers = {};
 
 function getSessionId() {
-    // Usando sessionStorage para que cada nova aba seja um funil zerado no teste
-    let sid = sessionStorage.getItem('quiz_session_id');
+    let sid = localStorage.getItem('quiz_session_id');
     if (!sid) {
         sid = 'sess_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
-        sessionStorage.setItem('quiz_session_id', sid);
+        localStorage.setItem('quiz_session_id', sid);
     }
+
+    // Captura UTMs da URL uma única vez e persiste no localStorage
+    if (!localStorage.getItem('quiz_utm_captured')) {
+        const params = new URLSearchParams(window.location.search);
+        const utmData = {
+            utm_source:   params.get('utm_source')   || '',
+            utm_medium:   params.get('utm_medium')   || '',
+            utm_campaign: params.get('utm_campaign') || '',
+            utm_content:  params.get('utm_content')  || '',
+            utm_term:     params.get('utm_term')     || '',
+            referrer:     document.referrer          || '',
+        };
+        localStorage.setItem('quiz_utm', JSON.stringify(utmData));
+        localStorage.setItem('quiz_utm_captured', '1');
+    }
+
     return sid;
+}
+
+// Detecta tipo de dispositivo com base no User-Agent e largura de tela
+function getDeviceInfo() {
+    const ua = navigator.userAgent;
+    const w  = window.screen.width;
+    let device = 'desktop';
+    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)) {
+        device = w <= 768 ? 'mobile' : 'tablet';
+    }
+    return { device_type: device, screen_width: w };
 }
 
 let isProcessingClick = false;
@@ -375,10 +402,15 @@ function handlePurchaseClick(url) {
     isProcessingClick = true;
 
     if (typeof fbq !== 'undefined') {
+        fbq('track', 'AddToCart', {
+            content_name: 'Gelatina Mounjaro Protocolo',
+            currency: 'USD',
+            value: 27.00
+        });
         fbq('trackCustom', 'SubscribedButtonClick');
     }
 
-    // Timeout of 500ms to ensure the pixel is fired before navigating away
+    // Timeout of 500ms to ensure the pixel fires before navigating away
     setTimeout(() => {
         window.location.href = url;
         isProcessingClick = false;
@@ -406,15 +438,29 @@ function registerHuman() {
 
 function sendTrackRequest(stepIndex, sid) {
     const isExplicitBot = navigator.webdriver || /bot|crawl|spider/i.test(navigator.userAgent);
-    const apiUrl = '/api/track-quiz';
 
-    fetch(apiUrl, {
+    // Lê UTMs persistidos no localStorage
+    let utmData = {};
+    try { utmData = JSON.parse(localStorage.getItem('quiz_utm') || '{}'); } catch(e) {}
+
+    // Detecta device
+    const { device_type, screen_width } = getDeviceInfo();
+
+    fetch('/api/track-quiz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            step: stepIndex,
-            session_id: sid,
-            is_bot: isExplicitBot
+            step:          stepIndex,
+            session_id:    sid,
+            is_bot:        isExplicitBot,
+            utm_source:    utmData.utm_source    || '',
+            utm_medium:    utmData.utm_medium    || '',
+            utm_campaign:  utmData.utm_campaign  || '',
+            utm_content:   utmData.utm_content   || '',
+            utm_term:      utmData.utm_term      || '',
+            referrer:      utmData.referrer      || '',
+            device_type:   device_type,
+            screen_width:  screen_width,
         })
     }).catch(e => console.error("Tracking Error:", e));
 }
@@ -423,19 +469,26 @@ function trackStep(stepId) {
     const stepIndex = stepsData.findIndex(s => s.id === stepId) + 1;
     if (stepIndex <= 0) return;
 
-    // Usando sessionStorage para não bloquear testes após limpar o painel
-    let tracked = JSON.parse(sessionStorage.getItem('tracked_steps') || '[]');
+    // Melhoria 2B: usar localStorage para persistir entre abas/recargas
+    let tracked = JSON.parse(localStorage.getItem('tracked_steps') || '[]');
     if (tracked.includes(stepIndex)) return;
 
     tracked.push(stepIndex);
-    sessionStorage.setItem('tracked_steps', JSON.stringify(tracked));
+    localStorage.setItem('tracked_steps', JSON.stringify(tracked));
 
     const sid = getSessionId();
 
     if (typeof fbq !== 'undefined') {
-        if (stepId === 'intro') {
-            fbq('track', 'ViewContent');
-        }
+        // Melhoria 4A: mapa semântico de eventos por passo
+        const pixelEvents = {
+            'intro':              () => fbq('track', 'ViewContent'),
+            'nome':              () => fbq('trackCustom', 'QuizLeadName'),
+            'resultado-analise': () => fbq('track', 'Lead'),
+            'compromisso-semana':() => fbq('trackCustom', 'QuizCommitment'),
+            'vsl-page':          () => fbq('trackCustom', 'VSLViewed'),
+            'plano-gerado':      () => fbq('track', 'InitiateCheckout'),
+        };
+        if (pixelEvents[stepId]) pixelEvents[stepId]();
     }
 
     // Sistema Anti-Bot:
@@ -499,47 +552,67 @@ function renderStep(stepId) {
     }
     else if (step.type === "intro") {
         contentHTML = `
-            <div class="content-wrapper centered-padding pb-8" style="display: flex; flex-direction: column; align-items: center; padding-top: 1.5rem;">
+            <div class="intro-v2-wrapper" style="display: flex; flex-direction: column; align-items: center; padding-top: 1rem; padding-bottom: 2rem; width: 100%;">
                 
-                <!-- Título (Dor) -->
-                <h2 class="title text-center mx-auto" style="font-size: 1.6rem; line-height: 1.3; font-weight: 900; color: #111827; margin-bottom: 0.75rem; max-width: 480px; letter-spacing: -0.5px;">
+                <!-- Headline principal (Dor + Esperança) -->
+                <h2 class="intro-v2-title" style="font-size: 1.55rem; line-height: 1.35; font-weight: 900; color: #111827; margin-bottom: 0.65rem; max-width: 440px; text-align: center; letter-spacing: -0.4px; padding: 0 0.5rem;">
                     ${step.title}
                 </h2>
                 
-                <!-- Subtítulo (Identificação e Curiosidade) -->
-                <p class="subtitle mt-1 text-center mx-auto" style="font-size: 1.15rem; line-height: 1.5; color: #374151; margin-bottom: 1.8rem; max-width: 460px; font-weight: 500;">
+                <!-- Subheadline (Empathy + Curiosity) -->
+                <p class="intro-v2-subtitle" style="font-size: 1.05rem; line-height: 1.55; color: #4b5563; margin-bottom: 1.4rem; max-width: 420px; text-align: center; font-weight: 500; padding: 0 0.5rem;">
                     ${step.subtitle}
                 </p>
                 
-                <!-- Imagem (Emoção / Foco na Dor) -->
-                <div class="intro-image-container mx-auto" style="width: 100%; max-width: 380px; margin-bottom: 1.5rem; position: relative;">
-                    <img src="${step.image}" alt="Erro oculto no metabolismo" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px -5px rgba(147, 51, 234, 0.25); border: 2px solid #fdf4ff; object-fit: cover;">
+                <!-- Hero Image (Transformação Positiva) -->
+                <div class="intro-v2-image-wrap" style="width: 100%; max-width: 360px; margin-bottom: 1.4rem; position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 36px -6px rgba(123, 47, 190, 0.28);">
+                    <img src="${step.image}" alt="Mulher confiante após descobrir seu diagnóstico" style="width: 100%; display: block; object-fit: cover; max-height: 320px; border-radius: 16px;">
+                    <div class="intro-v2-img-badge" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(123,47,190,0.88); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 5px 14px; border-radius: 20px; white-space: nowrap; backdrop-filter: blur(4px); letter-spacing: 0.3px;">
+                        ✨ Así se sienten quienes ya lo descubrieron
+                    </div>
                 </div>
 
-                <!-- Microtexto -->
-                <p class="mx-auto" style="font-size: 0.95rem; color: #6b7280; text-align: center; margin-bottom: 1.2rem; font-weight: 600; max-width: 400px;">
-                    ${step.microtext}
-                </p>
+                <!-- Social Proof -->
+                <div class="intro-v2-social-proof" style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 1.4rem;">
+                    <div style="display: flex; gap: 3px;">
+                        <span style="color: #f59e0b; font-size: 1.1rem;">★</span>
+                        <span style="color: #f59e0b; font-size: 1.1rem;">★</span>
+                        <span style="color: #f59e0b; font-size: 1.1rem;">★</span>
+                        <span style="color: #f59e0b; font-size: 1.1rem;">★</span>
+                        <span style="color: #f59e0b; font-size: 1.1rem;">★</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #6b7280; font-weight: 600; text-align: center; margin: 0;">${step.socialProof}</p>
+                </div>
 
-                <!-- Botão CTA (Alívio / Ação) -->
-                <button class="btn pulse-btn mt-1 mx-auto" style="background: linear-gradient(135deg, #d946ef 0%, #9333ea 50%, #7e22ce 100%); width: 100%; max-width: 400px; font-size: 1.25rem; font-weight: 900; padding: 1.3rem; border-radius: 14px; box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3), inset 0 2px 0 rgba(255,255,255,0.2); border: none; color: white; transition: all 0.2s ease; text-transform: uppercase; display: flex; align-items: center; justify-content: center; letter-spacing: 0.5px;" onclick="goToStep('${step.nextStep}')">
+                <!-- CTA Button -->
+                <button class="intro-v2-cta pulse-btn" style="background: linear-gradient(135deg, #a855f7 0%, #7B2FBE 60%, #6d28d9 100%); width: 100%; max-width: 400px; font-size: 1.15rem; font-weight: 800; padding: 1.15rem 1.5rem; border-radius: 14px; box-shadow: 0 6px 22px rgba(123, 47, 190, 0.45), inset 0 2px 0 rgba(255,255,255,0.18); border: none; color: white; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; letter-spacing: 0.2px; cursor: pointer;" onclick="goToStep('${step.nextStep}')">
                     ${step.buttonText}
                 </button>
+
+                <!-- Microcopy Reassurance -->
+                <p class="intro-v2-microcopy" style="font-size: 0.82rem; color: #9ca3af; text-align: center; margin-top: 0.65rem; font-weight: 500; max-width: 340px;">
+                    🔒 ${step.microtext}
+                </p>
             </div>
             
             <style>
                 @keyframes pulseEffect {
-                    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3), inset 0 2px 0 rgba(255,255,255,0.2); }
-                    50% { transform: scale(1.03); box-shadow: 0 15px 35px rgba(147, 51, 234, 0.5), inset 0 2px 0 rgba(255,255,255,0.2); }
-                    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3), inset 0 2px 0 rgba(255,255,255,0.2); }
+                    0% { transform: scale(1); box-shadow: 0 6px 22px rgba(123, 47, 190, 0.45), inset 0 2px 0 rgba(255,255,255,0.18); }
+                    50% { transform: scale(1.025); box-shadow: 0 14px 38px rgba(123, 47, 190, 0.6), inset 0 2px 0 rgba(255,255,255,0.18); }
+                    100% { transform: scale(1); box-shadow: 0 6px 22px rgba(123, 47, 190, 0.45), inset 0 2px 0 rgba(255,255,255,0.18); }
                 }
                 .pulse-btn {
                     animation: pulseEffect 2.2s infinite ease-in-out;
-                    cursor: pointer;
                 }
                 .pulse-btn:active {
                     transform: scale(0.96) !important;
-                    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.3) !important;
+                    animation: none !important;
+                    box-shadow: 0 2px 8px rgba(123, 47, 190, 0.3) !important;
+                }
+                .intro-v2-wrapper {
+                    box-sizing: border-box;
+                    padding-left: 1.25rem;
+                    padding-right: 1.25rem;
                 }
             </style>
         `;
@@ -1657,6 +1730,30 @@ function renderStep(stepId) {
         `;
     }
     else if (step.type === "checkout") {
+        // Melhoria 5B: captura sid e UTMs ANTES de limpar — ordem importa
+        const checkoutSid = localStorage.getItem('quiz_session_id') || 'direct';
+        let checkoutUtm = {};
+        try { checkoutUtm = JSON.parse(localStorage.getItem('quiz_utm') || '{}'); } catch(e) {}
+        const { device_type: checkoutDevice } = getDeviceInfo();
+
+        // Melhoria 2C: limpa sessão ao completar — próxima visita começa zerada
+        localStorage.removeItem('quiz_session_id');
+        localStorage.removeItem('tracked_steps');
+        localStorage.removeItem('quiz_utm_captured');
+        // Mantém quiz_utm para análise de origem do checkout
+
+        // Melhoria 5B: registra quiz completion (usa dados capturados antes da limpeza)
+        fetch('/api/complete-quiz', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                session_id:   checkoutSid,
+                utm_source:   checkoutUtm.utm_source   || null,
+                utm_campaign: checkoutUtm.utm_campaign || null,
+                device_type:  checkoutDevice,
+            })
+        }).catch(() => {});
+
         let nomeUsuario = userAnswers["nome"] || "tú";
         nomeUsuario = nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1).toLowerCase();
 
