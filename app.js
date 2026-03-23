@@ -7,7 +7,7 @@ const stepsData = [
         subtitle: "Descubre cómo activar tu metabolismo y perder hasta <span class='text-purple'>12kg en 30 días</span> con la <span class='text-purple'>Gelatina Mounjaro!</span>",
         buttonText: "¡Quiero saber si funciona para mí! 🔥",
         footerText: "✓ 127.000+ mujeres &nbsp;•&nbsp; ✓ 100% Natural",
-        nextStep: "intro"
+        nextStep: "idade"
     },
     {
         id: "intro",
@@ -481,7 +481,7 @@ function trackStep(stepId) {
     if (typeof fbq !== 'undefined') {
         // Melhoria 4A: mapa semântico de eventos por passo
         const pixelEvents = {
-            'intro':              () => fbq('track', 'ViewContent'),
+            'idade':              () => fbq('track', 'ViewContent'),
             'nome':              () => fbq('trackCustom', 'QuizLeadName'),
             'resultado-analise': () => fbq('track', 'Lead'),
             'compromisso-semana':() => fbq('trackCustom', 'QuizCommitment'),
