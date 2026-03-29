@@ -3,8 +3,8 @@ const stepsData = [
         id: "start",
         type: "welcome",
         hideProgress: true,
-        image: "assets/capa1.webp",
-        subtitle: "Descubre cómo activar tu metabolismo y perder hasta <span class='text-purple'>12kg en 30 días</span> con la <span class='text-purple'>Gelatina Mounjaro!</span>",
+        image: "assets/ChatGPT Image 29 de mar. de 2026, 14_41_50.png",
+        subtitle: "Descubre cómo activar tu metabolismo y perder hasta <span class='text-purple'>12kg en 30 días</span> con el <span class='text-purple'>Método Gelatina Natural!</span>",
         buttonText: "¡Quiero saber si funciona para mí! 🔥",
         footerText: "✓ 127.000+ mujeres &nbsp;•&nbsp; ✓ 100% Natural",
         nextStep: "idade"
@@ -100,7 +100,7 @@ const stepsData = [
         type: "explanation",
         progress: 50,
         title: "¡Excelente, {nome}! 🎉",
-        subtitle: "Sin esfuerzo ni dietas aburridas: la Gelatina Mounjaro hace el trabajo pesado por ti, activando la quema de grasa con ingredientes caseros que preparas en minutos.",
+        subtitle: "Sin esfuerzo ni dietas aburridas: El Método Gelatina Natural hace el trabajo pesado por ti, activando la quema de grasa con ingredientes caseros que preparas en minutos.",
         image: "assets/bowl.webp",
         buttonText: "¡Entendido! Continuar 🚀",
         nextStep: "feliz-aparencia"
@@ -403,7 +403,7 @@ function handlePurchaseClick(url) {
 
     if (typeof fbq !== 'undefined') {
         fbq('track', 'AddToCart', {
-            content_name: 'Gelatina Mounjaro Protocolo',
+            content_name: 'Método Gelatina Natural Protocolo',
             currency: 'USD',
             value: 27.00
         });
@@ -542,7 +542,7 @@ function renderStep(stepId) {
         contentHTML = `
             <div class="welcome-container text-center" style="display: flex; flex-direction: column; align-items: center; padding-top: 0.5rem; padding-bottom: 2rem;">
                 <div class="capa-image-container mx-auto" style="width: 100%; max-width: 420px; margin-bottom: 1.5rem;">
-                    <img src="${step.image}" alt="Mounjaro Gelatina" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+                    <img src="${step.image}" alt="Método Gelatina Natural" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
                 </div>
                 <p class="subtitle mt-1" style="font-size: 1.1rem; line-height: 1.5; color: #6b7280; font-weight: 400; max-width: 95%; margin: 0 auto;">${step.subtitle}</p>
                 <button class="btn mt-4" style="background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); width: auto; min-width: 250px; font-size: 1.05rem; font-weight: 700; padding: 1rem 1.5rem; border-radius: 12px; box-shadow: 0 8px 25px -5px rgba(34, 197, 94, 0.5); margin-top: 1.5rem; border: 1px solid #16a34a; transition: transform 0.2s; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'" onclick="goToStep('${step.nextStep}')">¡Quiero saber si funciona para mí! 🔥</button>
@@ -755,7 +755,7 @@ function renderStep(stepId) {
         contentHTML = `
             <div class="content-wrapper">
                 <h2 class="title text-center text-xl font-bold">¡Excelente, <span class="text-pink">${nomeUsuario}</span>! <span class="text-purple">Mira cómo funciona 🎉</span></h2>
-                <p class="subtitle text-center mt-2 mb-4 text-pink font-bold">La Gelatina Mounjaro activa la quema de grasa natural con <span class="text-gray-500 font-normal">ingredientes caseros que preparas en minutos.</span></p>
+                <p class="subtitle text-center mt-2 mb-4 text-pink font-bold">El Método Gelatina Natural activa la quema de grasa natural con <span class="text-gray-500 font-normal">ingredientes caseros que preparas en minutos.</span></p>
 
                 <div class="funciona-check-list mb-4">
                     <div class="funciona-check-item">
@@ -786,7 +786,7 @@ function renderStep(stepId) {
                         <div class="funciona-number bg-purple">2</div>
                         <div class="funciona-img-box"><img src="assets/flow_gelatina-B9ryWXkD.webp" alt="Gelatina"></div>
                         <div class="funciona-text">
-                            <strong class="text-purple">Gelatina Mounjaro</strong>
+                            <strong class="text-purple">Método Gelatina Natural</strong>
                             <span>Receta casera simple y poderosa</span>
                         </div>
                     </div>
@@ -815,7 +815,7 @@ function renderStep(stepId) {
                 </div>
 
                 <div class="funciona-info-box mt-4">
-                    <p>💡 <strong class="text-purple font-bold">Receta casera</strong> que activa el <strong class="font-bold">GLP-1</strong>, la misma hormona del Mounjaro, ¡de forma <strong class="text-purple font-bold">100% natural!</strong></p>
+                    <p>💡 <strong class="text-purple font-bold">Receta casera</strong> que activa el <strong class="font-bold">GLP-1</strong>, la misma hormona del Método, ¡de forma <strong class="text-purple font-bold">100% natural!</strong></p>
                 </div>
 
                 <button class="btn gradient-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">¡Entendido! Continuar 🚀</button>
@@ -885,10 +885,10 @@ function renderStep(stepId) {
                 </div>
                 
                 <div class="resultado-verde-box">
-                    🌿 El secreto para secar: <strong style="color: #16a34a">activar el GLP-1.</strong> A <strong style="color: #16a34a">Gelatina Mounjaro</strong> es el "interruptor" hormonal natural!
+                    🌿 El secreto para secar: <strong style="color: #16a34a">activar el GLP-1.</strong> A <strong style="color: #16a34a">Método Gelatina Natural</strong> es el "interruptor" hormonal natural!
                 </div>
                 
-                <h3 class="resultado-beneficios-title text-center mt-4 mb-3" style="font-size: 1rem; color: #111827; font-weight: 700;">Beneficios de la <span class="text-purple">Gelatina Mounjaro 👇</span></h3>
+                <h3 class="resultado-beneficios-title text-center mt-4 mb-3" style="font-size: 1rem; color: #111827; font-weight: 700;">Beneficios de  Gelatina Natural 👇</span></h3>
                 
                 <div class="resultado-beneficios-list mb-4">
                     <div class="beneficio-item"><span class="check-circle"></span> Receta 100% Natural</div>
@@ -916,7 +916,7 @@ function renderStep(stepId) {
     else if (step.type === "como-usar") {
         contentHTML = `
             <div class="content-wrapper centered-padding pb-8">
-                <h2 class="title text-center text-xl mb-1">Cómo usar la <span class="text-purple font-bold" style="font-weight: 800;">Gelatina Mounjaro</span></h2>
+                <h2 class="title text-center text-xl mb-1">Cómo usar  Gelatina Natural</span></h2>
                 <p class="subtitle text-center mt-1 mb-4" style="color: #9ca3af; font-size: 0.95rem;">Simple, práctico y eficaz</p>
 
                 <div class="como-usar-image-container mx-auto mb-4" style="text-align: center;">
@@ -1050,7 +1050,7 @@ function renderStep(stepId) {
                     ${nomeUsuario}, ¿te gustaría perder entre <span class="text-pink">${minLoss} y ${maxLoss} kilos</span> en pocas semanas?
                 </h2>
                 <p class="subtitle text-center mt-3">
-                    Basado en tu perfil, ¡este resultado es totalmente alcanzable con la Gelatina Mounjaro!
+                    Basado en tu perfil, ¡este resultado es totalmente alcanzable con El Método Gelatina Natural!
                 </p>
                 <button class="btn green-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">${step.buttonText}</button>
             </div>
@@ -1060,7 +1060,7 @@ function renderStep(stepId) {
         contentHTML = `
             <div class="content-wrapper">
                 <h2 class="title text-center text-xl">Historias de Transformación</h2>
-                <p class="subtitle text-center mt-2 mb-4">Mira quién ya transformó su cuerpo con la Gelatina Mounjaro</p>
+                <p class="subtitle text-center mt-2 mb-4">Mira quién ya transformó su cuerpo con El Método Gelatina Natural</p>
                 
                 <div class="historia-cards-list">
                     <div class="historia-card">
@@ -1134,7 +1134,7 @@ function renderStep(stepId) {
                 </div>
 
                 <div class="info-box-yellow mt-4">
-                    <p><span class="text-purple font-bold">Cómo funciona:</span> La receta casera activa el GLP-1, la misma hormona que causa el efecto del Mounjaro, ¡pero de forma 100% natural!</p>
+                    <p><span class="text-purple font-bold">Cómo funciona:</span> La receta casera activa el GLP-1, la misma hormona que causa el efecto del Método, ¡pero de forma 100% natural!</p>
                 </div>
 
                 <button class="btn gradient-btn mt-5 w-full" onclick="goToStep('${step.nextStep}')">${step.buttonText}</button>
@@ -1688,10 +1688,10 @@ function renderStep(stepId) {
                                 </div>
                                 <div class="checkbox-container" style="position: relative; width: 22px; height: 22px;">
                                     <input type="checkbox" value="${opt.id}" data-step="${step.id}" style="display: none;" onchange="
-                                        if(this.value === 'corpo-todo' && this.checked) {
+                                        if(this.value === 'corpo-todo') {
                                             const all = document.querySelectorAll('input[data-step=${step.id}]');
-                                            all.forEach(c => { if(c !== this) c.checked = false; });
-                                        } else if(this.value !== 'corpo-todo' && this.checked) {
+                                            all.forEach(c => { c.checked = this.checked; });
+                                        } else if(!this.checked) {
                                             const ct = document.querySelector('input[data-step=${step.id}][value=corpo-todo]');
                                             if(ct) ct.checked = false;
                                         }
@@ -1767,7 +1767,7 @@ function renderStep(stepId) {
             <div class="checkout-container fade-in" style="background: #ffffff; padding-bottom: 40px; min-height: 100vh;">
                 <!-- Product Logo / Branding Top -->
                 <div class="checkout-app-header" style="text-align: center; padding-top: 10px;">
-                    <img src="assets/capa1.webp" alt="Mounjaro" style="height: 35px; width: auto; object-fit: contain;">
+                    <img src="assets/capa1.webp" alt="Método" style="height: 35px; width: auto; object-fit: contain;">
                 </div>
 
                 <!-- Pink Banner Top -->
@@ -1864,17 +1864,17 @@ function renderStep(stepId) {
 
                 <div class="checkout-card mt-4 mx-auto" style="max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; background: white;">
                     <div class="card-header" style="background: linear-gradient(90deg, #d946ef, #a855f7); color: white; text-align: center; padding: 16px 12px; line-height:1.3;">
-                        <b style="font-size:1.05rem">Gelatina Mounjaro + APP Protocolo Completo</b><br>
+                        <b style="font-size:1.05rem">Método Gelatina Natural + APP Protocolo Completo</b><br>
                         <span style="font-size:0.75rem; opacity:0.9; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-top: 4px;">ACCESO VITALICIO</span>
                     </div>
                     <div class="card-body" style="padding: 1.5rem 1.25rem;">
                         <div class="text-center py-2" style="display: flex; justify-content: center; margin-bottom: 20px;">
-                             <img src="assets/bowl-gelatina-novo.webp" style="width: 140px; border-radius: 12px; max-width:100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Gelatina Mounjaro">
+                             <img src="assets/bowl-gelatina-novo.webp" style="width: 140px; border-radius: 12px; max-width:100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Método Gelatina Natural">
                         </div>
                         <ul class="check-list mt-4" style="list-style: none; padding: 0;">
                             <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
-                                Receta completa de la Gelatina Mounjaro
+                                Receta completa de El Método Gelatina Natural
                             </li>
                             <li style="display:flex; align-items:center; gap:10px; font-size: 0.75rem; color: #334155; margin-bottom: 12px;">
                                 <div style="display:flex; align-items:center; justify-content:center; min-width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #22c55e; color: #22c55e; font-size: 10px; font-weight: bold;">✓</div>
@@ -1922,7 +1922,7 @@ function renderStep(stepId) {
                             <div class="installments mt-1" style="color: #64748b; font-size: 0.8rem; font-weight: 500;">Pago único</div>
                         </div>
                         
-                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/L104988917J?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
+                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/G105133784M?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                         
                         <!-- Formas de Pagamento LATAM -->
                         <div class="payment-methods mt-4 text-center" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; max-width: 100%;">
@@ -1978,7 +1978,7 @@ function renderStep(stepId) {
                 </div>
 
                 <div class="mx-auto mt-4" style="max-width: 480px; padding: 0 10px;">
-                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/L104988917J?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
+                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/G105133784M?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                 </div>
 
                 <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
@@ -1997,7 +1997,7 @@ function renderStep(stepId) {
 
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <h4>¿La Gelatina Mounjaro realmente funciona?</h4>
+                            <h4>¿El Método Gelatina Natural realmente funciona?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
                         <div class="faq-answer"><p>Sí, la fórmula es 100% natural, basada en ingredientes comprobados que activan de forma segura la quema de grasa sin causar efectos secundarios.</p></div>
@@ -2048,10 +2048,10 @@ function renderStep(stepId) {
                             <h4>¿Necesito comprar ingredientes caros?</h4>
                             <span class="faq-arrow">+</span>
                         </div>
-                        <div class="faq-answer"><p>No, la idea de la Gelatina Mounjaro es justamente usar ingredientes que encuentras fácilmente en cualquier supermercado y de bajo costo.</p></div>
+                        <div class="faq-answer"><p>No, la idea de El Método Gelatina Natural es justamente usar ingredientes que encuentras fácilmente en cualquier supermercado y de bajo costo.</p></div>
                     </div>
 
-                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/L104988917J?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
+                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/G105133784M?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                     
                     <div class="text-center text-muted mb-4" style="font-size: 0.65rem; color: #94a3b8; margin-top: 15px; display:flex; align-items:center; justify-content:center; gap: 4px;">
                         <span>🔒 Compra 100% segura • Garantía de 30 días</span>
