@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+const axios = require('axios');
 
 const app = express();
 app.use(express.json());
@@ -322,7 +323,51 @@ app.post('/api/complete-quiz', async (req, res) => {
     }
 });
 
-// 6. Admin Security basic
+// 6. API - Facebook Conversions API
+app.post('/api/fb-capi', async (req, res) => {
+    const { event_name, event_id, custom_data, source_url, fbp, fbc } = req.body;
+    
+    // Pixel ID e Token ficam protegidos no backend (.env)
+    const PIXEL_ID = process.env.FB_PIXEL_ID || '1251303213625050'; // Default do app atual
+    const ACCESS_TOKEN = process.env.FB_ACCESS_TOKEN;
+    
+    if (!ACCESS_TOKEN) {
+        return res.json({ success: false, reason: "No access token" });
+    }
+    
+    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const clientUserAgent = req.headers['user-agent'];
+    
+    const userData = {
+        client_ip_address: clientIp,
+        client_user_agent: clientUserAgent
+    };
+    if (fbp) userData.fbp = fbp;
+    if (fbc) userData.fbc = fbc;
+    
+    const payload = {
+        data: [{
+            event_name: event_name,
+            event_time: Math.floor(Date.now() / 1000),
+            action_source: 'website',
+            event_id: event_id, // Fundamental para desduplicação (Pixel + Servidor)
+            event_source_url: source_url,
+            user_data: userData,
+            custom_data: custom_data || {}
+        }]
+    };
+    
+    try {
+        const fbUrl = `https://graph.facebook.com/v19.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`;
+        const fbRes = await axios.post(fbUrl, payload);
+        res.json({ success: true, fb_response: fbRes.data });
+    } catch (error) {
+        console.error("Facebook CAPI Error:", error.response?.data || error.message);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// 7. Admin Security basic
 const basicAuth = (req, res, next) => {
     const originalHeaders = req.headers.authorization;
     if (!originalHeaders) {

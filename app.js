@@ -397,18 +397,51 @@ function getDeviceInfo() {
 
 let isProcessingClick = false;
 
+// Unified Facebook Event Tracking (Pixel + CAPI)
+function sendFacebookEvent(eventName, customData = {}, isCustom = false) {
+    const eventId = 'evt_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+    
+    // 1. Pixel Tracking
+    if (typeof fbq !== 'undefined') {
+        if (isCustom) {
+            fbq('trackCustom', eventName, customData, { eventID: eventId });
+        } else {
+            fbq('track', eventName, customData, { eventID: eventId });
+        }
+    }
+    
+    // 2. CAPI Tracking (Server-side)
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return '';
+    };
+
+    fetch('/api/fb-capi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            event_name: eventName,
+            event_id: eventId,
+            custom_data: customData,
+            source_url: window.location.href,
+            fbp: getCookie('_fbp'),
+            fbc: getCookie('_fbc')
+        })
+    }).catch(e => console.error('CAPI Error:', e));
+}
+
 function handlePurchaseClick(url) {
     if (isProcessingClick) return;
     isProcessingClick = true;
 
-    if (typeof fbq !== 'undefined') {
-        fbq('track', 'AddToCart', {
-            content_name: 'Método Gelatina Natural Protocolo',
-            currency: 'USD',
-            value: 27.00
-        });
-        fbq('trackCustom', 'SubscribedButtonClick');
-    }
+    sendFacebookEvent('AddToCart', {
+        content_name: 'Método Gelatina Natural Protocolo',
+        currency: 'USD',
+        value: 27.00
+    });
+    sendFacebookEvent('SubscribedButtonClick', {}, true);
 
     // Timeout of 500ms to ensure the pixel fires before navigating away
     setTimeout(() => {
@@ -478,18 +511,16 @@ function trackStep(stepId) {
 
     const sid = getSessionId();
 
-    if (typeof fbq !== 'undefined') {
-        // Melhoria 4A: mapa semântico de eventos por passo
-        const pixelEvents = {
-            'idade':              () => fbq('track', 'ViewContent'),
-            'nome':              () => fbq('trackCustom', 'QuizLeadName'),
-            'resultado-analise': () => fbq('track', 'Lead'),
-            'compromisso-semana':() => fbq('trackCustom', 'QuizCommitment'),
-            'vsl-page':          () => fbq('trackCustom', 'VSLViewed'),
-            'plano-gerado':      () => fbq('track', 'InitiateCheckout'),
-        };
-        if (pixelEvents[stepId]) pixelEvents[stepId]();
-    }
+    // Melhoria 4A + CAPI: mapa semântico de eventos por passo
+    const pixelEvents = {
+        'idade':              () => sendFacebookEvent('ViewContent'),
+        'nome':              () => sendFacebookEvent('QuizLeadName', {}, true),
+        'resultado-analise': () => sendFacebookEvent('Lead'),
+        'compromisso-semana':() => sendFacebookEvent('QuizCommitment', {}, true),
+        'vsl-page':          () => sendFacebookEvent('VSLViewed', {}, true),
+        // 'plano-gerado':      () => sendFacebookEvent('InitiateCheckout'), // Removido pois a Hotmart envia esse evento
+    };
+    if (pixelEvents[stepId]) pixelEvents[stepId]();
 
     // Sistema Anti-Bot:
     // Se não houve movimento ou toque, ou não passou do passo 1, enfileira
