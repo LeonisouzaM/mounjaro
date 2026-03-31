@@ -432,24 +432,31 @@ function sendFacebookEvent(eventName, customData = {}, isCustom = false) {
     }).catch(e => console.error('CAPI Error:', e));
 }
 
+function getUTMs() {
+  const params = new URLSearchParams(window.location.search);
+  let utms = new URLSearchParams();
+
+  params.forEach((value, key) => {
+    if (key.startsWith("utm_") || key === "xcod") {
+      utms.append(key, value);
+    }
+  });
+
+  return utms.toString();
+}
+
 function handlePurchaseClick(url) {
     if (isProcessingClick) return;
     isProcessingClick = true;
 
-    // Repasse automático de UTMs para Hotmart
-    const params = window.location.search;
-    if (params) {
-        try {
-            if (!url.includes("utm_") && !url.includes("xcod")) {
-                if (url.includes("?")) {
-                    url += "&" + params.substring(1);
-                } else {
-                    url += params;
-                }
-            }
-        } catch (e) {
-            console.error("Error appending UTMs:", e);
-        }
+    // Repasse de UTMs
+    let base = url || "https://pay.hotmart.com/G105133784M?checkoutMode=10";
+    let utms = getUTMs();
+
+    let finalLink = base;
+
+    if (utms) {
+        finalLink += (finalLink.includes('?') ? '&' : '?') + utms;
     }
 
     sendFacebookEvent('AddToCart', {
@@ -459,9 +466,9 @@ function handlePurchaseClick(url) {
     });
     sendFacebookEvent('SubscribedButtonClick', {}, true);
 
-    // Timeout of 500ms to ensure the pixel fires before navigating away
+    // Timeout para garantir disparo do Pixel antes de redirecionar
     setTimeout(() => {
-        window.location.href = url;
+        window.location.href = finalLink;
         isProcessingClick = false;
     }, 500);
 }
