@@ -432,41 +432,48 @@ function sendFacebookEvent(eventName, customData = {}, isCustom = false) {
     }).catch(e => console.error('CAPI Error:', e));
 }
 
-// Salva todos os parâmetros da URL no localStorage ao carregar a página
-function saveUTMs() {
+// =========================
+// SALVAR UTMs
+// =========================
+
+(function () {
   const params = new URLSearchParams(window.location.search);
   if (params.toString()) {
     localStorage.setItem("utms", params.toString());
+    sessionStorage.setItem("utms", params.toString());
   }
-}
-saveUTMs();
+})();
 
-// Lê UTMs do localStorage (persiste mesmo que a URL mude durante o quiz)
+
+// =========================
+// PEGAR UTMs
+// =========================
+
 function getUTMs() {
-  return localStorage.getItem("utms") || "";
+  let utms = localStorage.getItem("utms");
+  if (!utms) {
+    utms = sessionStorage.getItem("utms");
+  }
+  return utms;
 }
+
+
+// =========================
+// CHECKOUT HOTMART
+// =========================
 
 function handlePurchaseClick() {
-    if (isProcessingClick) return;
-    isProcessingClick = true;
+  let baseCheckout = "https://pay.hotmart.com/G105133784M?checkoutMode=10";
+  let utms = getUTMs();
 
-    let base = "https://pay.hotmart.com/G105133784M?checkoutMode=10";
-    let utms = getUTMs();
-
-    let finalLink = utms ? base + "&" + utms : base;
-
-    sendFacebookEvent('AddToCart', {
-        content_name: 'Método Gelatina Natural Protocolo',
-        currency: 'USD',
-        value: 27.00
-    });
-    sendFacebookEvent('SubscribedButtonClick', {}, true);
-
-    // Timeout para garantir disparo do Pixel antes de redirecionar
-    setTimeout(() => {
-        window.location.href = finalLink;
-        isProcessingClick = false;
-    }, 500);
+  if (utms && utms.length > 5) {
+    let finalUrl = baseCheckout + "&" + utms;
+    console.log("Checkout com UTMs:", finalUrl);
+    window.location.href = finalUrl;
+  } else {
+    console.log("Sem UTMs, indo para checkout normal");
+    window.location.href = baseCheckout;
+  }
 }
 
 let hasHumanInteraction = false;
