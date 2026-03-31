@@ -41,13 +41,39 @@
     </script>
     <!-- End Clarity Tracking Code -->
 
-    <!-- Utmify Tracking Code -->
+    <!-- UTMify Script -->
     <script
       src="https://cdn.utmify.com.br/scripts/utms/latest.js"
       data-utmify-prevent-subids
       async
       defer
     ></script>
+
+    <!-- Repasse automático de UTMs para Hotmart -->
+    <script>
+    (function () {
+      function appendUTMsToHotmart() {
+        const params = window.location.search;
+        if (!params) return;
+        const hotmartLinks = document.querySelectorAll("a[href*='pay.hotmart.com']");
+        hotmartLinks.forEach(link => {
+          try {
+            if (!link.href.includes("utm_") && !link.href.includes("xcod")) {
+              if (link.href.includes("?")) {
+                link.href += "&" + params.substring(1);
+              } else {
+                link.href += params;
+              }
+            }
+          } catch (e) {}
+        });
+      }
+      // roda quando a página carrega
+      window.addEventListener("load", appendUTMsToHotmart);
+      // roda novamente após 2 segundos (Anti Gravity carrega botões dinamicamente)
+      setTimeout(appendUTMsToHotmart, 2000);
+    })();
+    </script>
     <!-- End Utmify Tracking Code -->
 </head>
 

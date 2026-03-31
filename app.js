@@ -436,6 +436,22 @@ function handlePurchaseClick(url) {
     if (isProcessingClick) return;
     isProcessingClick = true;
 
+    // Repasse automático de UTMs para Hotmart
+    const params = window.location.search;
+    if (params) {
+        try {
+            if (!url.includes("utm_") && !url.includes("xcod")) {
+                if (url.includes("?")) {
+                    url += "&" + params.substring(1);
+                } else {
+                    url += params;
+                }
+            }
+        } catch (e) {
+            console.error("Error appending UTMs:", e);
+        }
+    }
+
     sendFacebookEvent('AddToCart', {
         content_name: 'Método Gelatina Natural Protocolo',
         currency: 'USD',
