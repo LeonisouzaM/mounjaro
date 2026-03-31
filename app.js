@@ -432,32 +432,28 @@ function sendFacebookEvent(eventName, customData = {}, isCustom = false) {
     }).catch(e => console.error('CAPI Error:', e));
 }
 
-function getUTMs() {
+// Salva todos os parâmetros da URL no localStorage ao carregar a página
+function saveUTMs() {
   const params = new URLSearchParams(window.location.search);
-  let utms = new URLSearchParams();
+  if (params.toString()) {
+    localStorage.setItem("utms", params.toString());
+  }
+}
+saveUTMs();
 
-  params.forEach((value, key) => {
-    if (key.startsWith("utm_") || key === "xcod") {
-      utms.append(key, value);
-    }
-  });
-
-  return utms.toString();
+// Lê UTMs do localStorage (persiste mesmo que a URL mude durante o quiz)
+function getUTMs() {
+  return localStorage.getItem("utms") || "";
 }
 
-function handlePurchaseClick(url) {
+function handlePurchaseClick() {
     if (isProcessingClick) return;
     isProcessingClick = true;
 
-    // Repasse de UTMs
-    let base = url || "https://pay.hotmart.com/G105133784M?checkoutMode=10";
+    let base = "https://pay.hotmart.com/G105133784M?checkoutMode=10";
     let utms = getUTMs();
 
-    let finalLink = base;
-
-    if (utms) {
-        finalLink += (finalLink.includes('?') ? '&' : '?') + utms;
-    }
+    let finalLink = utms ? base + "&" + utms : base;
 
     sendFacebookEvent('AddToCart', {
         content_name: 'Método Gelatina Natural Protocolo',
@@ -1976,7 +1972,7 @@ function renderStep(stepId) {
                             <div class="installments mt-1" style="color: #64748b; font-size: 0.8rem; font-weight: 500;">Pago único</div>
                         </div>
                         
-                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/G105133784M?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
+                        <button class="btn green-cta mt-5 w-full" onclick="handlePurchaseClick()" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                         
                         <!-- Formas de Pagamento LATAM -->
                         <div class="payment-methods mt-4 text-center" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; max-width: 100%;">
@@ -2032,7 +2028,7 @@ function renderStep(stepId) {
                 </div>
 
                 <div class="mx-auto mt-4" style="max-width: 480px; padding: 0 10px;">
-                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick('https://pay.hotmart.com/G105133784M?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
+                    <button class="btn green-cta mt-2 w-full" onclick="handlePurchaseClick()" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                 </div>
 
                 <div class="faq-container mt-8 mx-auto" style="max-width: 480px; text-align: left; padding-bottom: 30px; padding: 0 10px;">
@@ -2105,7 +2101,7 @@ function renderStep(stepId) {
                         <div class="faq-answer"><p>No, la idea de El Método Gelatina Natural es justamente usar ingredientes que encuentras fácilmente en cualquier supermercado y de bajo costo.</p></div>
                     </div>
 
-                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick('https://pay.hotmart.com/G105133784M?checkoutMode=10')" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
+                    <button class="btn green-cta mt-6 w-full mb-3" onclick="handlePurchaseClick()" style="background:#22c55e; color: white; border-radius:8px; padding:16px; font-size:1.1rem; font-weight: 800; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); text-transform: uppercase;">QUIERO EMPEZAR 🍓</button>
                     
                     <div class="text-center text-muted mb-4" style="font-size: 0.65rem; color: #94a3b8; margin-top: 15px; display:flex; align-items:center; justify-content:center; gap: 4px;">
                         <span>🔒 Compra 100% segura • Garantía de 30 días</span>
