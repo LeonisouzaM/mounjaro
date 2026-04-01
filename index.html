@@ -49,7 +49,14 @@
       defer
     ></script>
 
-    <!-- UTMs são repassadas via handlePurchaseClick() em app.js -->
+    <!--
+        SISTEMA DE TRACKING (app.js):
+        - Captura todos os parâmetros (UTMs + fbclid) e salva em localStorage/sessionStorage ("tracking_params")
+        - ViewContent: disparado 1x ao iniciar o quiz (initApp)
+        - ClickBuyButton: disparado ao clicar no botão de compra (handlePurchaseClick)
+        - InitiateCheckout: NÃO disparado aqui — exclusivo da Hotmart
+        - Purchase: NÃO disparado aqui — exclusivo da Hotmart
+    -->
 </head>
 
 <body>

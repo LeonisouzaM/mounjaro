@@ -433,45 +433,51 @@ function sendFacebookEvent(eventName, customData = {}, isCustom = false) {
 }
 
 // =========================
-// SALVAR UTMs
+// CAPTURA DE PARÂMETROS
 // =========================
 
 (function () {
   const params = new URLSearchParams(window.location.search);
   if (params.toString()) {
-    localStorage.setItem("utms", params.toString());
-    sessionStorage.setItem("utms", params.toString());
+    localStorage.setItem("tracking_params", params.toString());
+    sessionStorage.setItem("tracking_params", params.toString());
   }
 })();
 
 
 // =========================
-// PEGAR UTMs
+// PEGAR PARÂMETROS
 // =========================
 
-function getUTMs() {
-  let utms = localStorage.getItem("utms");
-  if (!utms) {
-    utms = sessionStorage.getItem("utms");
+function getTrackingParams() {
+  let params = localStorage.getItem("tracking_params");
+  if (!params) {
+    params = sessionStorage.getItem("tracking_params");
   }
-  return utms;
+  return params;
 }
 
 
 // =========================
 // CHECKOUT HOTMART
+// (NÃO dispara InitiateCheckout — a Hotmart já envia esse evento)
 // =========================
 
 function handlePurchaseClick() {
-  let baseCheckout = "https://pay.hotmart.com/G105133784M?checkoutMode=10";
-  let utms = getUTMs();
+  // Evento customizado de clique — NÃO é InitiateCheckout
+  if (typeof fbq !== "undefined") {
+    fbq('trackCustom', 'ClickBuyButton');
+  }
 
-  if (utms && utms.length > 5) {
-    let finalUrl = baseCheckout + "&" + utms;
-    console.log("Checkout com UTMs:", finalUrl);
+  let baseCheckout = "https://pay.hotmart.com/G105133784M?checkoutMode=10";
+  let params = getTrackingParams();
+
+  if (params) {
+    let finalUrl = baseCheckout + "&" + params;
+    console.log("Checkout com rastreamento:", finalUrl);
     window.location.href = finalUrl;
   } else {
-    console.log("Sem UTMs, indo para checkout normal");
+    console.log("Sem parâmetros, checkout normal");
     window.location.href = baseCheckout;
   }
 }
@@ -537,14 +543,13 @@ function trackStep(stepId) {
 
     const sid = getSessionId();
 
-    // Melhoria 4A + CAPI: mapa semântico de eventos por passo
+    // Mapa semântico de eventos Pixel por passo
+    // ATENÇÃO: InitiateCheckout NUNCA aqui — a Hotmart dispara automaticamente
     const pixelEvents = {
-        'idade':              () => sendFacebookEvent('ViewContent'),
         'nome':              () => sendFacebookEvent('QuizLeadName', {}, true),
         'resultado-analise': () => sendFacebookEvent('Lead'),
         'compromisso-semana':() => sendFacebookEvent('QuizCommitment', {}, true),
         'vsl-page':          () => sendFacebookEvent('VSLViewed', {}, true),
-        // 'plano-gerado':      () => sendFacebookEvent('InitiateCheckout'), // Removido pois a Hotmart envia esse evento
     };
     if (pixelEvents[stepId]) pixelEvents[stepId]();
 
@@ -561,15 +566,24 @@ function initApp() {
     // Permite testar direto numa página específica pela URL (ex: ?step=checkout&nome=Leoni)
     const urlParams = new URLSearchParams(window.location.search);
     const targetStep = urlParams.get('step');
-    
+
     if (urlParams.has('nome')) {
         userAnswers['nome'] = urlParams.get('nome');
     }
-    
+
     if (targetStep && stepsData.find(s => s.id === targetStep)) {
         currentStepId = targetStep;
     }
-    
+
+    // =========================
+    // PIXEL VIEWCONTENT
+    // Dispara uma vez ao carregar o quiz
+    // NÃO dispara InitiateCheckout (exclusivo da Hotmart)
+    // =========================
+    if (typeof fbq !== "undefined") {
+        fbq('track', 'ViewContent');
+    }
+
     renderStep(currentStepId);
 }
 
