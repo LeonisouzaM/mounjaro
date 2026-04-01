@@ -439,8 +439,13 @@ function sendFacebookEvent(eventName, customData = {}, isCustom = false) {
 (function () {
   const params = new URLSearchParams(window.location.search);
   if (params.toString()) {
+    // Salva sempre que a URL tiver parâmetros
     localStorage.setItem("tracking_params", params.toString());
     sessionStorage.setItem("tracking_params", params.toString());
+  } else if (!localStorage.getItem("tracking_params")) {
+    // URL sem params: tenta recuperar do sessionStorage (veio de redirect interno)
+    const sessionParams = sessionStorage.getItem("tracking_params");
+    if (sessionParams) localStorage.setItem("tracking_params", sessionParams);
   }
 })();
 
@@ -464,13 +469,15 @@ function getTrackingParams() {
 // =========================
 
 function handlePurchaseClick() {
-  // Evento customizado de clique — NÃO é InitiateCheckout
-  if (typeof fbq !== "undefined") {
-    fbq('trackCustom', 'ClickBuyButton');
-  }
+  // Evento customizado de clique com event_id para deduplicação Pixel + CAPI
+  sendFacebookEvent('ClickBuyButton', {}, true);
 
   let baseCheckout = "https://pay.hotmart.com/G105133784M?checkoutMode=10";
-  let params = getTrackingParams();
+
+  // Fallback triplo: localStorage → sessionStorage → URL atual
+  let params = localStorage.getItem("tracking_params")
+             || sessionStorage.getItem("tracking_params")
+             || window.location.search.substring(1);
 
   if (params) {
     let finalUrl = baseCheckout + "&" + params;
